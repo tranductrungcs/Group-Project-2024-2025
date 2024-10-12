@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ANDROID APP</string>
+    <string name="loginScreenHeader">Nickname</string>
+    <string name="loginScreenButtonText">Create Profile</string>
+    <string name="loginScreenText">Don\'t have nickname? Next</string>
+
+    <string name="project_name">USTH PROJECT</string>
+    <string name="project_copyright">\@USTHCOPYRIGHT</string>
+    <string name="content_description">Avoid Warning</string>
+</resources>
