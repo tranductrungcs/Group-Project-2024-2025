@@ -3,6 +3,7 @@ package com.example;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +73,11 @@ public class SetNicknameFragment extends Fragment {
             public void onClick(View v) {
                 EditText editText = requireView().findViewById(R.id.textInput);
                 String text = editText.getText().toString();
-                Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
+                ChooseFavorFragment chooseFavorFragment = new ChooseFavorFragment();
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, chooseFavorFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
