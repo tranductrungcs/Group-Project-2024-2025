@@ -1,12 +1,20 @@
 package com.example;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +67,35 @@ public class VideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video, container, false);
+        View view = inflater.inflate(R.layout.fragment_video, container, false);
+        ImageView thumbnailImageView = view.findViewById(R.id.apple_watch_series10);
+
+        // Switch to PlayVideoActivity
+        thumbnailImageView.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
+            startActivity(intent);
+        });
+
+        return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.video_menu, menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        // Refresh (icon always visible):
+        if (id == R.id.ic_user) {
+            return true;
+        }
+        // Settings (always in the overflow menu):
+        else if (id == R.id.aa) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

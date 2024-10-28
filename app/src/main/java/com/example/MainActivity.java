@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.video_icon);
-        tabLayout.getTabAt(1).setIcon(R.drawable.news_icon);
+        tabLayout.getTabAt(0).setIcon(R.drawable.video_icon).setText(R.string.videos);
+        tabLayout.getTabAt(1).setIcon(R.drawable.news_icon).setText(R.string.news);
     }
 }

@@ -10,4 +10,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="apple_company">Apple Company</string>
+    <string name="apple_watch_series10_description">Introducing Apple Watch Series 10 | Apple</string>
+    <string name="airpods4_description">Introducing the all-new AirPods 4 | Apple</string>
+    <string name="iphone16_pro_description">Introducing iPhone 16 Pro | Apple</string>
+    <string name="ipad_pro_description">Introducing the all-new iPad Pro | Apple</string>
+    <string name="videos">Videos</string>
+    <string name="news">News</string>
 </resources>

@@ -18,7 +18,7 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabSelectedTextColor="@color/white"
+        app:tabSelectedTextColor="@color/blue"
         app:tabIconTint="@color/black"
         android:background="@color/white"
         app:labelVisibilityMode="unlabeled"
