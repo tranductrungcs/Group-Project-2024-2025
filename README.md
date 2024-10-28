@@ -11,7 +11,7 @@ Members are expected to:
 Student Info
 =======================
 
-* Name: *Dương Đàm Lâm *
-* ID: *BA12-102*
+* Name: *Trần Việt Cường *
+* ID: *BA12-035*
 * Group ID: *Group Project*
 * Project Name: *Tech Post android app*
