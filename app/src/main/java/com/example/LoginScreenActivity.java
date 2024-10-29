@@ -1,6 +1,7 @@
 package com.example;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -11,7 +12,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 
 public class LoginScreenActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,7 @@ public class LoginScreenActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
     }
 
     
