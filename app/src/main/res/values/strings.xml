@@ -16,4 +16,8 @@
     <string name="ipad_pro_description">Introducing the all-new iPad Pro | Apple</string>
     <string name="videos">Videos</string>
     <string name="news">News</string>
+    <string name="video_part_title">TECH VIDEOS</string>
+
+    <string name="search_hint_light">Search (Light Mode)</string>
+    <string name="search_hint_dark">Search (Dark Mode)</string>
 </resources>
