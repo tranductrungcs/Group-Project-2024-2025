@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Videos"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/video_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/SCREEN"
     tools:context=".VideoFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,11 +13,11 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        style="@style/SCREEN"
         android:elevation="4dp">
 
         <ImageButton
-            android:id="@+id/user_button"
+            android:id="@+id/ic_user"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:focusable="true"
@@ -30,70 +32,133 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:focusable="true"
-            android:src="@drawable/ic_settings"
-            android:background="@color/black"
+            android:src="@drawable/aa_icon"
+            android:background="@color/white"
             android:clickable="true"
             android:layout_marginEnd="16dp"
             android:layout_gravity="end" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
+    <LinearLayout
         android:id="@+id/search_bar"
         android:layout_width="350dp"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="15dp"
         android:layout_centerInParent="true"
         android:layout_below="@id/toolbar"
-        android:padding="10dp"
-        android:inputType="text"
-        android:background="@drawable/round_corner"
-        android:autofillHints="Value"
-        tools:ignore="LabelFor" />
-
-    <LinearLayout
-        android:id="@+id/app_name_and_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/search_bar"
-        android:orientation="horizontal">
+        android:background="@drawable/round_corner">
 
         <ImageView
-            android:id="@+id/app_name"
-            android:layout_width="250dp"
-            android:layout_height="55dp"
-            android:src="@drawable/tech_video" />
-
-        <ImageView
-            android:id="@+id/app_logo"
+            android:id="@+id/app_icon"
             android:layout_width="55dp"
             android:layout_height="45dp"
-            android:src="@drawable/app_logo" />
+            android:src="@drawable/app_logo"
+            android:layout_marginEnd="8dp"/>
+
+        <EditText
+            android:id="@+id/search_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Search..."
+            android:padding="12dp"
+            android:drawablePadding="8dp"/>
+
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/search_icon"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="10dp"/>
+
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/videos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/app_name_and_icon">
+        android:layout_height="wrap_content"
+        style="@style/SCREEN"
+        android:layout_below="@id/search_bar">
 
         <RelativeLayout
-            android:id="@+id/apple_part"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/apple_part"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/apple_logo"
-                android:layout_width="90dp"
-                android:layout_height="70dp"
-                android:paddingStart="20dp"
-                android:src="@drawable/apple_logo"
-                tools:ignore="RtlSymmetry" />
+                <ImageView
+                    android:id="@+id/apple_logo"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:paddingStart="20dp"
+                    android:src="@drawable/apple_logo"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="RtlSymmetry" />
 
-            <TextView
-                android:id="@+id/apple_text"
-                android:layout_width="wrap_content"
+                <HorizontalScrollView
+                    android:id="@+id/apple_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/apple_logo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    tools:ignore="ScrollViewCount">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageButton
+                            android:id="@+id/apple_watch_series10"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            style="@style/SCREEN"
+                            android:src="@drawable/apple_watch_series10_thumbnail"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/airpods4"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/apple_watch_series10"
+                            style="@style/SCREEN"
+                            android:src="@drawable/airpods4_thumbnail"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/ipad_pro"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/airpods4"
+                            style="@style/SCREEN"
+                            android:src="@drawable/ipad_pro_thumbnail"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/iphone16_pro"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/ipad_pro"
+                            style="@style/SCREEN"
+                            android:src="@drawable/iphone16_pro_thumbnail"
+                            tools:ignore="MissingConstraints" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/samsung_part"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/apple_company"

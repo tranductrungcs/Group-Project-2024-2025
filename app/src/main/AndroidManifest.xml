@@ -12,14 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ANDROIDAPP"
         tools:targetApi="31">
-        <activity android:name=".LoginScreenActivity"
+        <activity
+            android:name=".PlayVideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
