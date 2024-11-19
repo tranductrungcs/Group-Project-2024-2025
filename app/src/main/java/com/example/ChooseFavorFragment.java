@@ -1,8 +1,10 @@
 package com.example;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -83,21 +85,27 @@ public class ChooseFavorFragment extends Fragment {
             }
         });
 
-        Button nextButton = (Button) view.findViewById(R.id.next_button);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BlankFragment blankFragment = new BlankFragment();
-                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, blankFragment);
-                transaction.commit();
-            }
-        });
-
         // Assuming brandContainer is your GridLayout and contains 6 ImageViews as children
         this.setChildrenClickEventListener((GridLayout) view.findViewById(R.id.brand_container_video), videoSelectedBrand);
         this.setChildrenClickEventListener(view.findViewById(R.id.brand_container_news), newsSelectedBrand);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        Button nextButton = (Button) view.findViewById(R.id.next_button);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (getActivity() != null) {
+                    Intent intent = new Intent(getContext(), ScrollingNewsActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                } else {
+                    Log.i("Activity", "Activity is null");
+                }
+            }
+        });
     }
 
     /**
@@ -108,6 +116,8 @@ public class ChooseFavorFragment extends Fragment {
 
         for (int i = 0; i < childCount; i++) {
             View childView = gridLayout.getChildAt(i);
+
+            childView.getContentDescription();
 
             // Set an initial tag to keep track of toggle state
             childView.setTag(false); // false means not selected initially

@@ -75,7 +75,6 @@ public class BlankFragment extends Fragment {
             if (items != null) {
                 for (String item: items) {
                     TextView textView = new TextView(getContext());
-                    textView.setText();
                 }
             }
         }
