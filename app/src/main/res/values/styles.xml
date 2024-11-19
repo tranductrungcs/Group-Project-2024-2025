@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <style name="AppTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">-->
-<!--        &lt;!&ndash; Light mode theme attributes &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/colorAccent</item>-->
-<!--    </style>-->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
 
-<!--    <style name="AppTheme.Dark" parent="Theme.AppCompat.DayNight.NoActionBar">-->
-<!--        &lt;!&ndash; Dark mode theme attributes &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/darkModeColorPrimary</item>-->
-<!--        <item name="colorPrimaryDark">@color/darkModeColorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/darkModeColorAccent</item>-->
-<!--    </style>-->
+    </style>
 </resources>

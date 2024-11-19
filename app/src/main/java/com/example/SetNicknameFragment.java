@@ -63,7 +63,6 @@ public class SetNicknameFragment extends Fragment {
         }
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -76,7 +75,11 @@ public class SetNicknameFragment extends Fragment {
             public void onClick(View v) {
                 EditText editText = requireView().findViewById(R.id.textInput);
                 String text = editText.getText().toString();
-                Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
+                ChooseFavorFragment chooseFavorFragment = new ChooseFavorFragment();
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, chooseFavorFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
