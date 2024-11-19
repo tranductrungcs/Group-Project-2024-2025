@@ -27,12 +27,22 @@
             android:layout_marginStart="16dp"
             android:layout_gravity="start" />
 
-        <ImageButton
-            android:id="@+id/setting_button"
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="55dp"
+            android:text="@string/video_part_title"
+            android:textSize="32sp"
+            android:textAlignment="center"
+            android:textColor="#070089"/>
+
+        <ImageView
+            android:id="@+id/aa"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:focusable="true"
-            android:src="@drawable/aa_icon"
+            android:src="@drawable/avoid_red"
             android:background="@color/white"
             android:clickable="true"
             android:layout_marginEnd="16dp"
@@ -79,6 +89,35 @@
 
     </LinearLayout>
 
+    <!--    <SearchView-->
+    <!--        android:id="@+id/search_bar"-->
+    <!--        android:layout_width="350dp"-->
+    <!--        android:layout_height="35dp"-->
+    <!--        android:layout_margin="15dp"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:layout_below="@id/toolbar"-->
+    <!--        android:iconifiedByDefault="false"-->
+    <!--        android:queryHint="Search"-->
+    <!--        android:padding="10dp"-->
+    <!--        android:inputType="text"-->
+    <!--        android:background="@drawable/round_corner"-->
+    <!--        android:autofillHints="Value"-->
+    <!--        tools:ignore="LabelFor" />-->
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/app_name_and_icon"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:layout_below="@id/search_bar"-->
+    <!--        android:orientation="horizontal">-->
+    <!--        <ImageView-->
+    <!--            android:id="@+id/app_logo"-->
+    <!--            android:layout_width="55dp"-->
+    <!--            android:layout_height="45dp"-->
+    <!--            android:src="@drawable/app_logo" />-->
+    <!--    </LinearLayout>-->
+
     <ScrollView
         android:id="@+id/videos"
         android:layout_width="match_parent"
@@ -120,7 +159,7 @@
                             android:layout_width="300dp"
                             android:layout_height="170dp"
                             style="@style/SCREEN"
-                            android:src="@drawable/apple_watch_series10_thumbnail"
+                            android:src="@drawable/avoid_red"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -130,7 +169,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/apple_watch_series10"
                             style="@style/SCREEN"
-                            android:src="@drawable/airpods4_thumbnail"
+                            android:src="@drawable/avoid_red"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -140,7 +179,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/airpods4"
                             style="@style/SCREEN"
-                            android:src="@drawable/ipad_pro_thumbnail"
+                            android:src="@drawable/avoid_red"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -150,7 +189,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/ipad_pro"
                             style="@style/SCREEN"
-                            android:src="@drawable/iphone16_pro_thumbnail"
+                            android:src="@drawable/avoid_red"
                             tools:ignore="MissingConstraints" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
@@ -160,18 +199,205 @@
                 android:id="@+id/samsung_part"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/apple_company"
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:layout_below="@id/apple_part">
 
-            <HorizontalScrollView
-                android:id="@+id/apple_video"
+                <ImageView
+                    android:id="@+id/samsung_logo"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:paddingStart="20dp"
+                    android:src="@drawable/samsung_logo"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <HorizontalScrollView
+                    android:id="@+id/samsung_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/samsung_logo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    tools:ignore="ScrollViewCount">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageButton
+                            android:id="@+id/galaxy_note9"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/galaxy_tab_s10_series"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/galaxy_note9"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/galaxy_s24_fe"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/galaxy_tab_s10_series"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/samsung_health"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/galaxy_s24_fe"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/huawei_part"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/apple_logo">
+                android:layout_below="@id/samsung_part">
 
-            </HorizontalScrollView>
+                <ImageView
+                    android:id="@+id/huawei_logo"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:paddingStart="20dp"
+                    android:src="@drawable/huawei_logo_vertical"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <HorizontalScrollView
+                    android:id="@+id/huawei_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/huawei_logo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    tools:ignore="ScrollViewCount">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageButton
+                            android:id="@+id/huawei_matebook_x_pro"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/huawei_matepad_11_5s"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/huawei_matebook_x_pro"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/huawei_p60_series"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/huawei_matepad_11_5s"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/huawei_watch_3_3_pro"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/huawei_p60_series"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/xiaomi_part"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/huawei_part">
+
+                <ImageView
+                    android:id="@+id/xiaomi_logo"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:paddingStart="20dp"
+                    android:src="@drawable/xiaomi_logo"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="RtlSymmetry" />
+
+                <HorizontalScrollView
+                    android:id="@+id/xiaomi_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/xiaomi_logo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    tools:ignore="ScrollViewCount">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageButton
+                            android:id="@+id/xiaomi_12t_pro"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/xiaomi_14t_series"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/xiaomi_12t_pro"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/xiaomi_mi_drone"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/xiaomi_14t_series"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageButton
+                            android:id="@+id/xiaomi_smart_factory"
+                            android:layout_width="300dp"
+                            android:layout_height="170dp"
+                            android:layout_marginStart="10dp"
+                            app:layout_constraintStart_toEndOf="@id/xiaomi_mi_drone"
+                            style="@style/SCREEN"
+                            android:src="@drawable/avoid_red"
+                            tools:ignore="MissingConstraints" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 
