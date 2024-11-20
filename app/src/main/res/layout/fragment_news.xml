@@ -194,7 +194,7 @@
                         android:paddingLeft="150dp"
                         android:textSize="20sp"
                         android:text="so what if I write in just a line but it is so so long, oh it seem fine"
-                        android:textColor="@color/black">
+                        style="@style/TEXT">
                     </TextView>
                 </RelativeLayout>
                 <RelativeLayout
@@ -213,7 +213,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="150dp"
                         android:textSize="20sp"
-                        android:textColor="@color/black"
+                        style="@style/TEXT"
                         android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
                     </TextView>
                 </RelativeLayout>
@@ -233,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="150dp"
                         android:textSize="20sp"
-                        android:textColor="@color/black"
+                        style="@style/TEXT"
                         android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
                     </TextView>
                 </RelativeLayout>
@@ -271,7 +271,7 @@
                         android:paddingLeft="150dp"
                         android:textSize="20sp"
                         android:text="so what if I write in just a line but it is so so long, oh it seem fine"
-                        android:textColor="@color/black">
+                        style="@style/TEXT">
                     </TextView>
                 </RelativeLayout>
                 <RelativeLayout
@@ -290,7 +290,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="150dp"
                         android:textSize="20sp"
-                        android:textColor="@color/black"
+                        style="@style/TEXT"
                         android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
                     </TextView>
                 </RelativeLayout>
@@ -310,7 +310,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="150dp"
                         android:textSize="20sp"
-                        android:textColor="@color/black"
+                        style="@style/TEXT"
                         android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
                     </TextView>
                 </RelativeLayout>
