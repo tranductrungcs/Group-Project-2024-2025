@@ -22,14 +22,15 @@
         <activity
             android:name=".LoginScreenActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+
         <activity
             android:name=".ScrollingNewsActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_scrolling_news"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
