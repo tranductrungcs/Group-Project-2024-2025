@@ -1,5 +1,6 @@
 package com.example;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +61,18 @@ public class NewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        View view = inflater.inflate(R.layout.fragment_news, container, false);
+        ImageButton container_test = view.findViewById(R.id.apple_watch_series10);
+        container_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movetoNewsDetail();
+            }
+        });
+        return view;
+    }
+    public void movetoNewsDetail(){
+        Intent intent = new Intent(getContext(),EmptyActivity.class);
+        startActivity(intent);
     }
 }
