@@ -77,22 +77,22 @@ public class VideoFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         if (getActivity() != null) {
-            videoUris[0] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[1] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[2] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[3] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[4] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[5] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[6] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[7] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[8] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[9] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[10] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[11] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[12] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[13] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[14] = "android.resource://" + getActivity().getPackageName() + "/";
-            videoUris[15] = "android.resource://" + getActivity().getPackageName() + "/";
+            videoUris[0] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.apple_watch_series10;
+            videoUris[1] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.airpods4;
+            videoUris[2] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.ipad_pro;
+            videoUris[3] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.iphone16_pro;
+            videoUris[4] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_note9;
+            videoUris[5] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_tab_s10_series;
+            videoUris[6] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxys_24_fe;
+            videoUris[7] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.samsung_health;
+            videoUris[8] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_matebook_x_pro;
+            videoUris[9] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_matepad_11_5s;
+            videoUris[10] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_p60_series;
+            videoUris[11] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_watch_3_3_pro;
+            videoUris[12] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_12t_pro;
+            videoUris[13] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_14t_series;
+            videoUris[14] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_mi_drone;
+            videoUris[15] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_smart_factory;
         }
     }
 
