@@ -42,7 +42,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:focusable="true"
-            android:src="@drawable/avoid_red"
+            android:src="@drawable/aa_icon"
             android:background="@color/white"
             android:clickable="true"
             android:layout_marginEnd="16dp"
@@ -159,7 +159,7 @@
                             android:layout_width="300dp"
                             android:layout_height="170dp"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/apple_watch_series10_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -169,7 +169,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/apple_watch_series10"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/airpods4_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -179,7 +179,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/airpods4"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/ipad_pro_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -189,7 +189,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/ipad_pro"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/iphone16_pro_thumbnail"
                             tools:ignore="MissingConstraints" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
@@ -227,7 +227,7 @@
                             android:layout_width="300dp"
                             android:layout_height="170dp"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/galaxy_note9_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -237,7 +237,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/galaxy_note9"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/galaxy_tab_s10_series_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -247,7 +247,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/galaxy_tab_s10_series"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/galaxy_s24_fe_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -257,7 +257,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/galaxy_s24_fe"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/samsung_health_thumbnail"
                             tools:ignore="MissingConstraints" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
@@ -295,7 +295,7 @@
                             android:layout_width="300dp"
                             android:layout_height="170dp"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/huawei_matebook_x_pro_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -305,7 +305,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/huawei_matebook_x_pro"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/huawei_matepad_11_5s_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -315,7 +315,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/huawei_matepad_11_5s"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/huawei_p60_series_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -325,7 +325,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/huawei_p60_series"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/huawei_watch_3_3_pro_thumbnail"
                             tools:ignore="MissingConstraints" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
@@ -363,7 +363,7 @@
                             android:layout_width="300dp"
                             android:layout_height="170dp"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/xiaomi_12t_pro_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -373,7 +373,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/xiaomi_12t_pro"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/xiaomi_14t_series_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -383,7 +383,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/xiaomi_14t_series"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/xiaomi_mi_drone_thumbnail"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
@@ -393,7 +393,7 @@
                             android:layout_marginStart="10dp"
                             app:layout_constraintStart_toEndOf="@id/xiaomi_mi_drone"
                             style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
+                            android:src="@drawable/xiaomi_smart_factory_thumbnail"
                             tools:ignore="MissingConstraints" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </HorizontalScrollView>
