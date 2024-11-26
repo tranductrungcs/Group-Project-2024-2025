@@ -10,6 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -37,6 +38,7 @@ public class VideoFragment extends Fragment {
     private final String[] videoUris = new String[16];
     private final ImageButton[] thumbnails = new ImageButton[16];
 //    private SearchView searchView;
+    private ImageButton ic_setting;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,20 +81,20 @@ public class VideoFragment extends Fragment {
         if (getActivity() != null) {
             videoUris[0] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.apple_watch_series10;
             videoUris[1] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.airpods4;
-            videoUris[2] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.ipad_pro;
-            videoUris[3] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.iphone16_pro;
-            videoUris[4] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_note9;
-            videoUris[5] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_tab_s10_series;
-            videoUris[6] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxys_24_fe;
-            videoUris[7] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.samsung_health;
-            videoUris[8] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_matebook_x_pro;
-            videoUris[9] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_matepad_11_5s;
-            videoUris[10] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_p60_series;
-            videoUris[11] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_watch_3_3_pro;
-            videoUris[12] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_12t_pro;
-            videoUris[13] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_14t_series;
-            videoUris[14] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_mi_drone;
-            videoUris[15] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_smart_factory;
+//            videoUris[2] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.ipad_pro;
+//            videoUris[3] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.iphone16_pro;
+//            videoUris[4] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_note9;
+//            videoUris[5] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_tab_s10_series;
+//            videoUris[6] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxys_24_fe;
+//            videoUris[7] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.samsung_health;
+//            videoUris[8] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_matebook_x_pro;
+//            videoUris[9] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_matepad_11_5s;
+//            videoUris[10] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_p60_series;
+//            videoUris[11] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_watch_3_3_pro;
+//            videoUris[12] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_12t_pro;
+//            videoUris[13] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_14t_series;
+//            videoUris[14] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_mi_drone;
+//            videoUris[15] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_smart_factory;
         }
     }
 
@@ -129,6 +131,9 @@ public class VideoFragment extends Fragment {
 //            String query = searchBar.getText().toString();
 //            performSearch(query);
 //        });
+
+
+
 
         return view;
     }
@@ -168,6 +173,7 @@ public class VideoFragment extends Fragment {
         int id = item.getItemId();
         // Refresh (icon always visible):
         if (id == R.id.ic_user) {
+
             return true;
         }
         // Settings (always in the overflow menu):
