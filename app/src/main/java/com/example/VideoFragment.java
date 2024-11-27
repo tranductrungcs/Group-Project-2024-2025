@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -27,6 +28,8 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.google.android.material.search.SearchView;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -181,5 +184,16 @@ public class VideoFragment extends Fragment {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        ImageButton imageButton = requireView().findViewById(R.id.ic_user);
+        imageButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), SettingFragment.class);
+            startActivity(intent);
+        });
     }
 }

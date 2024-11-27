@@ -19,12 +19,12 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SettingFragment extends AppCompatActivity {
     private ImageView avatarImageView;
     private TextView usernameTextView;
-    private LinearLayout changeUsernameLayout;
+    private TextView changeUsernameLayout;
     private RadioGroup languageRadioGroup;
     private Switch darkLightSwitch;
     private SeekBar fontSizeSeekBar;
     private TextView fontSizeTextView;
-    private LinearLayout developerLayout;
+    private TextView developeTextView;
     private RadioGroup infoRadioGroup;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -41,7 +41,7 @@ public class SettingFragment extends AppCompatActivity {
         darkLightSwitch = findViewById(R.id.dark_light_switch);
         fontSizeSeekBar = findViewById(R.id.font_size_seekbar);
         fontSizeTextView = findViewById(R.id.font_size_value);
-        developerLayout = findViewById(R.id.developer_layout);
+        developeTextView = findViewById(R.id.developer_layout);
         infoRadioGroup = findViewById(R.id.info_group);
 
 
@@ -82,7 +82,7 @@ public class SettingFragment extends AppCompatActivity {
         });
 
 
-        developerLayout.setOnClickListener(v -> openDeveloperFragment());
+        developeTextView.setOnClickListener(v -> openDeveloperFragment());
 
 
         infoRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
