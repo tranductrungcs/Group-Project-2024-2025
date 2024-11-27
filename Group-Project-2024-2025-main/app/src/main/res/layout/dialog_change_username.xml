@@ -4,14 +4,35 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/avatarImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_avatar"
+        android:contentDescription="User Avatar"
+        android:scaleType="centerCrop"/>
+
+    <Button
+        android:id="@+id/changeAvatarButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Avatar"
+        android:layout_marginTop="8dp"/>
+
     <EditText
         android:id="@+id/usernameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter new username"/>
+        android:hint="Enter new username"
+        android:layout_marginTop="8dp"/>
+
     <Button
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save"/>
+        android:text="Save"
+        android:layout_marginTop="8dp"/>
+
 </LinearLayout>
