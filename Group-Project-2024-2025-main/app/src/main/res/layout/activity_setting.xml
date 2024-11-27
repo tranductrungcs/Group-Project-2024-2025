@@ -221,36 +221,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#D1D1D1" />
-        <!-- Developer -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            android:gravity="center_vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_developer" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Developer"
-                android:textSize="16sp"
-                android:textColor="#333333"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1" />
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_arrow_forward"
-                android:contentDescription="Arrow" />
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D1D1D1" />
         <!-- Information -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -302,5 +272,60 @@
                 android:textSize="14sp"
                 android:layout_weight="1" />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D1D1D1" />
+
+        <!-- Developer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_developer" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Developer"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1" />
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_forward"
+                android:contentDescription="Arrow" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Theo dõi nguồn"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Youtube: Đỗ Mixi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Facebook: TRẦN CƯỜNG "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Liên hệ góp ý cho chúng mình qua số hotline:1900 một tông vô mõm, một dép vô mồm"/>
     </LinearLayout>
 </ScrollView>
