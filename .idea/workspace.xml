@@ -4,65 +4,170 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="feaf4774-8f8e-4640-958c-50e2a0bd901b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" />
+    <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/config.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/LoginScreenActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/SetNicknameFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/avatar_selection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/preference_selection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_avatar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_news.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_video.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/line.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/round_corner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_corners.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_screen.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_avatar_selection.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_preference_selection.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_set_nickname.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/example/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/source_for_news" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/deploymentTargetSelector.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/migrations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/other.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/androidTest/java/com/example/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/BlankFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/BrandElement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/ChooseFavorFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/EmptyActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/LoginScreenActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/NewsAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/NewsFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/PlayVideoActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/ScrollingNewsActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/SetNicknameFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/SettingFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/SmallNews.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/SmallNewsFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/ThemeUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/VideoFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/ViewPagerAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/avatar_selection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/fragment_developer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/java/com/example/preference_selection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable-night/apple_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable-night/huawei_logo_vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/aa_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/airpods4_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/app_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/apple_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/apple_watch_series10_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/asus_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/avoid_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/baseline_photo_24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/button_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/comment_light.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/galaxy_note9_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/galaxy_s24_fe_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/galaxy_tab_s10_series_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/huawei_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/huawei_logo_horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/huawei_logo_vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/huawei_matebook_x_pro_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/huawei_matepad_11_5s_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/huawei_p60_series_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/huawei_watch_3_3_pro_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_android_black_24dp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_arrow_back.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_arrow_forward.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_avatar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_circle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_dark_mode.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_developer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_font_size.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_info.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_language.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_news.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_user.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ic_video.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/ipad_pro_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/iphone16_pro_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/line.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/main_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/microsoft_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/news_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/pill_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/round_corner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/rounded_corners.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/samsung_health_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/samsung_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/search_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/tech_video.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/tomato_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/video_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/xiaomi_12t_pro_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/xiaomi_14t_series_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/xiaomi_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/xiaomi_mi_drone_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/drawable/xiaomi_smart_factory_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout-w1240dp/content_scrolling.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout-w936dp/content_scrolling.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/activity_empty.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/activity_login_screen.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/activity_play_video.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/activity_scrolling_news.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/activity_setting.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/content_scrolling.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/dialog_change_username.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_avatar_selection.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_blank.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_choose_favor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_developer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_news.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_preference_selection.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_set_nickname.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_small_news.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/fragment_video.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/layout/layout_switcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/menu/menu_scrolling_news.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/menu/video_menu.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/raw/airpods4.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/raw/apple_watch_series10.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values-land/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values-night/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values-night/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values-w1240dp/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values-w600dp/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values/dimens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values/ids.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/values/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/main/res/xml/network_security_config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/app/src/test/java/com/example/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/group_project-20241028T045633Z-001.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Group-Project-2024-2025-main/source_for_news" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/group_project-20241028T045633Z-001.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,26 +177,18 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "VitNguyen2003"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/VitNguyen2003/Group-Project-2024-2025.git",
-    "accountId": "bde928e3-b1d2-4abb-b240-20e21fca08cc"
-  }
-}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
+  "associatedIndex": 1
 }]]></component>
-  <component name="ProjectId" id="2pNwCDenpmHOn1ROwfsQpLWd0i6" />
+  <component name="ProjectId" id="2pRRJdsKQnMT81Hqi4d7CuU5915" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -101,22 +198,89 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/viett/Group-Project-2024-2025/Group-Project-2024-2025-main"
+    "last_opened_file_path": "C:/work/Group main Project/Group-Project-2024-2025"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="ANDROID_APP.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="feaf4774-8f8e-4640-958c-50e2a0bd901b" name="Changes" comment="" />
-      <created>1732619714660</created>
+      <changelist id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="" />
+      <created>1732726830617</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1732619714660</updated>
+      <updated>1732726830617</updated>
     </task>
     <servers />
   </component>
