@@ -1,6 +1,7 @@
 package com.example;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +27,9 @@ public class SettingFragment extends AppCompatActivity {
     private TextView fontSizeTextView;
     private TextView developeTextView;
     private RadioGroup infoRadioGroup;
+    private ImageView backArrow;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -43,6 +47,14 @@ public class SettingFragment extends AppCompatActivity {
         fontSizeTextView = findViewById(R.id.font_size_value);
         developeTextView = findViewById(R.id.developer_layout);
         infoRadioGroup = findViewById(R.id.info_group);
+        backArrow = findViewById(R.id.back_arrow);
+
+
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(this, VideoFragment.class);
+            startActivity(intent);
+            finish();
+        });
 
 
         changeUsernameLayout.setOnClickListener(v -> showChangeUsernameDialog());
