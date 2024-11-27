@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/Title"
                 android:layout_toRightOf="@id/imageThumbnail"
-                android:text="something something add something to me"
+                android:text="something here add something to me"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 style="@style/TEXT">
@@ -68,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/NewsContent"
                 android:layout_below="@id/imageThumbnail"
+                android:layout_marginStart="10dp"
                 android:text="@string/large_text"
                 android:textSize="15sp"
                 style="@style/TEXT">
