@@ -29,7 +29,7 @@ public class SettingFragment extends AppCompatActivity {
     private RadioGroup infoRadioGroup;
     private ImageView backArrow;
 
-    private static final int PICK_IMAGE_REQUEST = 1;
+
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -94,7 +94,7 @@ public class SettingFragment extends AppCompatActivity {
         });
 
 
-        developeTextView.setOnClickListener(v -> openDeveloperFragment());
+
 
 
         infoRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
@@ -126,14 +126,6 @@ public class SettingFragment extends AppCompatActivity {
         dialog.show();
     }
 
-    private void openDeveloperFragment() {
-
-        fragment_developer developerFragment = new fragment_developer();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.developer_layout, developerFragment)
-                .addToBackStack(null)
-                .commit();
-    }
 
     private void updateUsername(String newUsername) {
 

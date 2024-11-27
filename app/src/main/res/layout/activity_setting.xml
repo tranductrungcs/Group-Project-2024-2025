@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Settings"
+                android:text="Customs"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="#333333" />
@@ -81,7 +81,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/ic_person" />
 
             <TextView
                 android:id="@+id/change_username_layout"
@@ -283,11 +283,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_arrow_forward"
-                android:contentDescription="Arrow" />
+
         </LinearLayout>
 
         <View
