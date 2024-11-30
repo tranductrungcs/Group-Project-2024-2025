@@ -41,35 +41,86 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:layout_marginTop="?actionBarSize"
+        android:layout_marginBottom="?actionBarSize"
         android:id="@+id/containContent">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             tools:ignore="ScrollViewSize"
             style="@style/SCREEN">
-            <ImageView
-                android:layout_width="175dp"
-                android:layout_height="125dp"
-                android:id="@+id/imageThumbnail"
-                android:src="@drawable/samsung_logo">
-            </ImageView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/Title"
-                android:layout_toRightOf="@id/imageThumbnail"
                 android:text="something here add something to me"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 style="@style/TEXT">
             </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/voice"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/Title">
+
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/avoid_red"
+                    android:id="@+id/Playbutton">
+                </ImageButton>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Read for me"
+                    style="@style/TEXT"
+                    android:textSize="15sp"
+                    android:layout_marginStart="10dp">
+                </TextView>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/brief"
+                android:layout_below="@id/voice"
+                android:layout_marginTop="10dp"
+                android:text="this is small brief"
+                android:textSize="15sp"
+                style="@style/TEXT">
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/brief"
+                android:orientation="vertical"
+                android:id="@+id/containImage">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:id="@+id/contentImage"
+                    android:src="@drawable/samsung_health_thumbnail"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true">
+                </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TEXT"
+                    android:text="describe the picture above I guess"
+                    android:textSize="15sp"
+                    android:layout_gravity="center">
+                </TextView>
+            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/NewsContent"
-                android:layout_below="@id/imageThumbnail"
+                android:layout_below="@id/containImage"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="@string/large_text"
+                android:text="@string/test_in_around_four_thousand"
                 android:textSize="15sp"
                 style="@style/TEXT">
             </TextView>
