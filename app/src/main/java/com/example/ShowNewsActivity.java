@@ -5,6 +5,7 @@ import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +15,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.sql.Connection;
 import java.util.Locale;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ShowNewsActivity extends AppCompatActivity {
     TextToSpeech textToSpeech;
+    Connection con;
+    String str;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +35,10 @@ public class ShowNewsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        SQLconnection sqlconnection = new SQLconnection();
+        connect();
+        con = sqlconnection.CONN();
+
         ImageButton Playbutton = findViewById(R.id.Playbutton);
         TextView Content = findViewById(R.id.NewsContent);
 
@@ -55,4 +66,33 @@ public class ShowNewsActivity extends AppCompatActivity {
         }
         super.onPause();
     }
+
+    public void connect(){
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            try {
+                if (con == null) {
+                    str = "Error!";
+                } else {
+                    str = "Connected to server";
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+            runOnUiThread(()-> {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e){
+                    throw new RuntimeException(e);
+                }
+                Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+            });
+        });
+
+
+
+    }
+
+
 }
