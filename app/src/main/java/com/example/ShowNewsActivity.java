@@ -16,6 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,6 +27,9 @@ public class ShowNewsActivity extends AppCompatActivity {
     TextToSpeech textToSpeech;
     Connection con;
     String str;
+    SQLconnection sqlconnection;
+    ResultSet rs;
+    String content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,28 +41,11 @@ public class ShowNewsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        SQLconnection sqlconnection = new SQLconnection();
+        sqlconnection = new SQLconnection();
         connect();
-        con = sqlconnection.CONN();
 
-        ImageButton Playbutton = findViewById(R.id.Playbutton);
-        TextView Content = findViewById(R.id.NewsContent);
 
-        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int i) {
-                if (i != TextToSpeech.ERROR){
-                    textToSpeech.setLanguage(Locale.ENGLISH);
-                }
-            }
-        });
 
-        Playbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textToSpeech.speak(Content.getText().toString(), TextToSpeech.QUEUE_FLUSH, null, null);
-            }
-        });
     }
 
     @Override
@@ -67,31 +56,56 @@ public class ShowNewsActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    public void btnClick(View view){
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            try {
+                con = sqlconnection.CONN();
+                String query = "SELECT * FROM androidapi.api_article WHERE id = 2";
+                PreparedStatement stmt = con.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery();
+                StringBuilder bStr = new StringBuilder("I test this but it should be fine\n");
+                while (rs.next()) {
+                    bStr.append(rs.getString("title")).append("\n");
+                }
+                content = bStr.toString();
+            } catch (SQLException e){
+                throw new RuntimeException(e);
+            }
+            runOnUiThread(() ->{
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                TextView Content = findViewById(R.id.Title);
+                Content.setText(content);
+            });
+        });
+    }
+
     public void connect(){
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(() -> {
             try {
+                con = sqlconnection.CONN();
                 if (con == null) {
-                    str = "Error!";
+                    str = "connect success";
                 } else {
-                    str = "Connected to server";
+                    str = "Error!";
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-
-            runOnUiThread(()-> {
+            runOnUiThread(() -> {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e){
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
                 Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
             });
         });
-
-
-
     }
 
 

@@ -1,29 +1,28 @@
 package com.example;
 
 import android.os.StrictMode;
+import android.util.Log;
 
+import java.sql.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class SQLconnection {
-    Connection con;
-    protected static String classes = "com.mysql.jdbc.Driver";
-    protected static String ip = "10.0.2.2";
+    protected static String ip = "10.0.0.2";
     protected static String port = "3306";
     protected static String db = "androidapi";
     protected static String un = "root";
-    protected static String password = "TAYthuyanh19(#";
+    protected static String password = "password";
     public Connection CONN(){
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        con = null;
+        Connection con = null;
         try {
-            Class.forName(classes);
-            String conURL = "jdbc:sqlserver://"+ip+ ":" +port+";" +db;
+            Class.forName("com.mysql.jdbc.Driver");
+            String conURL = "jdbc:mysql://"+ip+ ":" +port+"/" +db;
             con = DriverManager.getConnection(conURL, un, password);
-        } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            Log.e("ERROR", Objects.requireNonNull(e.getMessage()));
         }
         return con;
 

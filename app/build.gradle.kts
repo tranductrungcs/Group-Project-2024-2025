@@ -36,10 +36,10 @@ android {
 }
 
 dependencies {
-    implementation("com.squareup.picasso:picasso:2.8")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-    implementation("com.android.volley:volley:1.2.1")
-    implementation("org.jsoup:jsoup:1.15.4")
+    implementation(libs.picasso)
+    implementation(libs.swiperefreshlayout)
+    implementation(libs.volley)
+    implementation(libs.jsoup)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -48,4 +48,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.jtds)
+    implementation(libs.mysql.connector.java)
 }

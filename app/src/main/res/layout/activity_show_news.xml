@@ -20,6 +20,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:focusable="true"
+            android:onClick="btnClick"
             android:src="@drawable/ic_user"
             android:background="@color/black"
             android:clickable="true"
