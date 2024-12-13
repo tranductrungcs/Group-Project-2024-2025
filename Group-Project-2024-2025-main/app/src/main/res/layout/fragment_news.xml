@@ -118,11 +118,11 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="3dp"
                     android:layout_below="@id/firehere">
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageButton
-                            android:id="@+id/apple_watch_series10"
+                            android:id="@+id/test_to_show_news1"
                             android:layout_width="275dp"
                             android:layout_height="200dp"
                             style="@style/SCREEN"
@@ -130,41 +130,39 @@
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
-                            android:id="@+id/airpods4"
+                            android:id="@+id/test_to_show_news2"
                             android:layout_width="275dp"
                             android:layout_height="200dp"
                             android:layout_marginStart="10dp"
-                            app:layout_constraintStart_toEndOf="@id/apple_watch_series10"
                             style="@style/SCREEN"
                             android:src="@drawable/avoid_red"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
-                            android:id="@+id/ipad_pro"
+                            android:id="@+id/test_to_show_news3"
                             android:layout_width="275dp"
                             android:layout_height="200dp"
                             android:layout_marginStart="10dp"
-                            app:layout_constraintStart_toEndOf="@id/airpods4"
                             style="@style/SCREEN"
                             android:src="@drawable/avoid_red"
                             tools:ignore="MissingConstraints" />
 
                         <ImageButton
-                            android:id="@+id/iphone16_pro"
+                            android:id="@+id/test_to_show_news4"
                             android:layout_width="275dp"
                             android:layout_height="200dp"
                             android:layout_marginStart="10dp"
-                            app:layout_constraintStart_toEndOf="@id/ipad_pro"
                             style="@style/SCREEN"
                             android:src="@drawable/avoid_red"
                             tools:ignore="MissingConstraints" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
                 </HorizontalScrollView>
             </RelativeLayout>
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/brand1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_below="@id/highlight">
                 <TextView
                     android:layout_width="wrap_content"
@@ -180,7 +178,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item1b1"
+                    android:id="@+id/test_to_show_news5"
                     android:layout_below="@id/namebrand1">
                     <ImageView
                         android:layout_width="110dp"
@@ -200,8 +198,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item2b1"
-                    android:layout_below="@id/item1b1">
+                    android:id="@+id/test_to_show_news6">
                     <ImageView
                         android:layout_width="110dp"
                         android:layout_height="80dp"
@@ -220,8 +217,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item3b1"
-                    android:layout_below="@id/item2b1">
+                    android:id="@+id/test_to_show_news7">
                     <ImageView
                         android:layout_width="110dp"
                         android:layout_height="80dp"
@@ -237,8 +233,9 @@
                         android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
                     </TextView>
                 </RelativeLayout>
-            </RelativeLayout>
-            <RelativeLayout
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:id="@+id/brand2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -257,7 +254,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item1b2"
+                    android:id="@+id/test_to_show_news8"
                     android:layout_below="@id/namebrand2">
                     <ImageView
                         android:layout_width="110dp"
@@ -277,8 +274,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item2b2"
-                    android:layout_below="@id/item1b2">
+                    android:id="@+id/test_to_show_news9">
                     <ImageView
                         android:layout_width="110dp"
                         android:layout_height="80dp"
@@ -297,8 +293,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item3b2"
-                    android:layout_below="@id/item2b2">
+                    android:id="@+id/test_to_show_news10">
                     <ImageView
                         android:layout_width="110dp"
                         android:layout_height="80dp"
@@ -315,7 +310,7 @@
                     </TextView>
                 </RelativeLayout>
 
-            </RelativeLayout>
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 

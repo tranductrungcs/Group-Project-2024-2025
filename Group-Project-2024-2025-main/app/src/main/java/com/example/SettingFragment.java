@@ -15,8 +15,6 @@ import android.view.LayoutInflater;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-
-
 public class SettingFragment extends AppCompatActivity {
     private ImageView avatarImageView;
     private TextView usernameTextView;
@@ -37,7 +35,6 @@ public class SettingFragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-
         avatarImageView = findViewById(R.id.avatar_image);
         usernameTextView = findViewById(R.id.username_text);
         changeUsernameLayout = findViewById(R.id.change_username_layout);
@@ -50,15 +47,16 @@ public class SettingFragment extends AppCompatActivity {
         backArrow = findViewById(R.id.back_arrow);
 
 
+        fontSizeSeekBar.setProgress(16);
+        fontSizeTextView.setText(fontSizeSeekBar.getProgress() + "sp");
+
         backArrow.setOnClickListener(v -> {
             Intent intent = new Intent(this, VideoFragment.class);
             startActivity(intent);
             finish();
         });
 
-
         changeUsernameLayout.setOnClickListener(v -> showChangeUsernameDialog());
-
 
         languageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.english_button) {
@@ -68,15 +66,9 @@ public class SettingFragment extends AppCompatActivity {
             }
         });
 
-
         darkLightSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
 
-            } else {
-
-            }
         });
-
 
         fontSizeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -93,9 +85,7 @@ public class SettingFragment extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-
         developeTextView.setOnClickListener(v -> openDeveloperFragment());
-
 
         infoRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.news_button) {
@@ -107,27 +97,22 @@ public class SettingFragment extends AppCompatActivity {
     }
 
     private void showChangeUsernameDialog() {
-
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_change_username, null);
         EditText usernameEditText = dialogView.findViewById(R.id.usernameInput);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setView(dialogView)
                 .setPositiveButton("Save", (dialog, which) -> {
-
                     String newUsername = usernameEditText.getText().toString();
                     updateUsername(newUsername);
                 })
-                .setNegativeButton("Cancel", (dialog, which) -> {
-
-                });
+                .setNegativeButton("Cancel", (dialog, which) -> {});
 
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
     private void openDeveloperFragment() {
-
         fragment_developer developerFragment = new fragment_developer();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.developer_layout, developerFragment)
@@ -136,11 +121,13 @@ public class SettingFragment extends AppCompatActivity {
     }
 
     private void updateUsername(String newUsername) {
-
         usernameTextView.setText(newUsername);
     }
 
     private void updateFontSize(int fontSize) {
-
+        usernameTextView.setTextSize(fontSize);
+        changeUsernameLayout.setTextSize(fontSize);
+        fontSizeTextView.setTextSize(fontSize);
+        developeTextView.setTextSize(fontSize);
     }
 }
