@@ -44,7 +44,22 @@ public class ShowNewsActivity extends AppCompatActivity {
         sqlconnection = new SQLconnection();
         showContent();
 
-
+        ImageButton Playbutton = findViewById(R.id.Playbutton);
+        TextView Content = findViewById(R.id.NewsContent);
+        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+                if (i != TextToSpeech.ERROR){
+                    textToSpeech.setLanguage(Locale.ENGLISH);
+                }
+            }
+        });
+        Playbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textToSpeech.speak(Content.getText().toString(), TextToSpeech.QUEUE_FLUSH, null, null);
+            }
+        });
 
     }
 
