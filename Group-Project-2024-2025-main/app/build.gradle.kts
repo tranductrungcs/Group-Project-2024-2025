@@ -49,4 +49,5 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.jtds)
     implementation("mysql:mysql-connector-java:5.1.49")
+    implementation ("androidx.preference:preference:1.2.0")
 }

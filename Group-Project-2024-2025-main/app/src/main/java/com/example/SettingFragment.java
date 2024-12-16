@@ -1,19 +1,20 @@
 package com.example;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Switch;
-import android.widget.SeekBar;
-import android.widget.EditText;
 import android.view.View;
 import android.view.LayoutInflater;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+import android.widget.EditText;
 
 public class SettingFragment extends AppCompatActivity {
     private ImageView avatarImageView;
@@ -21,15 +22,11 @@ public class SettingFragment extends AppCompatActivity {
     private TextView changeUsernameLayout;
     private RadioGroup languageRadioGroup;
     private Switch darkLightSwitch;
-    private SeekBar fontSizeSeekBar;
-    private TextView fontSizeTextView;
+    private RadioGroup fontSizeRadioGroup;
     private TextView developeTextView;
     private RadioGroup infoRadioGroup;
     private ImageView backArrow;
 
-    private static final int PICK_IMAGE_REQUEST = 1;
-
-    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +37,14 @@ public class SettingFragment extends AppCompatActivity {
         changeUsernameLayout = findViewById(R.id.change_username_layout);
         languageRadioGroup = findViewById(R.id.language_group);
         darkLightSwitch = findViewById(R.id.dark_light_switch);
-        fontSizeSeekBar = findViewById(R.id.font_size_seekbar);
-        fontSizeTextView = findViewById(R.id.font_size_value);
+        fontSizeRadioGroup = findViewById(R.id.font_size_group);
         developeTextView = findViewById(R.id.developer_layout);
         infoRadioGroup = findViewById(R.id.info_group);
         backArrow = findViewById(R.id.back_arrow);
 
-
-        fontSizeSeekBar.setProgress(16);
-        fontSizeTextView.setText(fontSizeSeekBar.getProgress() + "sp");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String savedFontSize = preferences.getString("font_size", "Medium");
+        setFontSize(savedFontSize);
 
         backArrow.setOnClickListener(v -> {
             Intent intent = new Intent(this, VideoFragment.class);
@@ -59,40 +55,29 @@ public class SettingFragment extends AppCompatActivity {
         changeUsernameLayout.setOnClickListener(v -> showChangeUsernameDialog());
 
         languageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.english_button) {
-
-            } else if (checkedId == R.id.vietnamese_button) {
-
-            }
         });
 
         darkLightSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-
         });
 
-        fontSizeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                int fontSize = progress + 12;
-                fontSizeTextView.setText(fontSize + "sp");
-                updateFontSize(fontSize);
+        fontSizeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            String fontSize;
+            if (checkedId == R.id.font_small) {
+                fontSize = "Small";
+            } else if (checkedId == R.id.font_medium) {
+                fontSize = "Medium";
+            } else if (checkedId == R.id.font_large) {
+                fontSize = "Large";
+            } else {
+                fontSize = "Medium";
             }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            saveFontSize(fontSize);
+            setFontSize(fontSize);
         });
 
         developeTextView.setOnClickListener(v -> openDeveloperFragment());
 
         infoRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.news_button) {
-
-            } else if (checkedId == R.id.video_button) {
-
-            }
         });
     }
 
@@ -124,10 +109,33 @@ public class SettingFragment extends AppCompatActivity {
         usernameTextView.setText(newUsername);
     }
 
-    private void updateFontSize(int fontSize) {
-        usernameTextView.setTextSize(fontSize);
-        changeUsernameLayout.setTextSize(fontSize);
-        fontSizeTextView.setTextSize(fontSize);
-        developeTextView.setTextSize(fontSize);
+    private void saveFontSize(String fontSize) {
+        Log.d("FontSize", "Saving font size: " + fontSize);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("font_size", fontSize);
+        editor.apply();
+    }
+
+    private void setFontSize(String fontSize) {
+        Log.d("FontSize", "Setting font size: " + fontSize);
+        float size = 16;
+        switch (fontSize) {
+            case "Small":
+                size = 12;
+                break;
+            case "Medium":
+                size = 16;
+                break;
+            case "Large":
+                size = 20;
+                break;
+            default:
+                size = 16;
+        }
+        usernameTextView.setTextSize(size);
+        changeUsernameLayout.setTextSize(size);
+        developeTextView.setTextSize(size);
+
     }
 }

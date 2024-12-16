@@ -3,10 +3,12 @@
     android:layout_height="match_parent"
     android:background="#F9F9F9"
     android:padding="16dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,13 +31,13 @@
                 android:textStyle="bold"
                 android:textColor="#333333" />
         </LinearLayout>
-        <!-- Gạch ngăn cách -->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="#AAAAAA"
             android:layout_marginVertical="16dp" />
-        <!-- Avatar và tên tài khoản -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,12 +58,12 @@
                 android:textStyle="bold"
                 android:textColor="#333333" />
         </LinearLayout>
-        <!-- Gạch ngăn cách -->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#AAAAAA" />
-        <!-- Change Username -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,11 +90,12 @@
                 android:src="@drawable/ic_arrow_forward"
                 android:contentDescription="Arrow" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#AAAAAA" />
-        <!-- Language -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,6 +116,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,11 +146,12 @@
                 android:textSize="14sp"
                 android:layout_weight="1" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#AAAAAA" />
-        <!-- Dark/Light Mode -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,56 +176,65 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#D1D1D1" />
+
         <!-- Font Size -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="16dp"
-            android:paddingBottom="8dp">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_font_size" />
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
                 android:text="Font Size"
                 android:textColor="#333333"
                 android:textSize="16sp" />
         </LinearLayout>
-        <LinearLayout
+
+        <RadioGroup
+            android:id="@+id/font_size_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:orientation="horizontal">
-            <SeekBar
-                android:id="@+id/font_size_seekbar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:max="30"
-                android:progress="16" />
-            <TextView
-                android:id="@+id/font_size_value"
+
+            <RadioButton
+                android:id="@+id/font_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="16sp"
+                android:text="Small"
                 android:textColor="#555555"
                 android:textSize="14sp" />
-        </LinearLayout>
+
+            <RadioButton
+                android:id="@+id/font_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium"
+                android:textColor="#555555"
+                android:textSize="14sp"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/font_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Large"
+                android:textColor="#555555"
+                android:textSize="14sp" />
+        </RadioGroup>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#D1D1D1" />
+
         <!-- Information -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -243,6 +257,7 @@
                 android:textColor="#333333"
                 android:textSize="16sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -272,6 +287,7 @@
                 android:textSize="14sp"
                 android:layout_weight="1" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -298,6 +314,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1" />
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
