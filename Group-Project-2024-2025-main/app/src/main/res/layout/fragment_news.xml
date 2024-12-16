@@ -99,13 +99,13 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:src="@drawable/ic_user"
+                    android:src="@drawable/ic_fire_highlight"
                     android:id="@+id/firehere">
                 </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="highlight today:"
+                    android:text="TECH NEWS"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -164,153 +164,209 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_below="@id/highlight">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/namebrand1"
-                    android:text="SAMSUNG"
-                    android:textStyle="bold"
-                    android:layout_margin="5dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/black"
-                    android:paddingLeft="5dp">
-                </TextView>
-                <RelativeLayout
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news5"
-                    android:layout_below="@id/namebrand1">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        android:text="so what if I write in just a line but it is so so long, oh it seem fine"
-                        style="@style/TEXT">
-                    </TextView>
-                </RelativeLayout>
-                <RelativeLayout
+                        android:layout_weight="1"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/imageView1"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/samsung_logo"
+                            android:layout_alignParentLeft="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            style="@style/TEXT"
+                            android:text="Short detail about news 1"
+                            android:layout_below="@id/imageView1"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/samsung_logo"
+                            android:layout_alignParentLeft="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            style="@style/TEXT"
+                            android:text="Short detail about news 2"
+                            android:layout_below="@id/imageView2"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news6">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        style="@style/TEXT"
-                        android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
-                    </TextView>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news7">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/samsung_logo"
+                            android:layout_alignParentLeft="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            style="@style/TEXT"
+                            android:text="Short detail about news 3"
+                            android:layout_below="@id/imageView3"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        style="@style/TEXT"
-                        android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
-                    </TextView>
-                </RelativeLayout>
+                        android:layout_weight="1"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/samsung_logo"
+                            android:layout_alignParentLeft="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            style="@style/TEXT"
+                            android:text="Short detail about news 4"
+                            android:layout_below="@id/imageView4"/>
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
-                android:orientation="vertical"
                 android:id="@+id/brand2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_below="@id/brand1">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/namebrand2"
-                    android:text="SAMSUNG"
-                    android:textStyle="bold"
-                    android:layout_margin="5dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/black"
-                    android:paddingLeft="5dp">
-                </TextView>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news8"
-                    android:layout_below="@id/namebrand2">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        android:text="so what if I write in just a line but it is so so long, oh it seem fine"
-                        style="@style/TEXT">
-                    </TextView>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news9">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        style="@style/TEXT"
-                        android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
-                    </TextView>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news10">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        style="@style/TEXT"
-                        android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
-                    </TextView>
-                </RelativeLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/samsung_logo"
+                            android:layout_alignParentLeft="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            style="@style/TEXT"
+                            android:text="News 5 detail"
+                            android:layout_below="@id/imageView5"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/samsung_logo"
+                            android:layout_alignParentLeft="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            style="@style/TEXT"
+                            android:text="News 6 detail"
+                            android:layout_below="@id/imageView6"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/samsung_logo"
+                            android:layout_alignParentLeft="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            style="@style/TEXT"
+                            android:text="Detail about news 7"
+                            android:layout_below="@id/imageView7"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp">
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/samsung_logo"
+                            android:layout_alignParentLeft="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:textSize="20sp"
+                            style="@style/TEXT"
+                            android:text="Detail about news 8"
+                            android:layout_below="@id/imageView8"/>
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
+
+
         </RelativeLayout>
     </ScrollView>
 

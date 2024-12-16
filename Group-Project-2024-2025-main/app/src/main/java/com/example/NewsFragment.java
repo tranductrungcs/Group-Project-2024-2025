@@ -67,7 +67,7 @@ public class NewsFragment extends Fragment {
         ImageButton container_test1 = view.findViewById(R.id.test_to_show_news2);
         ImageButton container_test2 = view.findViewById(R.id.test_to_show_news3);
         ImageButton container_test3 = view.findViewById(R.id.test_to_show_news4);
-        RelativeLayout clickme = view.findViewById(R.id.test_to_show_news5);
+//        RelativeLayout clickme = view.findViewById(R.id.test_to_show_news5);
         container_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,12 +96,12 @@ public class NewsFragment extends Fragment {
             }
         });
         //HAVE TO MAKE INTENT FROM RELATIVELAYOUT OR SIMILAR. OR ANOTHER APPROACH
-        clickme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                movetoNewsDetail();
-            }
-        });
+//        clickme.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                movetoNewsDetail();
+//            }
+//        });
         //TESTING STOP HERE
         //WILL DELETE LATER
         return view;
