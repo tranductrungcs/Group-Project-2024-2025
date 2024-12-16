@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.LinearLayout;
@@ -54,11 +55,9 @@ public class SettingFragment extends AppCompatActivity {
 
         changeUsernameLayout.setOnClickListener(v -> showChangeUsernameDialog());
 
-        languageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-        });
+        languageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {});
 
-        darkLightSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-        });
+        darkLightSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {});
 
         fontSizeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             String fontSize;
@@ -77,8 +76,7 @@ public class SettingFragment extends AppCompatActivity {
 
         developeTextView.setOnClickListener(v -> openDeveloperFragment());
 
-        infoRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-        });
+        infoRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {});
     }
 
     private void showChangeUsernameDialog() {
@@ -133,9 +131,20 @@ public class SettingFragment extends AppCompatActivity {
             default:
                 size = 16;
         }
-        usernameTextView.setTextSize(size);
-        changeUsernameLayout.setTextSize(size);
-        developeTextView.setTextSize(size);
 
+        // Set font size for all TextViews in the layout
+        ViewGroup mainLayout = findViewById(R.id.main_layout); // Replace with your main layout ID
+        setTextViewFontSize(mainLayout, size);
+    }
+
+    private void setTextViewFontSize(ViewGroup group, float size) {
+        for (int i = 0; i < group.getChildCount(); i++) {
+            View child = group.getChildAt(i);
+            if (child instanceof TextView) {
+                ((TextView) child).setTextSize(size);
+            } else if (child instanceof ViewGroup) {
+                setTextViewFontSize((ViewGroup) child, size); // Recursive call for nested ViewGroups
+            }
+        }
     }
 }
