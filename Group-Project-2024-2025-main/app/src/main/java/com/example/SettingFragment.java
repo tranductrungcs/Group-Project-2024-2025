@@ -132,8 +132,7 @@ public class SettingFragment extends AppCompatActivity {
                 size = 16;
         }
 
-        // Set font size for all TextViews in the layout
-        ViewGroup mainLayout = findViewById(R.id.main_layout); // Replace with your main layout ID
+        ViewGroup mainLayout = findViewById(R.id.main_layout);
         setTextViewFontSize(mainLayout, size);
     }
 
@@ -143,7 +142,7 @@ public class SettingFragment extends AppCompatActivity {
             if (child instanceof TextView) {
                 ((TextView) child).setTextSize(size);
             } else if (child instanceof ViewGroup) {
-                setTextViewFontSize((ViewGroup) child, size); // Recursive call for nested ViewGroups
+                setTextViewFontSize((ViewGroup) child, size); 
             }
         }
     }
