@@ -62,13 +62,13 @@ public class SettingFragment extends AppCompatActivity {
         fontSizeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             String fontSize;
             if (checkedId == R.id.font_small) {
-                fontSize = "Small";
+                fontSize = "small";
             } else if (checkedId == R.id.font_medium) {
-                fontSize = "Medium";
+                fontSize = "medium";
             } else if (checkedId == R.id.font_large) {
-                fontSize = "Large";
+                fontSize = "large";
             } else {
-                fontSize = "Medium";
+                fontSize = "medium";
             }
             saveFontSize(fontSize);
             setFontSize(fontSize);
@@ -119,20 +119,20 @@ public class SettingFragment extends AppCompatActivity {
         Log.d("FontSize", "Setting font size: " + fontSize);
         float size = 16;
         switch (fontSize) {
-            case "Small":
+            case "small":
                 size = 12;
                 break;
-            case "Medium":
+            case "medium":
                 size = 16;
                 break;
-            case "Large":
+            case "large":
                 size = 20;
                 break;
             default:
                 size = 16;
         }
-        
-        ViewGroup mainLayout = findViewById(R.id.main_layout); 
+
+        ViewGroup mainLayout = findViewById(R.id.main_layout);
         setTextViewFontSize(mainLayout, size);
     }
 

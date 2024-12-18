@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +43,12 @@ public class VideoFragment extends Fragment {
     private final ImageButton[] thumbnails = new ImageButton[16];
     //    private SearchView searchView;
     private ImageButton ic_setting;
+
+    private static final float SMALL_FONT_SIZE = 14f;
+    private static final float MEDIUM_FONT_SIZE = 18f; // Default
+    private static final float LARGE_FONT_SIZE = 22f;
+
+    private float currentFontSize = MEDIUM_FONT_SIZE;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -195,5 +202,29 @@ public class VideoFragment extends Fragment {
             Intent intent = new Intent(getActivity(), SettingFragment.class);
             startActivity(intent);
         });
+
+        ImageView fontSizeButton = requireView().findViewById(R.id.aa);
+        fontSizeButton.setOnClickListener(v -> changeFontSize());
+    }
+
+    private void changeFontSize() {
+        // Cycle through font sizes
+        if (currentFontSize == SMALL_FONT_SIZE) {
+            currentFontSize = MEDIUM_FONT_SIZE;
+        } else if (currentFontSize == MEDIUM_FONT_SIZE) {
+            currentFontSize = LARGE_FONT_SIZE;
+        } else {
+            currentFontSize = SMALL_FONT_SIZE;
+        }
+
+        // Update the font size of the text views
+        updateFontSize();
+    }
+
+    private void updateFontSize() {
+        TextView appName = requireView().findViewById(R.id.app_name);
+        appName.setTextSize(currentFontSize);
+
+        // Update other TextViews as needed
     }
 }
