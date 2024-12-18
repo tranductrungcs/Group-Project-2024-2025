@@ -13,6 +13,10 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -25,10 +29,16 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.VideoView;
+import android.widget.Toast;
 
 import com.google.android.material.search.SearchView;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Objects;
 
@@ -38,6 +48,14 @@ import java.util.Objects;
  * create an instance of this fragment.
  */
 public class VideoFragment extends Fragment {
+//    private int currentVideoIndex = 0;
+//    private final String[] videoUris = new String[16];
+//    private final ImageButton[] thumbnails = new ImageButton[16];
+
+//    private final String[] videoUris = new String[4];
+//    private final ImageButton[] thumbnails = new ImageButton[4];
+
+//    private SearchView searchView;
     private int currentVideoIndex = 0;
     private final String[] videoUris = new String[16];
     private final ImageButton[] thumbnails = new ImageButton[16];
@@ -88,9 +106,9 @@ public class VideoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        if (getActivity() != null) {
-            videoUris[0] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.apple_watch_series10;
-            videoUris[1] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.airpods4;
+//        if (getActivity() != null) {
+//            videoUris[0] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.apple_watch_series10;
+//            videoUris[1] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.airpods4;
 //            videoUris[2] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.ipad_pro;
 //            videoUris[3] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.iphone16_pro;
 //            videoUris[4] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_note9;
@@ -105,45 +123,24 @@ public class VideoFragment extends Fragment {
 //            videoUris[13] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_14t_series;
 //            videoUris[14] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_mi_drone;
 //            videoUris[15] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_smart_factory;
-        }
+//        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
-        thumbnails[0] = view.findViewById(R.id.apple_watch_series10);
-        thumbnails[1] = view.findViewById(R.id.airpods4);
-        thumbnails[2] = view.findViewById(R.id.ipad_pro);
-        thumbnails[3] = view.findViewById(R.id.iphone16_pro);
-        thumbnails[4] = view.findViewById(R.id.galaxy_note9);
-        thumbnails[5] = view.findViewById(R.id.galaxy_tab_s10_series);
-        thumbnails[6] = view.findViewById(R.id.galaxy_s24_fe);
-        thumbnails[7] = view.findViewById(R.id.samsung_health);
-        thumbnails[8] = view.findViewById(R.id.huawei_matebook_x_pro);
-        thumbnails[9] = view.findViewById(R.id.huawei_matepad_11_5s);
-        thumbnails[10] = view.findViewById(R.id.huawei_p60_series);
-        thumbnails[11] = view.findViewById(R.id.huawei_watch_3_3_pro);
-        thumbnails[12] = view.findViewById(R.id.xiaomi_12t_pro);
-        thumbnails[13] = view.findViewById(R.id.xiaomi_14t_series);
-        thumbnails[14] = view.findViewById(R.id.xiaomi_mi_drone);
-        thumbnails[15] = view.findViewById(R.id.xiaomi_smart_factory);
+        LinearLayout searchBar = view.findViewById(R.id.search_bar);
 
-        for (int i = 0; i < thumbnails.length; i++) {
-            final int index = i;
-            thumbnails[i].setOnClickListener(v -> playVideo(index));
-        }
+        // Set click listener on the search bar
+        searchBar.setOnClickListener(v -> {
+            // Start SearchActivity
+            Intent intent = new Intent(getActivity(), SearchActivity.class);
+            startActivity(intent);
+        });
 
-//        EditText searchBar = view.findViewById(R.id.search_bar);
-//        ImageView searchIcon = view.findViewById(R.id.search_icon);
-//
-//        searchIcon.setOnClickListener(v -> {
-//            String query = searchBar.getText().toString();
-//            performSearch(query);
-//        });
-
-
-
+        TabLayout tabLayout = view.findViewById(R.id.tab_layout);
+        ViewPager viewPager = view.findViewById(R.id.view_pager);
 
         return view;
     }
@@ -160,17 +157,6 @@ public class VideoFragment extends Fragment {
 //            }
 //        }
 //    }
-
-    private void playVideo(int index) {
-        currentVideoIndex = index;
-        Uri videoUri = Uri.parse(videoUris[currentVideoIndex]);
-
-        if (getActivity() != null) {
-            Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
-            intent.putExtra("videoUri", videoUri.toString());
-            startActivity(intent);
-        }
-    }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
