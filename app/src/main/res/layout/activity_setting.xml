@@ -5,10 +5,10 @@
     android:padding="16dp">
 
     <LinearLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,36 +39,31 @@
             android:background="#AAAAAA"
             android:layout_marginVertical="16dp" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
-
             <ImageView
                 android:id="@+id/avatar_image"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:src="@drawable/ic_avatar"
                 android:layout_marginEnd="16dp" />
-
             <TextView
                 android:id="@+id/username_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="User Name"
-                android:textSize="18sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="#333333" />
         </LinearLayout>
-
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#AAAAAA" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,12 +72,10 @@
             android:gravity="center_vertical"
             android:paddingBottom="24dp"
             android:paddingTop="24dp">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_user" />
-
             <TextView
                 android:id="@+id/change_username_layout"
                 android:layout_width="wrap_content"
@@ -92,7 +85,6 @@
                 android:textColor="#333333"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"/>
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -105,7 +97,6 @@
             android:layout_height="1dp"
             android:background="#AAAAAA" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,12 +104,10 @@
             android:paddingTop="16dp"
             android:paddingBottom="8dp"
             android:gravity="center_vertical">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_language" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,21 +116,19 @@
                 android:textColor="#333333"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1" />
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
             <RadioGroup
                 android:id="@+id/language_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginEnd="16dp">
-
                 <RadioButton
                     android:id="@+id/english_button"
                     android:layout_width="wrap_content"
@@ -150,9 +137,7 @@
                     android:textColor="#555555"
                     android:textSize="14sp"
                     android:layout_marginEnd="16dp" />
-
             </RadioGroup>
-
             <RadioButton
                 android:id="@+id/vietnamese_button"
                 android:layout_width="wrap_content"
@@ -163,12 +148,10 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#AAAAAA" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -177,12 +160,10 @@
             android:paddingTop="16dp"
             android:paddingBottom="8dp"
             android:gravity="center_vertical">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_dark_mode" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -191,111 +172,71 @@
                 android:textColor="#333333"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1" />
-
             <Switch
                 android:id="@+id/dark_light_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#D1D1D1" />
 
-
+        <!-- Font Size -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="16dp"
-            android:paddingBottom="8dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_font_size" />
-
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
                 android:text="Font Size"
                 android:textColor="#333333"
                 android:textSize="16sp" />
-
-
-
         </LinearLayout>
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/font_size_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <SeekBar
-                android:id="@+id/font_size_seekbar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:max="30"
-                android:progress="16" />
-
-            <TextView
-                android:id="@+id/font_size_value"
+            <RadioButton
+                android:id="@+id/font_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="16sp"
+                android:text="Small"
                 android:textColor="#555555"
                 android:textSize="14sp" />
-        </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D1D1D1" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_developer" />
-
-            <TextView
+            <RadioButton
+                android:id="@+id/font_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Developer"
-                android:textSize="16sp"
-                android:textColor="#333333"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1" />
+                android:text="Medium"
+                android:textColor="#555555"
+                android:textSize="14sp"
+                android:checked="true" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_arrow_forward"
-                android:contentDescription="Arrow" />
-        </LinearLayout>
+            <RadioButton
+                android:id="@+id/font_large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Large"
+                android:textColor="#555555"
+                android:textSize="14sp" />
+        </RadioGroup>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#D1D1D1" />
 
-
+        <!-- Information -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -303,12 +244,10 @@
             android:paddingTop="16dp"
             android:paddingBottom="8dp"
             android:gravity="center_vertical">
-
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_info" />
-
             <TextView
                 android:id="@+id/developer_layout"
                 android:layout_width="wrap_content"
@@ -318,8 +257,6 @@
                 android:text="Information"
                 android:textColor="#333333"
                 android:textSize="16sp" />
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -327,14 +264,12 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
             <RadioGroup
                 android:id="@+id/info_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginEnd="16dp">
-
                 <RadioButton
                     android:id="@+id/news_button"
                     android:layout_width="wrap_content"
@@ -343,9 +278,7 @@
                     android:textColor="#555555"
                     android:textSize="14sp"
                     android:layout_marginEnd="20dp" />
-
             </RadioGroup>
-
             <RadioButton
                 android:id="@+id/video_button"
                 android:layout_width="wrap_content"
@@ -356,6 +289,56 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D1D1D1" />
 
+        <!-- Developer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_developer" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Developer"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Theo dõi nguồn"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Youtube: Đỗ Mixi"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Facebook: TRẦN CƯỜNG "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Liên hệ góp ý cho chúng mình qua số hotline:1900 một tông vô mõm, một dép vô mồm"/>
     </LinearLayout>
 </ScrollView>

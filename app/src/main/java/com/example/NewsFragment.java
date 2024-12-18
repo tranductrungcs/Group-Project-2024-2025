@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,17 +63,52 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news, container, false);
-        ImageButton container_test = view.findViewById(R.id.apple_watch_series10);
+        ImageButton container_test = view.findViewById(R.id.test_to_show_news1);
+        ImageButton container_test1 = view.findViewById(R.id.test_to_show_news2);
+        ImageButton container_test2 = view.findViewById(R.id.test_to_show_news3);
+        ImageButton container_test3 = view.findViewById(R.id.test_to_show_news4);
+//        RelativeLayout clickme = view.findViewById(R.id.test_to_show_news5);
         container_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 movetoNewsDetail();
             }
         });
+        //HAVE TO REPLACE THIS LATER
+        //REMEMBER TO REPLACE THIS LATER
+        //THIS FOR TESTING
+        container_test1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movetoNewsDetail();
+            }
+        });
+        container_test2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movetoNewsDetail();
+            }
+        });
+        container_test3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                movetoNewsDetail();
+            }
+        });
+        //HAVE TO MAKE INTENT FROM RELATIVELAYOUT OR SIMILAR. OR ANOTHER APPROACH
+//        clickme.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                movetoNewsDetail();
+//            }
+//        });
+        //TESTING STOP HERE
+        //WILL DELETE LATER
         return view;
+
     }
     public void movetoNewsDetail(){
-        Intent intent = new Intent(getContext(),EmptyActivity.class);
+        Intent intent = new Intent(getContext(),ShowNewsActivity.class);
         startActivity(intent);
     }
 }
