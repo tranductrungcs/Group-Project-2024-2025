@@ -3,10 +3,13 @@ package com.example;
 import android.os.StrictMode;
 import android.util.Log;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.sql.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 public class SQLconnection {
@@ -25,6 +28,9 @@ public class SQLconnection {
             Log.e("ERROR", Objects.requireNonNull(e.getMessage()));
         }
         return con;
+    }
+    public class List<News_list> {
+        List<News_list> newsList = new ArrayList<>();
 
     }
 }

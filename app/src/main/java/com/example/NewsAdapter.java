@@ -14,10 +14,10 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
-    private List<SmallNews> newsList;
+    private List<SmallNews> NewsList;
 
-    public NewsAdapter(List<SmallNews> newsList) {
-        this.newsList = newsList;
+    public NewsAdapter(List<SmallNews> NewsList) {
+        this.NewsList = NewsList;
     }
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
@@ -42,7 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-        SmallNews smallNews = newsList.get(position);
+        SmallNews smallNews = NewsList.get(position);
 
         holder.newsShortTitle.setText(smallNews.getTitle());
         holder.newsDescription.setText(smallNews.getDescription());
@@ -57,11 +57,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public int getItemCount() {
-        return newsList.size();
+        return NewsList.size();
     }
 
     public void setNewsList(List<SmallNews> list) {
-        this.newsList = list;
+        this.NewsList = list;
         notifyDataSetChanged();
     }
+
 }
