@@ -3,18 +3,21 @@ package com.example;
 import android.os.StrictMode;
 import android.util.Log;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.sql.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 public class SQLconnection {
-    protected static String ip = "10.0.0.2";
+    protected static String ip = "10.0.2.2";
     protected static String port = "3306";
     protected static String db = "androidapi";
     protected static String un = "root";
-    protected static String password = "password";
+    protected static String password = ".Soidopro1";
     public Connection CONN(){
         Connection con = null;
         try {
@@ -25,6 +28,9 @@ public class SQLconnection {
             Log.e("ERROR", Objects.requireNonNull(e.getMessage()));
         }
         return con;
+    }
+    public class List<News_list> {
+        List<News_list> newsList = new ArrayList<>();
 
     }
 }

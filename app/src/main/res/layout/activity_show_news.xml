@@ -122,7 +122,7 @@
                 android:layout_below="@id/containImage"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="@string/test_in_around_four_thousand"
+                android:text="@string/action_settings"
                 android:textSize="15sp"
                 style="@style/TEXT">
             </TextView>

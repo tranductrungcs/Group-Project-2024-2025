@@ -99,13 +99,13 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
-                    android:src="@drawable/ic_user"
+                    android:src="@drawable/ic_fire_highlight"
                     android:id="@+id/firehere">
                 </ImageView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="highlight today:"
+                    android:text="TECH NEWS"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -158,159 +158,14 @@
                     </LinearLayout>
                 </HorizontalScrollView>
             </RelativeLayout>
-            <LinearLayout
-                android:id="@+id/brand1"
-                android:layout_width="match_parent"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/highlight"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/highlight">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/namebrand1"
-                    android:text="SAMSUNG"
-                    android:textStyle="bold"
-                    android:layout_margin="5dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/black"
-                    android:paddingLeft="5dp">
-                </TextView>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news5"
-                    android:layout_below="@id/namebrand1">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        android:text="so what if I write in just a line but it is so so long, oh it seem fine"
-                        style="@style/TEXT">
-                    </TextView>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news6">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        style="@style/TEXT"
-                        android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
-                    </TextView>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news7">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        style="@style/TEXT"
-                        android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
-                    </TextView>
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/brand2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/brand1">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/namebrand2"
-                    android:text="SAMSUNG"
-                    android:textStyle="bold"
-                    android:layout_margin="5dp"
-                    android:textSize="25sp"
-                    android:textColor="@color/black"
-                    android:paddingLeft="5dp">
-                </TextView>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news8"
-                    android:layout_below="@id/namebrand2">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        android:text="so what if I write in just a line but it is so so long, oh it seem fine"
-                        style="@style/TEXT">
-                    </TextView>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news9">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        style="@style/TEXT"
-                        android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
-                    </TextView>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_to_show_news10">
-                    <ImageView
-                        android:layout_width="110dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/samsung_logo"
-                        android:layout_alignParentLeft="true">
-                    </ImageView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="150dp"
-                        android:textSize="20sp"
-                        style="@style/TEXT"
-                        android:text="ashfjhafjha\nasdjfhjshfda\nsadhfjuh">
-                    </TextView>
-                </RelativeLayout>
+                android:id="@+id/NewsList">
+            </androidx.recyclerview.widget.RecyclerView>
 
-            </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 
