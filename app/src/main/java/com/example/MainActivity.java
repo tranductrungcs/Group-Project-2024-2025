@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Switch;
+import android.widget.RadioButton ;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     boolean night_mode;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private String currentLanguage = "en";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.video_icon).setText(R.string.videos);
-        tabLayout.getTabAt(1).setIcon(R.drawable.news_icon).setText(R.string.news);
-
+        if (tabLayout.getTabAt(0) != null) {
+            tabLayout.getTabAt(0).setIcon(R.drawable.video_icon).setText(R.string.videos);
+        }
+        if (tabLayout.getTabAt(1) != null) {
+            tabLayout.getTabAt(1).setIcon(R.drawable.news_icon).setText(R.string.news);
+        }
         // Set the initial theme based on the device's night mode setting
         switcher = findViewById(R.id.switcher);
 
@@ -85,5 +90,34 @@ public class MainActivity extends AppCompatActivity {
                 editor.apply();
             }
         });
+        RadioButton  btnEnglish = findViewById(R.id.english_button);
+        RadioButton  btnVietnamese = findViewById(R.id.vietnamese_button);
+
+        btnEnglish.setOnClickListener(v -> {
+            changeLanguage("en");
+        });
+
+        btnVietnamese.setOnClickListener(v -> {
+            changeLanguage("vi");
+        });
     }
+    private void changeLanguage(String languageCode) {
+        if (!currentLanguage.equals(languageCode)) {
+            currentLanguage = languageCode;
+
+
+            editor = sharedPreferences.edit();
+            editor.putString("language", languageCode);
+            editor.apply();
+
+
+            LocaleManager.setLocale(this, languageCode);
+
+
+            recreate();
+        }
+    }
+
 }
+
+

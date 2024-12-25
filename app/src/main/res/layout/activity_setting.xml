@@ -27,8 +27,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textSize="24sp"
+                android:text="@string/setting"
+                android:textSize="44sp"
                 android:textStyle="bold"
                 android:textColor="#333333" />
         </LinearLayout>
@@ -75,12 +75,12 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/ic_avatar" />
             <TextView
                 android:id="@+id/change_username_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change Username/Avatar"
+                android:text="@string/change_username"
                 android:textSize="16sp"
                 android:textColor="#333333"
                 android:layout_marginStart="12dp"
@@ -111,7 +111,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Language"
+                android:text="@string/language"
                 android:textSize="16sp"
                 android:textColor="#333333"
                 android:layout_marginStart="12dp"
@@ -133,7 +133,7 @@
                     android:id="@+id/english_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vietnamese"
+                    android:text="@string/Vietnamese"
                     android:textColor="#555555"
                     android:textSize="14sp"
                     android:layout_marginEnd="16dp" />
@@ -142,7 +142,7 @@
                 android:id="@+id/vietnamese_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="English"
+                android:text="@string/English"
                 android:textColor="#555555"
                 android:textSize="14sp"
                 android:layout_weight="1" />
@@ -167,7 +167,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dark/Light Mode"
+                android:text="@string/Dark_Light_Mode"
                 android:textSize="16sp"
                 android:textColor="#333333"
                 android:layout_marginStart="12dp"
@@ -191,12 +191,18 @@
             android:paddingTop="16dp"
             android:paddingBottom="8dp"
             android:gravity="center_vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_history" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Font Size"
+                android:text="@string/Font_Size"
                 android:textColor="#333333"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"/>
         </LinearLayout>
 
         <RadioGroup
@@ -209,7 +215,7 @@
                 android:id="@+id/font_small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Small"
+                android:text="@string/Small"
                 android:textColor="#555555"
                 android:textSize="14sp" />
 
@@ -217,7 +223,7 @@
                 android:id="@+id/font_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Medium"
+                android:text="@string/Medium"
                 android:textColor="#555555"
                 android:textSize="14sp"
                 android:checked="true" />
@@ -226,7 +232,7 @@
                 android:id="@+id/font_large"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Large"
+                android:text="@string/Large"
                 android:textColor="#555555"
                 android:textSize="14sp" />
         </RadioGroup>
@@ -309,7 +315,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Developer"
+                android:text="@string/Developer"
                 android:textSize="16sp"
                 android:textColor="#333333"
                 android:layout_marginStart="12dp"

@@ -8,7 +8,6 @@
     <string name="project_copyright">\@USTHCOPYRIGHT</string>
     <string name="content_description">Avoid Warning</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="apple_company">Apple Company</string>
     <string name="apple_watch_series10_description">Introducing Apple Watch Series 10 | Apple</string>
     <string name="airpods4_description">Introducing the all-new AirPods 4 | Apple</string>
@@ -24,6 +23,20 @@
     <string name="logo_description">Logo</string>
     <string name="main_logo">Main Logo Of The App</string>
 
+    <string name="setting">Setting</string>
+    <string name="change_username">Change Username/Avatar</string>
+    <string name="language">Language</string>
+    <string name="Vietnamese">Vietnamese</string>
+    <string name="English">English</string>
+    <string name="Dark_Light_Mode">Dark/Light Mode</string>
+    <string name="Font_Size">Font Size</string>
+    <string name="Small">Small</string>
+    <string name="Medium">Medium</string>
+    <string name="Large">Large</string>
+    <string name="Developer">Developer</string>
+
+
+
     <string name="back">Back</string>
     <string name="next">Next</string>
     <string name="choice_question">Which technology companies are you interested in?</string>
@@ -35,6 +48,12 @@
     <string name="microsoft">Microsoft</string>
     <string name="title_activity_scrolling_news">ScrollingNewsActivity</string>
     <string name="large_text">
+
+
+
+
+
+
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
