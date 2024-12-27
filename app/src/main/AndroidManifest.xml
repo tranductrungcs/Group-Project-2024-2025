@@ -20,6 +20,9 @@
             android:name=".ShowNewsActivity"
             android:exported="false" />
         <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".PlayVideoActivity"
             android:exported="false" />
         <activity
