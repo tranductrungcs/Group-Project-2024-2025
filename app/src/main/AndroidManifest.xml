@@ -21,6 +21,9 @@
             android:configChanges="locale|layoutDirection|orientation|screenSize"
             android:exported="false" />
         <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".PlayVideoActivity"
             android:configChanges="locale|layoutDirection|orientation|screenSize"
             android:exported="false" />
