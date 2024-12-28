@@ -1,20 +1,90 @@
 package com.example;
 
-public class Video {
-    private String title;
-    private String thumbnailImageUrl;
-    private String videoBrandType;
+import com.google.gson.annotations.SerializedName;
 
-    // Constructor
-    public Video(String title, String thumbnailImageUrl, String videoBrandType) {
-        this.title = title;
-        this.thumbnailImageUrl = thumbnailImageUrl;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class Video {
+    private int id;
+    private String videoUniqueId;
+    private String thumbnailImageId;
+    private String videoBrandType;
+    private String author;
+    private String title;
+    private String url;
+    @SerializedName("fetchable_url")
+    private String fetchableUrl;
+    private String thumbnailImageUrl;
+    private String thumbnailImageFetchableUrl;
+    private String createdTime;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getVideoUniqueId() {
+        return videoUniqueId;
+    }
+
+    public void setVideoUniqueId(String videoUniqueId) {
+        this.videoUniqueId = videoUniqueId;
+    }
+
+    public String getThumbnailImageId() {
+        return thumbnailImageId;
+    }
+
+    public void setThumbnailImageId(String thumbnailImageId) {
+        this.thumbnailImageId = thumbnailImageId;
+    }
+
+    public void setVideoBrandType(String videoBrandType) {
         this.videoBrandType = videoBrandType;
     }
 
-    // Getter cho title
+    public String getVideoBrandType() {
+        return videoBrandType;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getFetchableUrl() {
+        return fetchableUrl;
+    }
+
+    public void setFetchableUrl(String fetchableUrl) {
+        this.fetchableUrl = fetchableUrl;
+    }
+
+    public void setThumbnailImageUrl(String thumbnailImageUrl) {
+        this.thumbnailImageUrl = thumbnailImageUrl;
     }
 
     // Getter cho thumbnailImageUrl
@@ -22,12 +92,19 @@ public class Video {
         return thumbnailImageUrl;
     }
 
-    // Getter cho videoBrandType
-    public String getVideoBrandType() {
-        return videoBrandType;
+    public void setThumbnailImageFetchableUrl(String thumbnailImageFetchableUrl) {
+        this.thumbnailImageFetchableUrl = thumbnailImageFetchableUrl;
     }
 
-    public byte[] getThumbnailImageFetchableUrl() {
-        return new byte[0];
+    public String getThumbnailImageFetchableUrl() {
+        return thumbnailImageFetchableUrl;
+    }
+
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
     }
 }

@@ -26,7 +26,9 @@ import android.widget.VideoView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,6 +43,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VideoAppleFragment extends Fragment {
     private final List<Video> appleVideos = new ArrayList<>();
     private LinearLayout videoContainer;
+
+    private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
 
     private final String[] videoUris = new String[2];
     private final ImageButton[] thumbnails = new ImageButton[2];
@@ -99,32 +103,32 @@ public class VideoAppleFragment extends Fragment {
 
 //        thumbnails[0] = view.findViewById(R.id.apple_watch_series10);
 //        thumbnails[1] = view.findViewById(R.id.airpods4);
-//
+
 //        for (int i = 0; i < thumbnails.length; i++) {
 //            final int index = i;
 //            thumbnails[i].setOnClickListener(v -> playVideo(index));
 //        }
-
-//        videoContainer = view.findViewById(R.id.videoContainer);
-//        fetchAppleVideos();
-        VideoView videoView = view.findViewById(R.id.tempVideoView);
-
-        Uri videoUri = Uri.parse("https://drive.google.com/uc?export=download&id=14-22g1u7XyeupxXk2OvEBtLkSssTUCh-");
-
-        MediaController mediaController = new MediaController(this.getContext());
-        mediaController.setAnchorView(videoView);
-        videoView.setMediaController(mediaController);
-        videoView.setVideoURI(videoUri);
-        videoView.setOnPreparedListener(mp -> videoView.start());
-
-
-
+//
+        videoContainer = view.findViewById(R.id.videoContainer);
+        fetchAppleVideos();
+//        VideoView videoView = view.findViewById(R.id.tempVideoView);
+//
+//        Uri videoUri = Uri.parse("https://drive.google.com/uc?export=download&id=14-22g1u7XyeupxXk2OvEBtLkSssTUCh-");
+//
+//        MediaController mediaController = new MediaController(this.getContext());
+//        mediaController.setAnchorView(videoView);
+//        videoView.setMediaController(mediaController);
+//        videoView.setVideoURI(videoUri);
+//        videoView.setOnPreparedListener(mp -> videoView.start());
+//
+//
+//
         return view;
     }
 
     private void fetchAppleVideos() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://android-backend-tech-c52e01da23ae.herokuapp.com/videos/")
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -137,6 +141,7 @@ public class VideoAppleFragment extends Fragment {
                     for (Video video : response.body()) {
                         if ("Apple".equals(video.getVideoBrandType())) {
                             appleVideos.add(video);
+                            Log.i("Add videos success", video.getVideoUniqueId());
                         }
                     }
                     // Cập nhật giao diện với danh sách video
@@ -180,7 +185,10 @@ public class VideoAppleFragment extends Fragment {
 //            // Thiết lập tiêu đề hoặc mô tả cho video (nếu cần)
 //            thumbnails[i].setContentDescription(video.getVideoBrandType() + ": " + video.getTitle());
 //        }
-        videoContainer.removeAllViews(); // Xóa tất cả các video cũ
+
+        videoContainer.removeAllViews();
+
+
 
         for (Video video : appleVideos) {
             // Inflate layout cho video
@@ -191,7 +199,7 @@ public class VideoAppleFragment extends Fragment {
             TextView videoTitle = videoView.findViewById(R.id.videoTitle);
 
             // Thiết lập dữ liệu
-            Glide.with(this).load(video.getThumbnailImageFetchableUrl()).into(videoThumbnail); // Sử dụng Glide để tải thumbnail
+            Glide.with(this).load(baseUrl + video.getThumbnailImageFetchableUrl()).into(videoThumbnail); // Sử dụng Glide để tải thumbnail
             videoTitle.setText(video.getTitle());
 
             // Thêm video vào container

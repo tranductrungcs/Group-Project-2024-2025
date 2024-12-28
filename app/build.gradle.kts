@@ -56,4 +56,8 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
     implementation(libs.recyclerview)
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.ui)
+    implementation(libs.okhttp.v4110)
+    implementation(libs.okhttp3.integration)
 }
