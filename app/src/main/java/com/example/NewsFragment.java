@@ -12,8 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,7 +32,12 @@ public class NewsFragment extends Fragment implements SelectListener {
 
     private RecyclerView recyclerNews;
     private NewsAdapter newsAdapter;
-    private List<>;
+    private List<SmallNews> NewsList;
+    SQLconnection sqlconnection;
+    Connection con;
+    String title, url;
+    View item;
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -63,6 +76,11 @@ public class NewsFragment extends Fragment implements SelectListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        sqlconnection = new SQLconnection();
+        newsAdapter = new NewsAdapter(getContext(), NewsList, (SelectListener) this);
+
+        showItem();
+
     }
 
     @Override
@@ -97,5 +115,29 @@ public class NewsFragment extends Fragment implements SelectListener {
 
     public void onLongItemClick(int position){
         //no usage here, just declare to not abstract
+    }
+    public void showItem() {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            try {
+                con = sqlconnection.CONN();
+                String query = "SELECT * FROM androidapi.api_article ORDER BY id DESC LIMIT 10";
+                PreparedStatement stmt = con.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery();
+                StringBuilder bTitleString = new StringBuilder();
+                StringBuilder bUrlString = new StringBuilder();
+                while (rs.next()) {
+                    bTitleString.append(rs.getString("title")).append("\n");
+                    bUrlString.append(rs.getString("url")).append("\n");
+                }
+                title = bTitleString.toString();
+                url = bUrlString.toString();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            requireActivity().runOnUiThread(() -> {
+                TextView Content = item.findViewById(R.id.TitleNews);
+            });
+        });
     }
 }
