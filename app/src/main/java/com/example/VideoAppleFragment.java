@@ -5,7 +5,12 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.media3.common.MediaItem;
+import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.exoplayer.util.EventLogger;
+import androidx.media3.ui.PlayerView;
 
 import android.provider.MediaStore;
 import android.util.Log;
@@ -43,11 +48,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VideoAppleFragment extends Fragment {
     private final List<Video> appleVideos = new ArrayList<>();
     private LinearLayout videoContainer;
+    private PlayerView playerView;
+    private ExoPlayer exoPlayer;
 
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
-
-    private final String[] videoUris = new String[2];
-    private final ImageButton[] thumbnails = new ImageButton[2];
+//
+//    private final String[] videoUris = new String[2];
+//    private final ImageButton[] thumbnails = new ImageButton[2];
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,20 +118,36 @@ public class VideoAppleFragment extends Fragment {
 //
         videoContainer = view.findViewById(R.id.videoContainer);
         fetchAppleVideos();
-//        VideoView videoView = view.findViewById(R.id.tempVideoView);
-//
-//        Uri videoUri = Uri.parse("https://drive.google.com/uc?export=download&id=14-22g1u7XyeupxXk2OvEBtLkSssTUCh-");
-//
-//        MediaController mediaController = new MediaController(this.getContext());
-//        mediaController.setAnchorView(videoView);
-//        videoView.setMediaController(mediaController);
-//        videoView.setVideoURI(videoUri);
-//        videoView.setOnPreparedListener(mp -> videoView.start());
-//
-//
-//
+
         return view;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+//        playerView = view.findViewById(R.id.tempPlayerView);
+//
+//        exoPlayer = new ExoPlayer.Builder(requireContext()).build();
+//        playerView.setPlayer(exoPlayer);
+//
+//        MediaItem mediaItem = MediaItem.fromUri(baseUrl + "fetch/1qMi8eu5aMjLuOwnPIH_n-DjRL19oknGi");
+//        exoPlayer.setMediaItem(mediaItem);
+//        exoPlayer.prepare();
+//        exoPlayer.play();
+    }
+
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        exoPlayer.pause();
+//    }
+//
+//    @Override
+//    public void onDestroyView() {
+//        super.onDestroyView();
+//        exoPlayer.release();
+//    }
 
     private void fetchAppleVideos() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -185,10 +208,9 @@ public class VideoAppleFragment extends Fragment {
 //            // Thiết lập tiêu đề hoặc mô tả cho video (nếu cần)
 //            thumbnails[i].setContentDescription(video.getVideoBrandType() + ": " + video.getTitle());
 //        }
-
-        videoContainer.removeAllViews();
-
-
+        if (videoContainer.getChildCount() != 0) {
+            videoContainer.removeAllViews();
+        }
 
         for (Video video : appleVideos) {
             // Inflate layout cho video
@@ -198,22 +220,22 @@ public class VideoAppleFragment extends Fragment {
             ImageView videoThumbnail = videoView.findViewById(R.id.videoThumbnail);
             TextView videoTitle = videoView.findViewById(R.id.videoTitle);
 
+            videoThumbnail.setOnClickListener(listener -> playVideo(video));
+            videoTitle.setOnClickListener(listener -> playVideo(video));
+
             // Thiết lập dữ liệu
             Glide.with(this).load(baseUrl + video.getThumbnailImageFetchableUrl()).into(videoThumbnail); // Sử dụng Glide để tải thumbnail
             videoTitle.setText(video.getTitle());
 
             // Thêm video vào container
             videoContainer.addView(videoView);
+
+            Log.i("Add video success", String.format("Add video %s successfully", video.getVideoUniqueId()));
         }
     }
 
-    private void playVideo(int index) {
-        if (index < 0 || index >= videoUris.length || videoUris[index] == null) {
-            Toast.makeText(getContext(), "Video not found", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Uri videoUri = Uri.parse(videoUris[index]);
+    private void playVideo(Video video) {
+        Uri videoUri = Uri.parse(baseUrl + video.getFetchableUrl());
 
         // Start PlayVideoActivity with the selected URI
         if (getActivity() != null) {

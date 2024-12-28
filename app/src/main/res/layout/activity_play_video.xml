@@ -7,9 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".PlayVideoActivity">
 
-    <VideoView
-        android:id="@+id/videoView"
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/tempPlayerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:use_controller="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

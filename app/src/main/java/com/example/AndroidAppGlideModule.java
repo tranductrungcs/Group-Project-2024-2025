@@ -15,6 +15,7 @@ import com.bumptech.glide.module.AppGlideModule;
 import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 
 @GlideModule
@@ -27,8 +28,8 @@ public class AndroidAppGlideModule extends AppGlideModule {
                 .writeTimeout(45, TimeUnit.SECONDS)
                 .build();
 
+        OkHttpUrlLoader.Factory factory = new OkHttpUrlLoader.Factory((Call.Factory) okHttpClient);
 
-
-        registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(okHttpClient.));
+        registry.replace(GlideUrl.class, InputStream.class, factory);
     }
 }

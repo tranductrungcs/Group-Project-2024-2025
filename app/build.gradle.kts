@@ -56,8 +56,8 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
     implementation(libs.recyclerview)
-    implementation(libs.media3.exoplayer)
-    implementation(libs.media3.ui)
+    implementation("androidx.media3:media3-exoplayer:1.1.0")
+    implementation("androidx.media3:media3-ui:1.1.0")
     implementation(libs.okhttp.v4110)
     implementation(libs.okhttp3.integration)
 }
