@@ -11,7 +11,6 @@ public class SmallNews {
     private String description;
     private String[] contents;
     private String imageUrl;
-    private String videoUrl;
 
     public SmallNews() {}
 
@@ -63,21 +62,4 @@ public class SmallNews {
         return imageUrl;
     }
 
-    public void setVideoUrl(String videoUrl) { this.videoUrl = videoUrl; }
-
-    public String getVideoUrl() { return videoUrl; }
-
-    @NonNull
-    public String toString() {
-        return String.format(
-                Locale.US,
-                "%d - %s - %s - %s - %s - %s",
-                id,
-                title,
-                date,
-                description,
-                contents.length != 0 ? "" : contents[0],
-                imageUrl
-        );
-    }
 }

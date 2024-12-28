@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
+import com.example.News_list;
 
 public class SQLconnection {
     protected static String ip = "10.0.2.2";
@@ -28,9 +29,5 @@ public class SQLconnection {
             Log.e("ERROR", Objects.requireNonNull(e.getMessage()));
         }
         return con;
-    }
-    public class List<News_list> {
-        List<News_list> newsList = new ArrayList<>();
-
     }
 }
