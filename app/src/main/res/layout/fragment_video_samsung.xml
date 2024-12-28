@@ -7,14 +7,15 @@
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:paddingStart="20dp"
-        android:src="@drawable/samsung_logo"
-        android:layout_marginBottom="10dp"
-        tools:ignore="RtlSymmetry" />
+<!--    <Button-->
+<!--        android:id="@+id/video"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+<!--    <WebView-->
+<!--        android:id="@+id/webview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        />-->
     <ScrollView
         android:id="@+id/videos"
         android:layout_width="match_parent"

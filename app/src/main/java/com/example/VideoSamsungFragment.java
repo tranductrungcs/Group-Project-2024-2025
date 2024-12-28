@@ -1,12 +1,19 @@
 package com.example;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class VideoSamsungFragment extends Fragment {
+    private Button button;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,10 +63,33 @@ public class VideoSamsungFragment extends Fragment {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video_samsung, container, false);
+        View view = inflater.inflate(R.layout.fragment_video_samsung, container, false);
+
+//        String html = "<iframe width=\"360\" height=\"515\" src=\"https://www.youtube.com/embed/QPOLrbKI5oQ\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share \" allowfullscreen></iframe>";
+//
+//        WebView myWebView = view.findViewById(R.id.webview);
+//        WebSettings webSettings = myWebView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
+//
+//        myWebView.loadData(html, "text/html", null);
+
+//        myWebView.loadUrl("http://www.example.com");
+
+//        button = view.findViewById(R.id.video);
+//        button.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//
+//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/embed/BSYsXVFzmKA?si=Mlg5KwkmKBi6fAhH")));
+//                Log.i("Video", "Video Playing....");
+//
+//            }
+//        });
+        return view;
     }
 }
