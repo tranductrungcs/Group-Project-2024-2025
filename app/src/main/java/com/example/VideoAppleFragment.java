@@ -156,7 +156,7 @@ public class VideoAppleFragment extends Fragment {
         });
 
         // Load videos
-        fetchAppleVideos();
+        fetchVideos();
 
         return view;
     }
@@ -202,7 +202,7 @@ public class VideoAppleFragment extends Fragment {
         return videoList;
     }
 
-    private void fetchAppleVideos() {
+    private void fetchVideos() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
