@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VideoSamsungFragment"
@@ -16,65 +17,65 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
 <!--        />-->
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/videos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/SCREEN">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="8dp">-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="8dp">-->
 
-                <ImageButton
-                    android:id="@+id/galaxy_note9"
-                    android:layout_width="190dp"
-                    android:layout_height="300dp"
-                    android:layout_alignParentStart="true"
-                    style="@style/SCREEN"
-                    android:src="@drawable/galaxy_note9_thumbnail"
-                    tools:ignore="MissingConstraints" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/galaxy_note9"-->
+<!--                    android:layout_width="190dp"-->
+<!--                    android:layout_height="300dp"-->
+<!--                    android:layout_alignParentStart="true"-->
+<!--                    style="@style/SCREEN"-->
+<!--                    android:src="@drawable/galaxy_note9_thumbnail"-->
+<!--                    tools:ignore="MissingConstraints" />-->
 
-                <ImageButton
-                    android:id="@+id/galaxy_tab_s10_series"
-                    android:layout_width="190dp"
-                    android:layout_height="300dp"
-                    android:layout_alignParentEnd="true"
-                    style="@style/SCREEN"
-                    android:src="@drawable/galaxy_tab_s10_series_thumbnail"
-                    tools:ignore="MissingConstraints" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp">
+<!--                <ImageButton-->
+<!--                    android:id="@+id/galaxy_tab_s10_series"-->
+<!--                    android:layout_width="190dp"-->
+<!--                    android:layout_height="300dp"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    style="@style/SCREEN"-->
+<!--                    android:src="@drawable/galaxy_tab_s10_series_thumbnail"-->
+<!--                    tools:ignore="MissingConstraints" />-->
+<!--            </RelativeLayout>-->
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="8dp">-->
 
-                <ImageButton
-                    android:id="@+id/galaxy_s24_fe"
-                    android:layout_width="190dp"
-                    android:layout_height="300dp"
-                    android:layout_alignParentStart="true"
-                    style="@style/SCREEN"
-                    android:src="@drawable/galaxy_s24_fe_thumbnail"
-                    tools:ignore="MissingConstraints" />
+<!--                <ImageButton-->
+<!--                    android:id="@+id/galaxy_s24_fe"-->
+<!--                    android:layout_width="190dp"-->
+<!--                    android:layout_height="300dp"-->
+<!--                    android:layout_alignParentStart="true"-->
+<!--                    style="@style/SCREEN"-->
+<!--                    android:src="@drawable/galaxy_s24_fe_thumbnail"-->
+<!--                    tools:ignore="MissingConstraints" />-->
 
-                <ImageButton
-                    android:id="@+id/samsung_health"
-                    android:layout_width="190dp"
-                    android:layout_height="300dp"
-                    android:layout_alignParentEnd="true"
-                    style="@style/SCREEN"
-                    android:src="@drawable/samsung_health_thumbnail"
-                    tools:ignore="MissingConstraints" />
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
+<!--                <ImageButton-->
+<!--                    android:id="@+id/samsung_health"-->
+<!--                    android:layout_width="190dp"-->
+<!--                    android:layout_height="300dp"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    style="@style/SCREEN"-->
+<!--                    android:src="@drawable/samsung_health_thumbnail"-->
+<!--                    tools:ignore="MissingConstraints" />-->
+<!--            </RelativeLayout>-->
+<!--        </LinearLayout>-->
+    </androidx.recyclerview.widget.RecyclerView>
 
-</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

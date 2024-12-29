@@ -11,6 +11,9 @@ import androidx.media3.common.MediaItem;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.exoplayer.util.EventLogger;
 import androidx.media3.ui.PlayerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.provider.MediaStore;
 import android.util.Log;
@@ -23,6 +26,8 @@ import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.google.android.material.tabs.TabLayout;
+
 import android.widget.Toast;
 
 import android.os.Handler;
@@ -46,10 +51,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * create an instance of this fragment.
  */
 public class VideoAppleFragment extends Fragment {
-    private final List<Video> appleVideos = new ArrayList<>();
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
+    private VideoAdapter videoAdapter;
+    private final List<Video> videoList = new ArrayList<>();
     private LinearLayout videoContainer;
     private PlayerView playerView;
     private ExoPlayer exoPlayer;
+    private TabLayout tabLayout;
 
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
 //
@@ -116,8 +125,38 @@ public class VideoAppleFragment extends Fragment {
 //            thumbnails[i].setOnClickListener(v -> playVideo(index));
 //        }
 //
-        videoContainer = view.findViewById(R.id.videoContainer);
-        fetchAppleVideos();
+        tabLayout = requireActivity().findViewById(R.id.tab_layout);
+        swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
+        recyclerView = view.findViewById(R.id.videos);
+//        videoContainer = view.findViewById(R.id.videoContainer);
+        // Setup RecyclerView
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        videoAdapter = new VideoAdapter(getContext(), videoList, baseUrl, this::playVideo);
+        recyclerView.setAdapter(videoAdapter);
+
+        // Setup SwipeRefreshLayout
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshData();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    tabLayout.setVisibility(View.INVISIBLE);
+                } else {
+                    tabLayout.setVisibility(View.VISIBLE);
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
+        // Load videos
+        fetchVideos();
 
         return view;
     }
@@ -149,7 +188,21 @@ public class VideoAppleFragment extends Fragment {
 //        exoPlayer.release();
 //    }
 
-    private void fetchAppleVideos() {
+    private void refreshData() {
+        List<Video> newData = getListPost();
+        videoAdapter.setData(newData);
+        videoAdapter.notifyDataSetChanged();
+    }
+
+    private List<Video> getListPost() {
+        Log.i("List Post", videoList.toString());
+        if (!videoList.isEmpty()) {
+
+        }
+        return videoList;
+    }
+
+    private void fetchVideos() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -163,12 +216,12 @@ public class VideoAppleFragment extends Fragment {
                 if (response.isSuccessful() && response.body() != null) {
                     for (Video video : response.body()) {
                         if ("Apple".equals(video.getVideoBrandType())) {
-                            appleVideos.add(video);
+                            videoList.add(video);
                             Log.i("Add videos success", video.getVideoUniqueId());
                         }
                     }
                     // Cập nhật giao diện với danh sách video
-                    updateUI();
+//                    updateUI();
                 }
             }
 
@@ -182,57 +235,57 @@ public class VideoAppleFragment extends Fragment {
         });
     }
 
-    private void updateUI() {
-//        // Kiểm tra xem có video nào không
-//        if (appleVideos.isEmpty()) {
-//            Toast.makeText(getContext(), "No Apple videos found", Toast.LENGTH_SHORT).show();
-//            return;
+//    private void updateUI() {
+////        // Kiểm tra xem có video nào không
+////        if (appleVideos.isEmpty()) {
+////            Toast.makeText(getContext(), "No Apple videos found", Toast.LENGTH_SHORT).show();
+////            return;
+////        }
+////
+////        // Giả sử bạn có 2 video và đã định nghĩa videoUris và thumbnails
+////        for (int i = 0; i < Math.min(appleVideos.size(), thumbnails.length); i++) {
+////            Video video = appleVideos.get(i);
+////            videoUris[i] = video.getFetchableUrl(); // Lưu đường dẫn video
+////
+////            // Cập nhật thumbnail (nếu có) - ở đây giả sử bạn có một URL thumbnail
+////            // Nếu không có thumbnail, bạn có thể bỏ qua bước này hoặc sử dụng một hình ảnh mặc định
+//////            if (video.getThumbnailImageFetchableUrl() != null) {
+//////                // Tải hình ảnh thumbnail từ URL
+//////                // Bạn có thể sử dụng thư viện như Glide hoặc Picasso để tải hình ảnh
+//////                // Glide.with(this).load(video.getThumbnailImageFetchableUrl()).into(thumbnails[i]);
+//////            } else {
+//////                // Nếu không có thumbnail, có thể thiết lập một hình ảnh mặc định
+//////                thumbnails[i].setImageResource(R.drawable.default_thumbnail); // Thay đổi tên hình ảnh mặc định nếu cần
+//////            }
+////
+////            // Thiết lập tiêu đề hoặc mô tả cho video (nếu cần)
+////            thumbnails[i].setContentDescription(video.getVideoBrandType() + ": " + video.getTitle());
+////        }
+//        if (videoContainer.getChildCount() != 0) {
+//            videoContainer.removeAllViews();
 //        }
 //
-//        // Giả sử bạn có 2 video và đã định nghĩa videoUris và thumbnails
-//        for (int i = 0; i < Math.min(appleVideos.size(), thumbnails.length); i++) {
-//            Video video = appleVideos.get(i);
-//            videoUris[i] = video.getFetchableUrl(); // Lưu đường dẫn video
+//        for (Video video : appleVideos) {
+//            // Inflate layout cho video
+//            View videoView = LayoutInflater.from(getContext()).inflate(R.layout.video_item, videoContainer, false);
 //
-//            // Cập nhật thumbnail (nếu có) - ở đây giả sử bạn có một URL thumbnail
-//            // Nếu không có thumbnail, bạn có thể bỏ qua bước này hoặc sử dụng một hình ảnh mặc định
-////            if (video.getThumbnailImageFetchableUrl() != null) {
-////                // Tải hình ảnh thumbnail từ URL
-////                // Bạn có thể sử dụng thư viện như Glide hoặc Picasso để tải hình ảnh
-////                // Glide.with(this).load(video.getThumbnailImageFetchableUrl()).into(thumbnails[i]);
-////            } else {
-////                // Nếu không có thumbnail, có thể thiết lập một hình ảnh mặc định
-////                thumbnails[i].setImageResource(R.drawable.default_thumbnail); // Thay đổi tên hình ảnh mặc định nếu cần
-////            }
+//            // Lấy các thành phần từ layout
+//            ImageView videoThumbnail = videoView.findViewById(R.id.videoThumbnail);
+//            TextView videoTitle = videoView.findViewById(R.id.videoTitle);
 //
-//            // Thiết lập tiêu đề hoặc mô tả cho video (nếu cần)
-//            thumbnails[i].setContentDescription(video.getVideoBrandType() + ": " + video.getTitle());
+//            videoThumbnail.setOnClickListener(listener -> playVideo(video));
+//            videoTitle.setOnClickListener(listener -> playVideo(video));
+//
+//            // Thiết lập dữ liệu
+//            Glide.with(this).load(baseUrl + video.getThumbnailImageFetchableUrl()).into(videoThumbnail); // Sử dụng Glide để tải thumbnail
+//            videoTitle.setText(video.getTitle());
+//
+//            // Thêm video vào container
+//            videoContainer.addView(videoView);
+//
+//            Log.i("Add video success", String.format("Add video %s successfully", video.getVideoUniqueId()));
 //        }
-        if (videoContainer.getChildCount() != 0) {
-            videoContainer.removeAllViews();
-        }
-
-        for (Video video : appleVideos) {
-            // Inflate layout cho video
-            View videoView = LayoutInflater.from(getContext()).inflate(R.layout.video_item, videoContainer, false);
-
-            // Lấy các thành phần từ layout
-            ImageView videoThumbnail = videoView.findViewById(R.id.videoThumbnail);
-            TextView videoTitle = videoView.findViewById(R.id.videoTitle);
-
-            videoThumbnail.setOnClickListener(listener -> playVideo(video));
-            videoTitle.setOnClickListener(listener -> playVideo(video));
-
-            // Thiết lập dữ liệu
-            Glide.with(this).load(baseUrl + video.getThumbnailImageFetchableUrl()).into(videoThumbnail); // Sử dụng Glide để tải thumbnail
-            videoTitle.setText(video.getTitle());
-
-            // Thêm video vào container
-            videoContainer.addView(videoView);
-
-            Log.i("Add video success", String.format("Add video %s successfully", video.getVideoUniqueId()));
-        }
-    }
+//    }
 
     private void playVideo(Video video) {
         Uri videoUri = Uri.parse(baseUrl + video.getFetchableUrl());
