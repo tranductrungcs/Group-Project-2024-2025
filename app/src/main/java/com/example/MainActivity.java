@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout_main);
         ViewPager viewPager = findViewById(R.id.view_pager);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

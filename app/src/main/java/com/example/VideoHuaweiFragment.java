@@ -87,7 +87,7 @@ public class VideoHuaweiFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video_huawei, container, false);
 
-        tabLayout = requireActivity().findViewById(R.id.tab_layout);
+        tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
         recyclerView = view.findViewById(R.id.videos);
         // Setup RecyclerView

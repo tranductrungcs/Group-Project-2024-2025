@@ -125,7 +125,7 @@ public class VideoAppleFragment extends Fragment {
 //            thumbnails[i].setOnClickListener(v -> playVideo(index));
 //        }
 //
-        tabLayout = requireActivity().findViewById(R.id.tab_layout);
+        tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
         recyclerView = view.findViewById(R.id.videos);
 //        videoContainer = view.findViewById(R.id.videoContainer);

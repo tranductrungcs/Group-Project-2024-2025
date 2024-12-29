@@ -113,7 +113,7 @@ public class VideoSamsungFragment extends Fragment {
 //            }
 //        });
 
-        tabLayout = requireActivity().findViewById(R.id.tab_layout);
+        tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
         recyclerView = view.findViewById(R.id.videos);
         // Setup RecyclerView
