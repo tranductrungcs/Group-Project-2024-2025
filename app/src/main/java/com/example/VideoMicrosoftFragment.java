@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -90,8 +91,9 @@ public class VideoMicrosoftFragment extends Fragment {
         tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
         recyclerView = view.findViewById(R.id.videos);
-        // Setup RecyclerView
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Setup RecyclerView with GridLayoutManager for 2 columns
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         videoAdapter = new VideoAdapter(getContext(), videoList, baseUrl, this::playVideo);
         recyclerView.setAdapter(videoAdapter);
 

@@ -11,6 +11,7 @@ import androidx.media3.common.MediaItem;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.exoplayer.util.EventLogger;
 import androidx.media3.ui.PlayerView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -129,8 +130,9 @@ public class VideoAppleFragment extends Fragment {
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
         recyclerView = view.findViewById(R.id.videos);
 //        videoContainer = view.findViewById(R.id.videoContainer);
-        // Setup RecyclerView
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Setup RecyclerView with GridLayoutManager for 2 columns
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         videoAdapter = new VideoAdapter(getContext(), videoList, baseUrl, this::playVideo);
         recyclerView.setAdapter(videoAdapter);
 
