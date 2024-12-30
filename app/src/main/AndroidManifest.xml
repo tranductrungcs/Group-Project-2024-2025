@@ -26,7 +26,7 @@
             android:name=".PlayVideoActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingFragment"
+            android:name=".SettingActivity"
             android:exported="false" />
         <activity
             android:name=".LoginScreenActivity"

@@ -15,16 +15,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import android.widget.EditText;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.Toast;
-import java.util.Objects;
 
-public class SettingFragment extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity {
     private ImageView avatarImageView;
     private TextView usernameTextView;
     private TextView changeUsernameLayout;

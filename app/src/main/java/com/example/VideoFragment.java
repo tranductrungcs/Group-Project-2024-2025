@@ -2,45 +2,26 @@ package com.example;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
-import android.widget.VideoView;
-import android.widget.Toast;
 
-import com.google.android.material.search.SearchView;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -190,7 +171,7 @@ public class VideoFragment extends Fragment {
 
         ImageButton imageButton = requireView().findViewById(R.id.ic_user);
         imageButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), SettingFragment.class);
+            Intent intent = new Intent(getActivity(), SettingActivity.class);
             startActivity(intent);
         });
 
