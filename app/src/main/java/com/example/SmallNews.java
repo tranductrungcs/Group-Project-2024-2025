@@ -12,6 +12,11 @@ public class SmallNews {
     private String[] contents;
     private String imageUrl;
 
+    public SmallNews(String title, String imageUrl){
+        this.title = title;
+        this.imageUrl = imageUrl;
+    }
+
     public SmallNews() {}
 
     public void setId(int id) {

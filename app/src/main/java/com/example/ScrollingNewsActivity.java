@@ -67,7 +67,7 @@ public class ScrollingNewsActivity extends AppCompatActivity {
             }
 
             handler.post(() -> {
-                adapter = new NewsAdapter(smallNewsList);
+//                adapter = new NewsAdapter(smallNewsList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 recyclerView.setAdapter(adapter);
             });
