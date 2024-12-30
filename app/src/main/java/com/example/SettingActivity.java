@@ -1,5 +1,7 @@
 package com.example;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,23 +15,21 @@ import android.view.View;
 import android.view.LayoutInflater;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 import android.widget.EditText;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.Toast;
-import java.util.Objects;
 
-public class SettingFragment extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity {
     private ImageView avatarImageView;
     private TextView usernameTextView;
     private TextView changeUsernameLayout;
     private RadioGroup languageRadioGroup;
-    private Switch darkLightSwitch;
     private RadioGroup fontSizeRadioGroup;
     private TextView developeTextView;
     private RadioGroup infoRadioGroup;
@@ -39,6 +39,11 @@ public class SettingFragment extends AppCompatActivity {
     private ImageView dialogAvatarImageView;
 
     private SharedPreferences preferences;
+
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    Switch darkLightSwitch;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,16 +67,36 @@ public class SettingFragment extends AppCompatActivity {
         setFontSize(savedFontSize);
 
         backArrow.setOnClickListener(v -> {
-            Intent intent = new Intent(this, VideoFragment.class);
-            startActivity(intent);
-            finish();
+            onBackPressed(); // Navigate back to the previous activity or fragment
         });
 
         changeUsernameLayout.setOnClickListener(v -> showChangeUsernameDialog());
 
         languageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {});
 
-        darkLightSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {});
+        // Load the saved theme mode before creating the activity
+        // Use sharedPreferences to save mode if exit the app and go back again
+        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
+        boolean nightMode = sharedPreferences.getBoolean("night", false);
+        AppCompatDelegate.setDefaultNightMode(nightMode
+                ? AppCompatDelegate.MODE_NIGHT_YES
+                : AppCompatDelegate.MODE_NIGHT_NO);
+
+        // Set the state of the dark mode switch
+        darkLightSwitch.setChecked(nightMode);
+
+        // Handle Dark Mode toggle
+        darkLightSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            editor = sharedPreferences.edit();
+            editor.putBoolean("night", isChecked);
+            editor.apply();
+
+            AppCompatDelegate.setDefaultNightMode(isChecked
+                    ? AppCompatDelegate.MODE_NIGHT_YES
+                    : AppCompatDelegate.MODE_NIGHT_NO);
+
+            recreate(); // Recreate the activity to apply the theme
+        });
 
         fontSizeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             String fontSize;
