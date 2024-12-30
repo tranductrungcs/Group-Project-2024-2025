@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
@@ -32,11 +33,12 @@ public class NewsFragment extends Fragment implements SelectListener {
 
     private RecyclerView recyclerNews;
     private NewsAdapter newsAdapter;
-    private List<SmallNews> NewsList;
+    private List<SmallNews> NewsList = new ArrayList<>();
     SQLconnection sqlconnection;
     Connection con;
     String title, url;
     View item;
+    SmallNews news;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -77,9 +79,27 @@ public class NewsFragment extends Fragment implements SelectListener {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         sqlconnection = new SQLconnection();
-        newsAdapter = new NewsAdapter(getContext(), NewsList, (SelectListener) this);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            try {
+                con = sqlconnection.CONN();
+                String query = "SELECT * FROM androidapi.api_article WHERE id = 2";
+                PreparedStatement stmt = con.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery();
+                StringBuilder bTitleString = new StringBuilder();
+                StringBuilder bUrlString = new StringBuilder();
+                while (rs.next()) {
+                    bTitleString.append(rs.getString("title")).append("\n");
+                    bUrlString.append(rs.getString("url")).append("\n");
+                    title = bTitleString.toString();
+                    url = bUrlString.toString();
+                    news = new SmallNews(title, url);
+                }
 
-        showItem();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
     }
 
@@ -98,6 +118,10 @@ public class NewsFragment extends Fragment implements SelectListener {
                 movetoNewsDetail();
             }
         });
+
+        NewsList.add(news);
+        newsAdapter = new NewsAdapter(getContext(), NewsList, (SelectListener) this);
+        recyclerNews.setAdapter(newsAdapter);
 
         return view;
 
@@ -121,7 +145,7 @@ public class NewsFragment extends Fragment implements SelectListener {
         executorService.execute(() -> {
             try {
                 con = sqlconnection.CONN();
-                String query = "SELECT * FROM androidapi.api_article ORDER BY id DESC LIMIT 10";
+                String query = "SELECT * FROM androidapi.api_article ORDER BY id LIMIT 10";
                 PreparedStatement stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
                 StringBuilder bTitleString = new StringBuilder();

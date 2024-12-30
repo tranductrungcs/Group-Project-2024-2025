@@ -110,29 +110,7 @@ public class ShowNewsActivity extends AppCompatActivity {
         });
     }
 
-    public void connect() {
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            try {
-                con = sqlconnection.CONN();
-                if (con == null) {
-                    str = "connect success";
-                } else {
-                    str = "Error!";
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            runOnUiThread(() -> {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-            });
-        });
-    }
+
 
     // Method to apply the font size to all text views
     private void setFontSize(String fontSize) {
