@@ -13,6 +13,7 @@
     <color name="tab_text_color">@color/black</color>
     <color name="tab_icon_color">@color/black</color>
     <color name="app_title_color">#070089</color>
+    <color name="option_text_color">#555555</color>
 <!--    <color name="tab_icon_tint">-->
 <!--        <color-state-list name="tab_icon_tint_selector">-->
 <!--            <item android:color="@color/black" android:state_night="false" />-->
