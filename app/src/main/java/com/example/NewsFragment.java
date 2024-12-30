@@ -79,27 +79,6 @@ public class NewsFragment extends Fragment implements SelectListener {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         sqlconnection = new SQLconnection();
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            try {
-                con = sqlconnection.CONN();
-                String query = "SELECT * FROM androidapi.api_article WHERE id = 2";
-                PreparedStatement stmt = con.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery();
-                StringBuilder bTitleString = new StringBuilder();
-                StringBuilder bUrlString = new StringBuilder();
-                while (rs.next()) {
-                    bTitleString.append(rs.getString("title")).append("\n");
-                    bUrlString.append(rs.getString("url")).append("\n");
-                    title = bTitleString.toString();
-                    url = bUrlString.toString();
-                    news = new SmallNews(title, url);
-                }
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
 
     }
 
@@ -118,9 +97,9 @@ public class NewsFragment extends Fragment implements SelectListener {
                 movetoNewsDetail();
             }
         });
+        showItem();
 
         return view;
-
     }
     public void movetoNewsDetail(){
         Intent intent = new Intent(getContext(),ShowNewsActivity.class);
@@ -141,23 +120,33 @@ public class NewsFragment extends Fragment implements SelectListener {
         executorService.execute(() -> {
             try {
                 con = sqlconnection.CONN();
-                String query = "SELECT * FROM androidapi.api_article ORDER BY id LIMIT 10";
+                String query = "SELECT * FROM androidapi.api_article ORDER BY id DESC LIMIT 10";
                 PreparedStatement stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
-                StringBuilder bTitleString = new StringBuilder();
-                StringBuilder bUrlString = new StringBuilder();
+                NewsList.clear(); // Clear existing data if any
+
                 while (rs.next()) {
-                    bTitleString.append(rs.getString("title")).append("\n");
-                    bUrlString.append(rs.getString("url")).append("\n");
+                    SmallNews newsItem = new SmallNews();
+                    newsItem.setId(rs.getInt("id")); // assuming an 'id' column exists
+                    newsItem.setTitle(rs.getString("title"));
+                    newsItem.setImageUrl(rs.getString("imageUrl")); // assuming an 'imageUrl' column exists
+                    NewsList.add(newsItem);
                 }
-                title = bTitleString.toString();
-                url = bUrlString.toString();
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
+            // Update UI on the main thread
             requireActivity().runOnUiThread(() -> {
-                TextView Content = item.findViewById(R.id.TitleNews);
+                if (newsAdapter == null) {
+                    newsAdapter = new NewsAdapter(getContext(), NewsList, this);
+                    recyclerNews.setAdapter(newsAdapter);
+                } else {
+                    newsAdapter.setNewsList(NewsList);
+                }
             });
         });
     }
+
 }
