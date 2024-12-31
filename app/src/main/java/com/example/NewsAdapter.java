@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -26,13 +27,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
-        ImageView newsImageView;
-        TextView newsTitle;
+        public ImageView newsImageView;
+        public TextView newsTitle;
+        public CardView cardView;
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
             newsImageView = itemView.findViewById(R.id.ImageNews);
             newsTitle = itemView.findViewById(R.id.TitleNews);
+            cardView = itemView.findViewById(R.id.NewsCardView);
         }
     }
 
