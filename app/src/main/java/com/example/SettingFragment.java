@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.view.View;
@@ -16,6 +15,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import android.widget.EditText;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.widget.Button;
+import android.widget.Toast;
+import java.util.Objects;
 
 public class SettingFragment extends AppCompatActivity {
     private ImageView avatarImageView;
@@ -27,6 +34,11 @@ public class SettingFragment extends AppCompatActivity {
     private TextView developeTextView;
     private RadioGroup infoRadioGroup;
     private ImageView backArrow;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private ImageView dialogAvatarImageView;
+
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +55,9 @@ public class SettingFragment extends AppCompatActivity {
         infoRadioGroup = findViewById(R.id.info_group);
         backArrow = findViewById(R.id.back_arrow);
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
+
         String savedFontSize = preferences.getString("font_size", "Medium");
         setFontSize(savedFontSize);
 
@@ -82,17 +96,50 @@ public class SettingFragment extends AppCompatActivity {
     private void showChangeUsernameDialog() {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_change_username, null);
         EditText usernameEditText = dialogView.findViewById(R.id.usernameInput);
+        ImageView dialogAvatarImageView = dialogView.findViewById(R.id.avatarImageView);
+        Button changeAvatarButton = dialogView.findViewById(R.id.changeAvatarButton);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setView(dialogView)
                 .setPositiveButton("Save", (dialog, which) -> {
-                    String newUsername = usernameEditText.getText().toString();
-                    updateUsername(newUsername);
+                    String newUsername = usernameEditText.getText().toString().trim();
+                    if (!newUsername.isEmpty()) {
+                        updateUsername(newUsername);
+                    } else {
+                        Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
                 })
-                .setNegativeButton("Cancel", (dialog, which) -> {});
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
 
         AlertDialog dialog = builder.create();
         dialog.show();
+
+        changeAvatarButton.setOnClickListener(v -> openGallery(dialogAvatarImageView));
+    }
+
+    private void openGallery(ImageView dialogAvatarImageView) {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        this.dialogAvatarImageView = dialogAvatarImageView;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri imageUri = data.getData();
+            setAvatarImage(imageUri);
+        }
+    }
+
+    private void setAvatarImage(Uri imageUri) {
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+            dialogAvatarImageView.setImageBitmap(bitmap); // Update the dialog's ImageView
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to load image", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void openDeveloperFragment() {
@@ -109,7 +156,6 @@ public class SettingFragment extends AppCompatActivity {
 
     private void saveFontSize(String fontSize) {
         Log.d("FontSize", "Saving font size: " + fontSize);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("font_size", fontSize);
         editor.apply();
@@ -128,8 +174,6 @@ public class SettingFragment extends AppCompatActivity {
             case "large":
                 size = 20;
                 break;
-            default:
-                size = 16;
         }
 
         ViewGroup mainLayout = findViewById(R.id.main_layout);
@@ -145,5 +189,22 @@ public class SettingFragment extends AppCompatActivity {
                 setTextViewFontSize((ViewGroup) child, size);
             }
         }
+    }
+
+    private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if (key.equals("font_size")) {
+                String fontSize = sharedPreferences.getString("font_size", "Medium");
+                setFontSize(fontSize);  // Update font size
+            }
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Unregister the listener when the activity is destroyed
+        preferences.unregisterOnSharedPreferenceChangeListener(preferenceChangeListener);
     }
 }
