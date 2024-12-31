@@ -8,6 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -23,6 +25,8 @@ import androidx.media3.exoplayer.DefaultLoadControl;
 import androidx.media3.exoplayer.DefaultRenderersFactory;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.ui.PlayerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PlayVideoActivity extends AppCompatActivity {
     private PlayerView playerView;
@@ -42,6 +46,15 @@ public class PlayVideoActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // Find the close_icon ImageView
+        FloatingActionButton backButton = findViewById(R.id.back_button);
+
+        // Set a click listener to finish the activity
+        backButton.setOnClickListener(v -> {
+            // Close the SearchActivity and return to the previous fragment
+            onBackPressed();
         });
 
 //        DefaultLoadControl loadControl = new DefaultLoadControl.Builder()
@@ -103,12 +116,25 @@ public class PlayVideoActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        exoPlayer.pause();
+        if (exoPlayer != null) {
+            exoPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (exoPlayer != null) {
+            exoPlayer.release();
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        exoPlayer.release();
+        if (exoPlayer != null) {
+            exoPlayer.release();
+        }
     }
+
 }
