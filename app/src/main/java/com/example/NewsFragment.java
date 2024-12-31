@@ -129,7 +129,7 @@ public class NewsFragment extends Fragment implements SelectListener {
                     SmallNews newsItem = new SmallNews();
                     newsItem.setId(rs.getInt("id")); // assuming an 'id' column exists
                     newsItem.setTitle(rs.getString("title"));
-                    newsItem.setImageUrl(rs.getString("imageUrl")); // assuming an 'imageUrl' column exists
+                    newsItem.setImageUrl(rs.getString("urlToImage")); // assuming an 'imageUrl' column exists
                     NewsList.add(newsItem);
                 }
 
