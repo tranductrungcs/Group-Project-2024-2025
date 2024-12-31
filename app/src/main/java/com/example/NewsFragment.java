@@ -120,16 +120,16 @@ public class NewsFragment extends Fragment implements SelectListener {
         executorService.execute(() -> {
             try {
                 con = sqlconnection.CONN();
-                String query = "SELECT * FROM androidapi.api_article ORDER BY id DESC LIMIT 10";
+                String query = "SELECT * FROM androidapi.api_article ORDER BY id LIMIT 10";
                 PreparedStatement stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
-                NewsList.clear(); // Clear existing data if any
+                NewsList.clear();
 
                 while (rs.next()) {
                     SmallNews newsItem = new SmallNews();
-                    newsItem.setId(rs.getInt("id")); // assuming an 'id' column exists
+                    newsItem.setId(rs.getInt("id"));
                     newsItem.setTitle(rs.getString("title"));
-                    newsItem.setImageUrl(rs.getString("urlToImage")); // assuming an 'imageUrl' column exists
+                    newsItem.setImageUrl(rs.getString("urlToImage"));
                     NewsList.add(newsItem);
                 }
 
