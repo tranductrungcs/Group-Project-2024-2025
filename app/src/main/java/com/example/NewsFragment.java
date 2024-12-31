@@ -85,7 +85,7 @@ public class NewsFragment extends Fragment implements SelectListener {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         recyclerNews = view.findViewById(R.id.NewsList);
         recyclerNews.setHasFixedSize(true);
-        recyclerNews.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerNews.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
         ImageButton container_test = view.findViewById(R.id.test_to_show_news1);
         container_test.setOnClickListener(new View.OnClickListener() {
@@ -94,11 +94,11 @@ public class NewsFragment extends Fragment implements SelectListener {
                 movetoNewsDetail();
             }
         });
-
+        showItem();
         newsAdapter = new NewsAdapter(getContext(), NewsList, this);
         recyclerNews.setAdapter(newsAdapter);
 
-        showItem();
+
 
         return view;
     }
