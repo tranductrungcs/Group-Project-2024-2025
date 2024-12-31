@@ -12,7 +12,8 @@ public class SmallNews {
     private String[] contents;
     private String imageUrl;
 
-    public SmallNews(String title, String imageUrl){
+    public SmallNews(Integer id, String title, String imageUrl){
+        this.id = id;
         this.title = title;
         this.imageUrl = imageUrl;
     }
