@@ -36,9 +36,6 @@ public class NewsFragment extends Fragment implements SelectListener {
     private List<SmallNews> NewsList = new ArrayList<>();
     SQLconnection sqlconnection;
     Connection con;
-    String title, url;
-    View item;
-    SmallNews news;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -97,6 +94,10 @@ public class NewsFragment extends Fragment implements SelectListener {
                 movetoNewsDetail();
             }
         });
+
+        newsAdapter = new NewsAdapter(getContext(), NewsList, this);
+        recyclerNews.setAdapter(newsAdapter);
+
         showItem();
 
         return view;
@@ -115,6 +116,7 @@ public class NewsFragment extends Fragment implements SelectListener {
     public void onLongItemClick(int position){
         //no usage here, just declare to not abstract
     }
+
     public void showItem() {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(() -> {
@@ -123,29 +125,25 @@ public class NewsFragment extends Fragment implements SelectListener {
                 String query = "SELECT * FROM androidapi.api_article ORDER BY id LIMIT 10";
                 PreparedStatement stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
-                NewsList.clear();
+                List<SmallNews> newsList = new ArrayList<>();
 
                 while (rs.next()) {
                     SmallNews newsItem = new SmallNews();
                     newsItem.setId(rs.getInt("id"));
                     newsItem.setTitle(rs.getString("title"));
                     newsItem.setImageUrl(rs.getString("urlToImage"));
-                    NewsList.add(newsItem);
+                    newsList.add(newsItem);
                 }
+
+                requireActivity().runOnUiThread(() -> {
+                    NewsList.clear();
+                    NewsList.addAll(newsList);
+                    newsAdapter.setNewsList(NewsList);
+                });
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-
-            // Update UI on the main thread
-            requireActivity().runOnUiThread(() -> {
-                if (newsAdapter == null) {
-                    newsAdapter = new NewsAdapter(getContext(), NewsList, this);
-                    recyclerNews.setAdapter(newsAdapter);
-                } else {
-                    newsAdapter.setNewsList(NewsList);
-                }
-            });
         });
     }
 
