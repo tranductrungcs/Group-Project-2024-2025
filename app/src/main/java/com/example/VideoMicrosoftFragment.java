@@ -30,10 +30,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link VideoHuaweiFragment#newInstance} factory method to
+ * Use the {@link VideoMicrosoftFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VideoHuaweiFragment extends Fragment {
+public class VideoMicrosoftFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private VideoAdapter videoAdapter;
@@ -51,7 +51,7 @@ public class VideoHuaweiFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public VideoHuaweiFragment() {
+    public VideoMicrosoftFragment() {
         // Required empty public constructor
     }
 
@@ -61,11 +61,11 @@ public class VideoHuaweiFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment VideoHuaweiFragment.
+     * @return A new instance of fragment VideoMicrosoftFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static VideoHuaweiFragment newInstance(String param1, String param2) {
-        VideoHuaweiFragment fragment = new VideoHuaweiFragment();
+    public static VideoMicrosoftFragment newInstance(String param1, String param2) {
+        VideoMicrosoftFragment fragment = new VideoMicrosoftFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -86,7 +86,7 @@ public class VideoHuaweiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_video_huawei, container, false);
+        View view = inflater.inflate(R.layout.fragment_video_microsoft, container, false);
 
         tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
@@ -145,13 +145,13 @@ public class VideoHuaweiFragment extends Fragment {
                 .build();
 
         VideoAPI videoAPI = retrofit.create(VideoAPI.class);
-        Call<List<Video>> call = videoAPI.getVideos("Huawei");
+        Call<List<Video>> call = videoAPI.getVideos("Microsoft");
         call.enqueue(new Callback<List<Video>>() {
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     for (Video video : response.body()) {
-                        if ("Huawei".equals(video.getVideoBrandType())) {
+                        if ("Microsoft".equals(video.getVideoBrandType())) {
                             videoList.add(video);
                             Log.i("Add videos success", video.getVideoUniqueId());
                         }

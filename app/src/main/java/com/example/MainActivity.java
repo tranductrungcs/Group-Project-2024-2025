@@ -1,40 +1,18 @@
 package com.example;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Switch;
-import android.widget.RadioButton ;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
-import androidx.core.util.Consumer;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleEventObserver;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    Switch switcher;
-    boolean night_mode;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
-    private String currentLanguage = "en";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,78 +24,14 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout_main);
         ViewPager viewPager = findViewById(R.id.view_pager);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
-        if (tabLayout.getTabAt(0) != null) {
-            tabLayout.getTabAt(0).setIcon(R.drawable.video_icon).setText(R.string.videos);
-        }
-        if (tabLayout.getTabAt(1) != null) {
-            tabLayout.getTabAt(1).setIcon(R.drawable.news_icon).setText(R.string.news);
-        }
-        // Set the initial theme based on the device's night mode setting
-        switcher = findViewById(R.id.switcher);
-
-        // Use sharedPreferences to save mode if exit the app and go back again
-        sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE);
-
-        // default mode: light
-        night_mode = sharedPreferences.getBoolean("night", false);
-
-        if (night_mode) {
-            switcher.setChecked(true);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-
-        switcher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (night_mode) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night", false);
-                }
-
-                else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    editor = sharedPreferences.edit();
-                    editor.putBoolean("night", true);
-                }
-                editor.apply();
-            }
-        });
-        RadioButton  btnEnglish = findViewById(R.id.english_button);
-        RadioButton  btnVietnamese = findViewById(R.id.vietnamese_button);
-
-        btnEnglish.setOnClickListener(v -> {
-            changeLanguage("en");
-        });
-
-        btnVietnamese.setOnClickListener(v -> {
-            changeLanguage("vi");
-        });
+        tabLayout.getTabAt(0).setIcon(R.drawable.video_icon).setText(R.string.videos);
+        tabLayout.getTabAt(1).setIcon(R.drawable.news_icon).setText(R.string.news);
     }
-    private void changeLanguage(String languageCode) {
-        if (!currentLanguage.equals(languageCode)) {
-            currentLanguage = languageCode;
-
-
-            editor = sharedPreferences.edit();
-            editor.putString("language", languageCode);
-            editor.apply();
-
-
-            LocaleManager.setLocale(this, languageCode);
-
-
-            recreate();
-        }
-    }
-
 }
-
-
