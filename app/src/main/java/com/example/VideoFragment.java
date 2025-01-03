@@ -87,24 +87,6 @@ public class VideoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-//        if (getActivity() != null) {
-//            videoUris[0] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.apple_watch_series10;
-//            videoUris[1] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.airpods4;
-//            videoUris[2] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.ipad_pro;
-//            videoUris[3] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.iphone16_pro;
-//            videoUris[4] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_note9;
-//            videoUris[5] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxy_tab_s10_series;
-//            videoUris[6] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.galaxys_24_fe;
-//            videoUris[7] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.samsung_health;
-//            videoUris[8] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_matebook_x_pro;
-//            videoUris[9] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_matepad_11_5s;
-//            videoUris[10] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_p60_series;
-//            videoUris[11] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.huawei_watch_3_3_pro;
-//            videoUris[12] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_12t_pro;
-//            videoUris[13] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_14t_series;
-//            videoUris[14] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_mi_drone;
-//            videoUris[15] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.xiaomi_smart_factory;
-//        }
     }
 
     @Override
@@ -130,19 +112,6 @@ public class VideoFragment extends Fragment {
 
         return view;
     }
-
-//    private void performSearch(String query) {
-//        // Implement your search logic here
-//        // For example, filter the video thumbnails based on the query
-//        for (int i = 0; i < thumbnails.length; i++) {
-//            // Example: Check if the video title contains the query
-//            if (videoTitles[i].toLowerCase().contains(query.toLowerCase())) {
-//                thumbnails[i].setVisibility(View.VISIBLE);
-//            } else {
-//                thumbnails[i].setVisibility(View.GONE);
-//            }
-//        }
-//    }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
