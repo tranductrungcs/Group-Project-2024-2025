@@ -7,39 +7,23 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.media3.common.MediaItem;
 import androidx.media3.exoplayer.ExoPlayer;
-import androidx.media3.exoplayer.util.EventLogger;
 import androidx.media3.ui.PlayerView;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.MediaController;
-import android.widget.TextView;
-import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 
 import android.widget.Toast;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.VideoView;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,15 +40,9 @@ public class VideoAppleFragment extends Fragment {
     private RecyclerView recyclerView;
     private VideoAdapter videoAdapter;
     private final List<Video> videoList = new ArrayList<>();
-    private LinearLayout videoContainer;
-    private PlayerView playerView;
-    private ExoPlayer exoPlayer;
     private TabLayout tabLayout;
 
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
-//
-//    private final String[] videoUris = new String[2];
-//    private final ImageButton[] thumbnails = new ImageButton[2];
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -104,12 +82,6 @@ public class VideoAppleFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-//        // Initialize video items list
-//        if (getActivity() != null) {
-//            videoUris[0] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.apple_watch_series10;
-//            videoUris[1] = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.airpods4;
-//        }
     }
 
     @Override
@@ -118,18 +90,9 @@ public class VideoAppleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video_apple, container, false);
 
-//        thumbnails[0] = view.findViewById(R.id.apple_watch_series10);
-//        thumbnails[1] = view.findViewById(R.id.airpods4);
-
-//        for (int i = 0; i < thumbnails.length; i++) {
-//            final int index = i;
-//            thumbnails[i].setOnClickListener(v -> playVideo(index));
-//        }
-//
         tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
         recyclerView = view.findViewById(R.id.videos);
-//        videoContainer = view.findViewById(R.id.videoContainer);
 
         // Setup RecyclerView with GridLayoutManager for 2 columns
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -166,29 +129,7 @@ public class VideoAppleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-//        playerView = view.findViewById(R.id.tempPlayerView);
-//
-//        exoPlayer = new ExoPlayer.Builder(requireContext()).build();
-//        playerView.setPlayer(exoPlayer);
-//
-//        MediaItem mediaItem = MediaItem.fromUri(baseUrl + "fetch/1qMi8eu5aMjLuOwnPIH_n-DjRL19oknGi");
-//        exoPlayer.setMediaItem(mediaItem);
-//        exoPlayer.prepare();
-//        exoPlayer.play();
     }
-
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        exoPlayer.pause();
-//    }
-//
-//    @Override
-//    public void onDestroyView() {
-//        super.onDestroyView();
-//        exoPlayer.release();
-//    }
 
     private void refreshData() {
         List<Video> newData = getListPost();
@@ -222,8 +163,6 @@ public class VideoAppleFragment extends Fragment {
                             Log.i("Add videos success", video.getVideoUniqueId());
                         }
                     }
-                    // Cập nhật giao diện với danh sách video
-//                    updateUI();
                 }
             }
 
@@ -236,58 +175,6 @@ public class VideoAppleFragment extends Fragment {
             }
         });
     }
-
-//    private void updateUI() {
-////        // Kiểm tra xem có video nào không
-////        if (appleVideos.isEmpty()) {
-////            Toast.makeText(getContext(), "No Apple videos found", Toast.LENGTH_SHORT).show();
-////            return;
-////        }
-////
-////        // Giả sử bạn có 2 video và đã định nghĩa videoUris và thumbnails
-////        for (int i = 0; i < Math.min(appleVideos.size(), thumbnails.length); i++) {
-////            Video video = appleVideos.get(i);
-////            videoUris[i] = video.getFetchableUrl(); // Lưu đường dẫn video
-////
-////            // Cập nhật thumbnail (nếu có) - ở đây giả sử bạn có một URL thumbnail
-////            // Nếu không có thumbnail, bạn có thể bỏ qua bước này hoặc sử dụng một hình ảnh mặc định
-//////            if (video.getThumbnailImageFetchableUrl() != null) {
-//////                // Tải hình ảnh thumbnail từ URL
-//////                // Bạn có thể sử dụng thư viện như Glide hoặc Picasso để tải hình ảnh
-//////                // Glide.with(this).load(video.getThumbnailImageFetchableUrl()).into(thumbnails[i]);
-//////            } else {
-//////                // Nếu không có thumbnail, có thể thiết lập một hình ảnh mặc định
-//////                thumbnails[i].setImageResource(R.drawable.default_thumbnail); // Thay đổi tên hình ảnh mặc định nếu cần
-//////            }
-////
-////            // Thiết lập tiêu đề hoặc mô tả cho video (nếu cần)
-////            thumbnails[i].setContentDescription(video.getVideoBrandType() + ": " + video.getTitle());
-////        }
-//        if (videoContainer.getChildCount() != 0) {
-//            videoContainer.removeAllViews();
-//        }
-//
-//        for (Video video : appleVideos) {
-//            // Inflate layout cho video
-//            View videoView = LayoutInflater.from(getContext()).inflate(R.layout.video_item, videoContainer, false);
-//
-//            // Lấy các thành phần từ layout
-//            ImageView videoThumbnail = videoView.findViewById(R.id.videoThumbnail);
-//            TextView videoTitle = videoView.findViewById(R.id.videoTitle);
-//
-//            videoThumbnail.setOnClickListener(listener -> playVideo(video));
-//            videoTitle.setOnClickListener(listener -> playVideo(video));
-//
-//            // Thiết lập dữ liệu
-//            Glide.with(this).load(baseUrl + video.getThumbnailImageFetchableUrl()).into(videoThumbnail); // Sử dụng Glide để tải thumbnail
-//            videoTitle.setText(video.getTitle());
-//
-//            // Thêm video vào container
-//            videoContainer.addView(videoView);
-//
-//            Log.i("Add video success", String.format("Add video %s successfully", video.getVideoUniqueId()));
-//        }
-//    }
 
     private void playVideo(Video video) {
         Uri videoUri = Uri.parse(baseUrl + video.getFetchableUrl());

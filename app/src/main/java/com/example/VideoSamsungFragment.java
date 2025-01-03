@@ -8,7 +8,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -16,9 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -92,27 +88,6 @@ public class VideoSamsungFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video_samsung, container, false);
-
-//        String html = "<iframe width=\"360\" height=\"515\" src=\"https://www.youtube.com/embed/QPOLrbKI5oQ\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share \" allowfullscreen></iframe>";
-//
-//        WebView myWebView = view.findViewById(R.id.webview);
-//        WebSettings webSettings = myWebView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-//
-//        myWebView.loadData(html, "text/html", null);
-
-//        myWebView.loadUrl("http://www.example.com");
-
-//        button = view.findViewById(R.id.video);
-//        button.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//
-//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/embed/BSYsXVFzmKA?si=Mlg5KwkmKBi6fAhH")));
-//                Log.i("Video", "Video Playing....");
-//
-//            }
-//        });
 
         tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
