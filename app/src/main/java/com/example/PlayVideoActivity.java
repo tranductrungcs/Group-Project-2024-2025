@@ -49,7 +49,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         });
 
         // Find the close_icon ImageView
-        FloatingActionButton backButton = findViewById(R.id.back_button);
+        ImageView backButton = findViewById(R.id.back_button);
 
         // Set a click listener to finish the activity
         backButton.setOnClickListener(v -> {
