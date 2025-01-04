@@ -29,10 +29,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link VideoHuaweiFragment#newInstance} factory method to
+ * Use the {@link VideoAllFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VideoHuaweiFragment extends Fragment {
+public class VideoAllFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private VideoAdapter videoAdapter;
@@ -50,7 +50,7 @@ public class VideoHuaweiFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public VideoHuaweiFragment() {
+    public VideoAllFragment() {
         // Required empty public constructor
     }
 
@@ -60,11 +60,11 @@ public class VideoHuaweiFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment VideoHuaweiFragment.
+     * @return A new instance of fragment VideoAllFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static VideoHuaweiFragment newInstance(String param1, String param2) {
-        VideoHuaweiFragment fragment = new VideoHuaweiFragment();
+    public static VideoAllFragment newInstance(String param1, String param2) {
+        VideoAllFragment fragment = new VideoAllFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,7 +85,7 @@ public class VideoHuaweiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_video_huawei, container, false);
+        View view = inflater.inflate(R.layout.fragment_video_all, container, false);
 
         tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
@@ -143,27 +143,24 @@ public class VideoHuaweiFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        VideoAPI videoAPI = retrofit.create(VideoAPI.class);
-        Call<List<Video>> call = videoAPI.getVideos("Huawei");
+        VideoAllAPI videoAllAPI = retrofit.create(VideoAllAPI.class);
+        Call<List<Video>> call = videoAllAPI.getVideos();
         call.enqueue(new Callback<List<Video>>() {
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    for (Video video : response.body()) {
-                        if ("Huawei".equals(video.getVideoBrandType())) {
-                            videoList.add(video);
-                            Log.i("Add videos success", video.getVideoUniqueId());
-                        }
-                    }
+                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                    videoList.clear();
+                    videoList.addAll(response.body());
+                    videoAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getContext(), "No videos available", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<List<Video>> call, Throwable t) {
-                if (getContext() != null) {
-                    Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
-                }
-                Log.i("Queue error", t.toString());
+                Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+                Log.e("API Error", t.getMessage());
             }
         });
     }
