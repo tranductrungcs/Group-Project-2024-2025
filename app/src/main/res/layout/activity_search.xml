@@ -182,7 +182,8 @@
                 android:layout_toEndOf="@id/trends_attribute1"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
-                android:text="Trend 1" />
+                android:text="Trend 1"
+                android:textColor="@color/tab_text_color"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -206,7 +207,8 @@
                 android:layout_toEndOf="@id/trends_attribute2"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
-                android:text="Trend 2" />
+                android:text="Trend 2"
+                android:textColor="@color/tab_text_color" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -230,7 +232,8 @@
                 android:layout_toEndOf="@id/trends_attribute3"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
-                android:text="Trend 3" />
+                android:text="Trend 3"
+                android:textColor="@color/tab_text_color" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -254,7 +257,8 @@
                 android:layout_toEndOf="@id/trends_attribute4"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
-                android:text="Trend 4" />
+                android:text="Trend 4"
+                android:textColor="@color/tab_text_color" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -302,7 +306,8 @@
                 android:layout_toEndOf="@id/history_attribute1"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
-                android:text="App Mobile" />
+                android:text="App Mobile"
+                android:textColor="@color/tab_text_color" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -326,7 +331,8 @@
                 android:layout_toEndOf="@id/history_attribute2"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
-                android:text="Laptop Asus" />
+                android:text="Laptop Asus"
+                android:textColor="@color/tab_text_color" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
