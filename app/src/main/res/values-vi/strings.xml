@@ -29,6 +29,7 @@
 
 
     <string name="setting">Cài đặt</string>
+    <string name="save">Lưu</string>
     <string name="change_username">Thay đổi tên người dùng</string>
     <string name="language">Ngôn ngữ</string>
     <string name="Vietnamese">Tiếng Việt</string>

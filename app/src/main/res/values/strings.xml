@@ -36,8 +36,8 @@
     <string name="Developer">Developer</string>
 
 
-
     <string name="back">Back</string>
+    <string name="save">Save</string>
     <string name="next">Next</string>
     <string name="choice_question">Which technology companies are you interested in?</string>
     <string name="apple">Apple</string>
@@ -48,6 +48,7 @@
     <string name="microsoft">Microsoft</string>
     <string name="title_activity_scrolling_news">ScrollingNewsActivity</string>
     <string name="large_text">
+
 
 
 
@@ -219,4 +220,6 @@ quasi aliquam eligendi, placeat qui corporis!</string>
     <string name="default_date">Mon, Jan 1st 2018</string>
 
     <string name="action_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

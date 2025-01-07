@@ -21,6 +21,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return new NewsFragment();
 
+            case 2:
+                return new SaveFragment();
+
             default:
                 return new VideoFragment();
         }
@@ -28,7 +31,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
 }
