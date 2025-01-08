@@ -15,7 +15,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
-            android:paddingBottom="100dp"
+            android:paddingBottom="120dp"
             android:orientation="vertical">
 
             <include
