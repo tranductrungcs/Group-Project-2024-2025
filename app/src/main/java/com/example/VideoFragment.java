@@ -29,17 +29,6 @@ import com.google.android.material.tabs.TabLayout;
  * create an instance of this fragment.
  */
 public class VideoFragment extends Fragment {
-//    private int currentVideoIndex = 0;
-//    private final String[] videoUris = new String[16];
-//    private final ImageButton[] thumbnails = new ImageButton[16];
-
-//    private final String[] videoUris = new String[4];
-//    private final ImageButton[] thumbnails = new ImageButton[4];
-
-//    private SearchView searchView;
-    private int currentVideoIndex = 0;
-    private final String[] videoUris = new String[16];
-    private final ImageButton[] thumbnails = new ImageButton[16];
     //    private SearchView searchView;
     private ImageButton ic_setting;
 
