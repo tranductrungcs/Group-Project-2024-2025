@@ -7,10 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".PlayVideoActivity">
 
-    <androidx.media3.ui.PlayerView
-        android:id="@+id/tempPlayerView"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
+<!--    <androidx.media3.ui.PlayerView-->
+<!--        android:id="@+id/tempPlayerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
     <ImageView
         android:id="@+id/back_button"
@@ -23,25 +29,25 @@
         android:layout_alignParentStart="true"
         tools:ignore="MissingConstraints,RtlSymmetry" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_margin="10dp">-->
 
-        <include
-            layout="@layout/video_like_button" />
+<!--        <include-->
+<!--            layout="@layout/video_like_button" />-->
 
-        <include
-            layout="@layout/video_comment_button" />
+<!--        <include-->
+<!--            layout="@layout/video_comment_button" />-->
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/save_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_bookmark"
-            tools:ignore="MissingConstraints,RtlSymmetry" />
-    </LinearLayout>
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/save_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/baseline_bookmark"-->
+<!--            tools:ignore="MissingConstraints,RtlSymmetry" />-->
+<!--    </LinearLayout>-->
 </RelativeLayout>

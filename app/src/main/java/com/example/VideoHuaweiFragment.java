@@ -169,12 +169,20 @@ public class VideoHuaweiFragment extends Fragment {
     }
 
     private void playVideo(Video video) {
-        Uri videoUri = Uri.parse(baseUrl + video.getFetchableUrl());
+        // Create a list of video URIs
+        ArrayList<String> videoUris = new ArrayList<>();
+        for (Video v : videoList) {
+            videoUris.add(baseUrl + v.getFetchableUrl());
+        }
 
-        // Start PlayVideoActivity with the selected URI
+        // Get the selected video's position
+        int selectedPosition = videoList.indexOf(video);
+
+        // Start PlayVideoActivity with the video list and selected position
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
-            intent.putExtra("videoUri", videoUri.toString());
+            intent.putStringArrayListExtra("videoUris", videoUris);
+            intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }
     }

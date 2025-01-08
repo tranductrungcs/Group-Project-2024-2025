@@ -7,8 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.media3.exoplayer.ExoPlayer;
-import androidx.media3.ui.PlayerView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -177,12 +175,20 @@ public class VideoAppleFragment extends Fragment {
     }
 
     private void playVideo(Video video) {
-        Uri videoUri = Uri.parse(baseUrl + video.getFetchableUrl());
+        // Create a list of video URIs
+        ArrayList<String> videoUris = new ArrayList<>();
+        for (Video v : videoList) {
+            videoUris.add(baseUrl + v.getFetchableUrl());
+        }
 
-        // Start PlayVideoActivity with the selected URI
+        // Get the selected video's position
+        int selectedPosition = videoList.indexOf(video);
+
+        // Start PlayVideoActivity with the video list and selected position
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
-            intent.putExtra("videoUri", videoUri.toString());
+            intent.putStringArrayListExtra("videoUris", videoUris);
+            intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }
     }
