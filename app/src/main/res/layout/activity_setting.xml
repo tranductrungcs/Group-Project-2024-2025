@@ -127,26 +127,21 @@
             <RadioGroup
                 android:id="@+id/language_group"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginEnd="16dp">
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/vietnamese_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiếng Việt"/>
+
                 <RadioButton
                     android:id="@+id/english_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vietnamese"
-                    android:textColor="@color/option_text_color"
-                    android:textSize="14sp"
-                    android:layout_marginEnd="16dp" />
+                    android:text="English"/>
+
             </RadioGroup>
-            <RadioButton
-                android:id="@+id/vietnamese_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="English"
-                android:textColor="@color/option_text_color"
-                android:textSize="14sp"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <View
