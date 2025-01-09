@@ -1,7 +1,7 @@
 package com.example;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -129,6 +129,7 @@ public class VideoAppleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void refreshData() {
         List<Video> newData = getListPost();
         videoAdapter.setData(newData);
@@ -165,7 +166,7 @@ public class VideoAppleFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Video>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Video>> call, @NonNull Throwable t) {
                 if (getContext() != null) {
                     Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
                 }

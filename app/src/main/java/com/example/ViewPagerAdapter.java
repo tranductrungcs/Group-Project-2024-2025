@@ -15,14 +15,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
+            default:
                 return new VideoFragment();
 
             case 1:
                 return new NewsFragment();
-
-            default:
-                return new VideoFragment();
         }
     }
 

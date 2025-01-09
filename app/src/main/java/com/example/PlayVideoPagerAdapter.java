@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAdapter.VideoViewHolder>{
-    private List<String> videoUris;
-    private Context context;
+    private final List<String> videoUris;
+    private final Context context;
 
     public PlayVideoPagerAdapter(Context context, List<String> videoUris) {
         this.context = context;
@@ -41,7 +41,7 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
     }
 
     public class VideoViewHolder extends RecyclerView.ViewHolder {
-        private PlayerView playerView;
+        private final PlayerView playerView;
         private ExoPlayer exoPlayer;
 
         public VideoViewHolder(@NonNull View itemView) {
@@ -60,14 +60,14 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
 
             itemView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
                 @Override
-                public void onViewAttachedToWindow(View v) {
+                public void onViewAttachedToWindow(@NonNull View v) {
                     if (exoPlayer != null) {
                         exoPlayer.play();
                     }
                 }
 
                 @Override
-                public void onViewDetachedFromWindow(View v) {
+                public void onViewDetachedFromWindow(@NonNull View v) {
                     if (exoPlayer != null) {
                         exoPlayer.pause();
                         exoPlayer.release();

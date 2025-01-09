@@ -1,7 +1,7 @@
 package com.example;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -123,6 +124,7 @@ public class VideoAllFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void refreshData() {
         List<Video> newData = getListPost();
         videoAdapter.setData(newData);
@@ -146,6 +148,7 @@ public class VideoAllFragment extends Fragment {
         VideoAllAPI videoAllAPI = retrofit.create(VideoAllAPI.class);
         Call<List<Video>> call = videoAllAPI.getVideos();
         call.enqueue(new Callback<List<Video>>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
                 if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
@@ -158,9 +161,9 @@ public class VideoAllFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Video>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Video>> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
-                Log.e("API Error", t.getMessage());
+                Log.e("API Error", Objects.requireNonNull(t.getMessage()));
             }
         });
     }
