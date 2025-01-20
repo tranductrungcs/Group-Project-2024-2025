@@ -33,5 +33,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.video_icon).setText(R.string.videos);
         tabLayout.getTabAt(1).setIcon(R.drawable.news_icon).setText(R.string.news);
+        tabLayout.getTabAt(2).setIcon(R.drawable.bookmark_icon).setText(R.string.save);
     }
 }
