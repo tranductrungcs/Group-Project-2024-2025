@@ -133,12 +133,14 @@
                     android:id="@+id/vietnamese_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/tab_text_color"
                     android:text="Tiếng Việt"/>
 
                 <RadioButton
                     android:id="@+id/english_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/tab_text_color"
                     android:text="English"/>
 
             </RadioGroup>
