@@ -339,7 +339,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Liên hệ góp ý cho chúng mình qua số hotline:1900 một tông vô mõm, một dép vô mồm"
+            android:text="Liên hệ góp ý cho chúng mình qua số hotline:1900 1234"
             android:textColor="@color/tab_text_color"/>
     </LinearLayout>
 </ScrollView>
