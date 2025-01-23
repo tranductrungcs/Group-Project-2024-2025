@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.media3.common.MediaItem;
@@ -16,11 +17,13 @@ import java.util.List;
 
 public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAdapter.VideoViewHolder>{
     private final List<String> videoUris;
+    private final List<String> videoTitles;
     private final Context context;
 
-    public PlayVideoPagerAdapter(Context context, List<String> videoUris) {
+    public PlayVideoPagerAdapter(Context context, List<String> videoUris, List<String> videoTitles) {
         this.context = context;
         this.videoUris = videoUris;
+        this.videoTitles = videoTitles;
     }
 
     @NonNull
@@ -32,7 +35,8 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
 
     @Override
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
-        holder.bind(videoUris.get(position));
+        holder.bindVideo(videoUris.get(position));
+        holder.bindTitle(videoTitles.get(position));
     }
 
     @Override
@@ -43,13 +47,15 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
     public class VideoViewHolder extends RecyclerView.ViewHolder {
         private final PlayerView playerView;
         private ExoPlayer exoPlayer;
+        private final TextView videoTitle;
 
         public VideoViewHolder(@NonNull View itemView) {
             super(itemView);
             playerView = itemView.findViewById(R.id.tempPlayerView);
+            videoTitle = itemView.findViewById(R.id.video_title);
         }
 
-        public void bind(String videoUri) {
+        public void bindVideo(String videoUri) {
             exoPlayer = new ExoPlayer.Builder(context).build();
             playerView.setPlayer(exoPlayer);
 
@@ -74,6 +80,11 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
                     }
                 }
             });
+        }
+
+        public void bindTitle(String title) {
+            // Update the video title
+            videoTitle.setText(title); // Set title to TextView
         }
     }
 }

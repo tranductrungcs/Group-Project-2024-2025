@@ -177,6 +177,12 @@ public class VideoSamsungFragment extends Fragment {
             videoUris.add(baseUrl + v.getFetchableUrl());
         }
 
+        // Create a list of video titles
+        ArrayList<String> videoTitles = new ArrayList<>();
+        for (Video v : videoList) {
+            videoTitles.add(v.getTitle());
+        }
+
         // Get the selected video's position
         int selectedPosition = videoList.indexOf(video);
 
@@ -184,6 +190,7 @@ public class VideoSamsungFragment extends Fragment {
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
             intent.putStringArrayListExtra("videoUris", videoUris);
+            intent.putStringArrayListExtra("videoTitles", videoTitles);
             intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }
