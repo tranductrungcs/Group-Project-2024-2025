@@ -2,9 +2,6 @@ package com.example;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class Video {
     private int id;
     private String videoUniqueId;

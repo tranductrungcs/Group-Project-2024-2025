@@ -1,7 +1,7 @@
 package com.example;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -123,6 +123,7 @@ public class VideoAsusFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void refreshData() {
         List<Video> newData = getListPost();
         videoAdapter.setData(newData);
@@ -159,7 +160,7 @@ public class VideoAsusFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Video>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Video>> call, @NonNull Throwable t) {
                 if (getContext() != null) {
                     Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
                 }
@@ -175,6 +176,12 @@ public class VideoAsusFragment extends Fragment {
             videoUris.add(baseUrl + v.getFetchableUrl());
         }
 
+        // Create a list of video titles
+        ArrayList<String> videoTitles = new ArrayList<>();
+        for (Video v : videoList) {
+            videoTitles.add(v.getTitle());
+        }
+
         // Get the selected video's position
         int selectedPosition = videoList.indexOf(video);
 
@@ -182,6 +189,7 @@ public class VideoAsusFragment extends Fragment {
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
             intent.putStringArrayListExtra("videoUris", videoUris);
+            intent.putStringArrayListExtra("videoTitles", videoTitles);
             intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }

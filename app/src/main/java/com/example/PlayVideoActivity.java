@@ -15,8 +15,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.Player;
 import androidx.media3.common.util.UnstableApi;
-import androidx.media3.exoplayer.DefaultLoadControl;
-import androidx.media3.exoplayer.DefaultRenderersFactory;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -26,6 +24,7 @@ public class PlayVideoActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private PlayVideoPagerAdapter adapter;
     private List<String> videoUris;
+    private List<String> videoTitles;
     private ExoPlayer exoPlayer;
 
     @OptIn(markerClass = UnstableApi.class)
@@ -53,22 +52,7 @@ public class PlayVideoActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-//        DefaultLoadControl loadControl = new DefaultLoadControl.Builder()
-//                .setBufferDurationsMs(
-//                        DefaultLoadControl.DEFAULT_MIN_BUFFER_MS,
-//                        DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
-//                        DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
-//                        DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
-//                ).build();
-
-//        DefaultRenderersFactory renderersFactory = new DefaultRenderersFactory(this)
-//                .setEnableDecoderFallback(true)
-//                .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER);
-
-        exoPlayer = new ExoPlayer.Builder(this)
-//                .setLoadControl(loadControl)
-//                .setRenderersFactory(renderersFactory)
-                .build();
+        exoPlayer = new ExoPlayer.Builder(this).build();
 
         exoPlayer.setRepeatMode(ExoPlayer.REPEAT_MODE_OFF);
         exoPlayer.setShuffleModeEnabled(false);
@@ -84,12 +68,15 @@ public class PlayVideoActivity extends AppCompatActivity {
 
         // Retrieve video list from intent
         videoUris = getIntent().getStringArrayListExtra("videoUris");
+
+        // Retrieve video list from intent
+        videoTitles = getIntent().getStringArrayListExtra("videoTitles");
         int initialPosition = getIntent().getIntExtra("initialPosition", 0);
 
         viewPager = findViewById(R.id.viewPager);
 
         // Set up adapter
-        adapter = new PlayVideoPagerAdapter(this, videoUris);
+        adapter = new PlayVideoPagerAdapter(this, videoUris, videoTitles);
         viewPager.setAdapter(adapter);
 
         // Set initial video position
