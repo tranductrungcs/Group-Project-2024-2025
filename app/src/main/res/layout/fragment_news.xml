@@ -46,6 +46,7 @@
             android:layout_gravity="end" />
 
     </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:id="@+id/search_bar"
         android:layout_width="350dp"
@@ -82,6 +83,7 @@
             android:layout_marginTop="10dp"/>
 
     </LinearLayout>
+
     <ScrollView
         android:id="@+id/news"
         android:layout_width="wrap_content"
@@ -92,17 +94,20 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/highlight"
                 android:background="#67D6FE">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="28dp"
                     android:src="@drawable/ic_fire_highlight"
                     android:id="@+id/firehere">
                 </ImageView>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,6 +117,7 @@
                     android:textSize="20sp"
                     android:layout_toRightOf="@id/firehere">
                 </TextView>
+
                 <HorizontalScrollView
                     android:id="@+id/highlightScroll"
                     android:layout_width="match_parent"
@@ -119,9 +125,12 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="3dp"
                     android:layout_below="@id/firehere">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
                         <ImageButton
                             android:id="@+id/test_to_show_news1"
                             android:layout_width="275dp"
@@ -156,18 +165,19 @@
                             style="@style/SCREEN"
                             android:src="@drawable/avoid_red"
                             tools:ignore="MissingConstraints" />
+
                     </LinearLayout>
                 </HorizontalScrollView>
             </RelativeLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_below="@id/highlight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/NewsList"
-                android:layout_margin="5dp">
-            </androidx.recyclerview.widget.RecyclerView>
-
-
+                android:layout_margin="5dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2" />
         </RelativeLayout>
     </ScrollView>
 
