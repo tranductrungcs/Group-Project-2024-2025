@@ -98,6 +98,13 @@ public class VideoFragment extends Fragment {
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setText(R.string.all);
+        tabLayout.getTabAt(1).setText(R.string.apple);
+        tabLayout.getTabAt(2).setText(R.string.samsung);
+        tabLayout.getTabAt(3).setText(R.string.huawei);
+        tabLayout.getTabAt(4).setText(R.string.xiaomi);
+        tabLayout.getTabAt(5).setText(R.string.microsoft);
+        tabLayout.getTabAt(6).setText(R.string.asus);
 
         return view;
     }
