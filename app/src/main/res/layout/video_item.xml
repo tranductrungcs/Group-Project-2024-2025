@@ -3,7 +3,7 @@
     android:layout_width="190dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:gravity="center">
 
     <ImageView
         android:id="@+id/videoThumbnail"
