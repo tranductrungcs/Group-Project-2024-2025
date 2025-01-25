@@ -40,6 +40,7 @@
     <string name="save">Save</string>
     <string name="next">Next</string>
     <string name="choice_question">Which technology companies are you interested in?</string>
+    <string name="all">All</string>
     <string name="apple">Apple</string>
     <string name="samsung">Samsung</string>
     <string name="xiaomi">Xiaomi</string>
