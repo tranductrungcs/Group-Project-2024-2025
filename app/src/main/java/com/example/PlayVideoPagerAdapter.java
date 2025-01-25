@@ -1,5 +1,6 @@
 package com.example;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +20,17 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
     private final List<String> videoUris;
     private final List<String> videoTitles;
     private final Context context;
+    private final List<String> comments;
+    private final List<String> likes;
+    private final List<String> bookmarks;
 
-    public PlayVideoPagerAdapter(Context context, List<String> videoUris, List<String> videoTitles) {
+    public PlayVideoPagerAdapter(Context context, List<String> videoUris, List<String> videoTitles, List<String> comments, List<String> likes, List<String> bookmarks) {
         this.context = context;
         this.videoUris = videoUris;
         this.videoTitles = videoTitles;
+        this.comments = comments;
+        this.likes = likes;
+        this.bookmarks = bookmarks;
     }
 
     @NonNull
@@ -37,6 +44,9 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
         holder.bindVideo(videoUris.get(position));
         holder.bindTitle(videoTitles.get(position));
+        holder.bindNumComments(comments.get(position));
+        holder.bindNumLikes(likes.get(position));
+        holder.bindNumSaves(bookmarks.get(position));
     }
 
     @Override
@@ -48,11 +58,18 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
         private final PlayerView playerView;
         private ExoPlayer exoPlayer;
         private final TextView videoTitle;
+        private final TextView comments;
+        private final TextView likes;
+        private final TextView bookmarks;
 
+        @SuppressLint("CutPasteId")
         public VideoViewHolder(@NonNull View itemView) {
             super(itemView);
             playerView = itemView.findViewById(R.id.tempPlayerView);
             videoTitle = itemView.findViewById(R.id.video_title);
+            comments = itemView.findViewById(R.id.number_of_comments);
+            likes = itemView.findViewById(R.id.number_of_likes);
+            bookmarks = itemView.findViewById(R.id.number_of_saves);
         }
 
         public void bindVideo(String videoUri) {
@@ -85,6 +102,21 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
         public void bindTitle(String title) {
             // Update the video title
             videoTitle.setText(title); // Set title to TextView
+        }
+
+        public void bindNumComments(String comment) {
+            // Update the number of video comments
+            comments.setText(comment); // Set to TextView
+        }
+
+        public void bindNumLikes(String like) {
+            // Update the number of video likes
+            likes.setText(like); // Set to TextView
+        }
+
+        public void bindNumSaves(String bookmark) {
+            // Update the number of video saves
+            bookmarks.setText(bookmark); // Set to TextView
         }
     }
 }
