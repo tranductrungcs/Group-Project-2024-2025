@@ -123,9 +123,7 @@
   <component name="ChangeListManager">
     <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Small change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PlayVideoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PlayVideoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/PlayVideoPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/PlayVideoPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/Video.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/Video.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAllFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAllFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAppleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAppleFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAsusFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAsusFragment.java" afterDir="false" />

@@ -98,13 +98,7 @@ public class VideoAllFragment extends Fragment {
         recyclerView.setAdapter(videoAdapter);
 
         // Setup SwipeRefreshLayout
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshData();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this::refreshData);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -124,19 +118,10 @@ public class VideoAllFragment extends Fragment {
         return view;
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private void refreshData() {
-        List<Video> newData = getListPost();
-        videoAdapter.setData(newData);
-        videoAdapter.notifyDataSetChanged();
-    }
-
-    private List<Video> getListPost() {
-        Log.i("List Post", videoList.toString());
-        if (!videoList.isEmpty()) {
-
-        }
-        return videoList;
+        videoList.clear(); // Remove the current video list
+        fetchVideos(); // Call the API to fetch new data
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void fetchVideos() {
@@ -152,8 +137,12 @@ public class VideoAllFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
                 if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
-                    videoList.clear();
-                    videoList.addAll(response.body());
+                    List<Video> videoList = response.body();
+                    // Update adapter with video list
+                    videoAdapter.setData(videoList);
+                    // Shuffle the video list
+                    videoAdapter.shuffleVideos();
+                    // Update the adapter after adding video
                     videoAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(getContext(), "No videos available", Toast.LENGTH_SHORT).show();
