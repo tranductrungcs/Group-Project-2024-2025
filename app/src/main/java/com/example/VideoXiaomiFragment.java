@@ -183,19 +183,19 @@ public class VideoXiaomiFragment extends Fragment {
         }
 
         // Create a list of video comments
-        ArrayList<String> comments = new ArrayList<>();
+        ArrayList<Integer> comments = new ArrayList<>();
         for (Video v : videoList) {
             comments.add(v.getCommentNum());
         }
 
         // Create a list of video likes
-        ArrayList<String> likes = new ArrayList<>();
+        ArrayList<Integer> likes = new ArrayList<>();
         for (Video v : videoList) {
             likes.add(v.getLikeNum());
         }
 
         // Create a list of video saves
-        ArrayList<String> bookmarks = new ArrayList<>();
+        ArrayList<Integer> bookmarks = new ArrayList<>();
         for (Video v : videoList) {
             bookmarks.add(v.getBookmarkNum());
         }
@@ -208,9 +208,9 @@ public class VideoXiaomiFragment extends Fragment {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
             intent.putStringArrayListExtra("videoUris", videoUris);
             intent.putStringArrayListExtra("videoTitles", videoTitles);
-            intent.putStringArrayListExtra("comments", comments);
-            intent.putStringArrayListExtra("likes", likes);
-            intent.putStringArrayListExtra("bookmarks", bookmarks);
+            intent.putIntegerArrayListExtra("comments", comments);
+            intent.putIntegerArrayListExtra("likes", likes);
+            intent.putIntegerArrayListExtra("bookmarks", bookmarks);
             intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }

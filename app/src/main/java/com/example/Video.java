@@ -15,9 +15,9 @@ public class Video {
     private String thumbnailImageUrl;
     private String thumbnailImageFetchableUrl;
     private String createdTime;
-    private String commentNum;
-    private String likeNum;
-    private String bookmarkNum;
+    private int commentNum;
+    private int likeNum;
+    private int bookmarkNum;
 
     public void setId(int id) {
         this.id = id;
@@ -108,27 +108,27 @@ public class Video {
         this.createdTime = createdTime;
     }
 
-    public String getCommentNum() {
+    public int getCommentNum() {
         return commentNum;
     }
 
-    public void setCommentNum(String commentNum) {
+    public void setCommentNum(int commentNum) {
         this.commentNum = commentNum;
     }
 
-    public String getLikeNum() {
+    public int getLikeNum() {
         return likeNum;
     }
 
-    public void setLikeNum(String likeNum) {
+    public void setLikeNum(int likeNum) {
         this.likeNum = likeNum;
     }
 
-    public String getBookmarkNum() {
+    public int getBookmarkNum() {
         return bookmarkNum;
     }
 
-    public void setBookmarkNum(String bookmarkNum) {
+    public void setBookmarkNum(int bookmarkNum) {
         this.bookmarkNum = bookmarkNum;
     }
 }

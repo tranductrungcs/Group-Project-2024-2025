@@ -20,11 +20,11 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
     private final List<String> videoUris;
     private final List<String> videoTitles;
     private final Context context;
-    private final List<String> comments;
-    private final List<String> likes;
-    private final List<String> bookmarks;
+    private final List<Integer> comments;
+    private final List<Integer> likes;
+    private final List<Integer> bookmarks;
 
-    public PlayVideoPagerAdapter(Context context, List<String> videoUris, List<String> videoTitles, List<String> comments, List<String> likes, List<String> bookmarks) {
+    public PlayVideoPagerAdapter(Context context, List<String> videoUris, List<String> videoTitles, List<Integer> comments, List<Integer> likes, List<Integer> bookmarks) {
         this.context = context;
         this.videoUris = videoUris;
         this.videoTitles = videoTitles;
@@ -104,19 +104,19 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
             videoTitle.setText(title); // Set title to TextView
         }
 
-        public void bindNumComments(String comment) {
+        public void bindNumComments(int comment) {
             // Update the number of video comments
-            comments.setText(comment); // Set to TextView
+            comments.setText(String.valueOf(comment)); // Set to TextView
         }
 
-        public void bindNumLikes(String like) {
+        public void bindNumLikes(int like) {
             // Update the number of video likes
-            likes.setText(like); // Set to TextView
+            likes.setText(String.valueOf(like)); // Set to TextView
         }
 
-        public void bindNumSaves(String bookmark) {
+        public void bindNumSaves(int bookmark) {
             // Update the number of video saves
-            bookmarks.setText(bookmark); // Set to TextView
+            bookmarks.setText(String.valueOf(bookmark)); // Set to TextView
         }
     }
 }
