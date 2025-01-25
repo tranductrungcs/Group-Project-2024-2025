@@ -15,26 +15,32 @@ public class VideoViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            default: return new VideoAppleFragment();
-            case 1: return new VideoSamsungFragment();
-            case 2: return new VideoHuaweiFragment();
-            case 3: return new VideoXiaomiFragment();
+            default: return new VideoAllFragment();
+            case 1: return new VideoAppleFragment();
+            case 2: return new VideoSamsungFragment();
+            case 3: return new VideoHuaweiFragment();
+            case 4: return new VideoXiaomiFragment();
+            case 5: return new VideoMicrosoftFragment();
+            case 6: return new VideoAsusFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return 4;
+        return 7;
     }
 
-//    @Nullable
-//    @Override
-//    public CharSequence getPageTitle(int position) {
-//        switch (position) {
-//            default: return "Apple";
-//            case 1: return "Samsung";
-//            case 2: return "Huawei";
-//            case 3: return "Xiaomi";
-//        }
-//    }
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        switch (position) {
+            default: return "All";
+            case 1: return "Apple";
+            case 2: return "Samsung";
+            case 3: return "Huawei";
+            case 4: return "Xiaomi";
+            case 5: return "Microsoft";
+            case 6: return "Asus";
+        }
+    }
 }

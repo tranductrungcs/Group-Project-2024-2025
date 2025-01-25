@@ -67,7 +67,7 @@ public class ScrollingNewsActivity extends AppCompatActivity {
             }
 
             handler.post(() -> {
-                adapter = new NewsAdapter(smallNewsList);
+//                adapter = new NewsAdapter(smallNewsList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 recyclerView.setAdapter(adapter);
             });
@@ -178,7 +178,6 @@ public class ScrollingNewsActivity extends AppCompatActivity {
             news.setDescription(description != null ? description.text() : getString(R.string.content_description));
             news.setContents(paragraphsTexts.toArray(new String[0]));
             news.setImageUrl(imageUrl);
-            news.setVideoUrl(videoUrl);
         } catch (ClassCastException e) {
             Log.e("Convert Class Failed", e.toString());
         } catch (Exception e) {

@@ -22,6 +22,8 @@ import java.sql.SQLException;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import android.content.SharedPreferences;
+import androidx.preference.PreferenceManager;
 
 public class ShowNewsActivity extends AppCompatActivity {
     TextToSpeech textToSpeech;
@@ -30,6 +32,7 @@ public class ShowNewsActivity extends AppCompatActivity {
     SQLconnection sqlconnection;
     ResultSet rs;
     String content;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,37 +44,50 @@ public class ShowNewsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         sqlconnection = new SQLconnection();
         showContent();
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+
 
         ImageButton Playbutton = findViewById(R.id.Playbutton);
         TextView Content = findViewById(R.id.NewsContent);
         textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
-                if (i != TextToSpeech.ERROR){
+                if (i != TextToSpeech.ERROR) {
                     textToSpeech.setLanguage(Locale.ENGLISH);
                 }
             }
         });
-        Playbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textToSpeech.speak(Content.getText().toString(), TextToSpeech.QUEUE_FLUSH, null, null);
+
+        Playbutton.setOnClickListener(view -> textToSpeech.speak(Content.getText().toString(), TextToSpeech.QUEUE_FLUSH, null, null));
+
+        // Apply the font size
+        String savedFontSize = preferences.getString("font_size", "Medium");
+        setFontSize(savedFontSize);
+
+        // Listener for font size change in SharedPreferences
+        preferences.registerOnSharedPreferenceChangeListener((sharedPreferences, key) -> {
+            if (key.equals("font_size")) {
+                String fontSize = sharedPreferences.getString("font_size", "Medium");
+                setFontSize(fontSize);
             }
         });
-
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
         if (textToSpeech != null) {
             textToSpeech.stop();
         }
         super.onPause();
     }
 
-    public void showContent(){
+    public void showContent() {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(() -> {
             try {
@@ -84,39 +100,36 @@ public class ShowNewsActivity extends AppCompatActivity {
                     bStr.append(rs.getString("content")).append("\n");
                 }
                 content = bStr.toString();
-            } catch (SQLException e){
+            } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            runOnUiThread(() ->{
+            runOnUiThread(() -> {
                 TextView Content = findViewById(R.id.NewsContent);
                 Content.setText(content);
             });
         });
     }
 
-    public void connect(){
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            try {
-                con = sqlconnection.CONN();
-                if (con == null) {
-                    str = "connect success";
-                } else {
-                    str = "Error!";
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            runOnUiThread(() -> {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-            });
-        });
+
+
+    // Method to apply the font size to all text views
+    private void setFontSize(String fontSize) {
+        float size = 16;
+        switch (fontSize) {
+            case "small":
+                size = 12;
+                break;
+            case "medium":
+                size = 16;
+                break;
+            case "large":
+                size = 20;
+                break;
+        }
+
+        TextView Content = findViewById(R.id.NewsContent);
+        if (Content != null) {
+            Content.setTextSize(size);
+        }
     }
-
-
 }

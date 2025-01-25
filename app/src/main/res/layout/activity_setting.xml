@@ -1,7 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9F9F9"
+    style="@style/SCREEN"
     android:padding="16dp">
 
     <LinearLayout
@@ -27,10 +28,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textSize="24sp"
+                android:text="@string/setting"
+                android:textSize="44sp"
                 android:textStyle="bold"
-                android:textColor="#333333" />
+                android:textColor="@color/tab_text_color" />
         </LinearLayout>
 
         <View
@@ -57,7 +58,7 @@
                 android:text="User Name"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="#333333" />
+                android:textColor="@color/tab_text_color" />
         </LinearLayout>
 
         <View
@@ -78,11 +79,11 @@
                 android:src="@drawable/ic_user" />
             <TextView
                 android:id="@+id/change_username_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Change Username/Avatar"
                 android:textSize="16sp"
-                android:textColor="#333333"
+                android:textColor="@color/tab_text_color"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"/>
             <ImageView
@@ -109,11 +110,11 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_language" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Language"
                 android:textSize="16sp"
-                android:textColor="#333333"
+                android:textColor="@color/tab_text_color"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1" />
         </LinearLayout>
@@ -126,26 +127,23 @@
             <RadioGroup
                 android:id="@+id/language_group"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginEnd="16dp">
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/vietnamese_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/tab_text_color"
+                    android:text="Tiếng Việt"/>
+
                 <RadioButton
                     android:id="@+id/english_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vietnamese"
-                    android:textColor="#555555"
-                    android:textSize="14sp"
-                    android:layout_marginEnd="16dp" />
+                    android:textColor="@color/tab_text_color"
+                    android:text="English"/>
+
             </RadioGroup>
-            <RadioButton
-                android:id="@+id/vietnamese_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="English"
-                android:textColor="#555555"
-                android:textSize="14sp"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <View
@@ -165,17 +163,18 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_dark_mode" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Dark/Light Mode"
+                android:text="Dark Mode"
                 android:textSize="16sp"
-                android:textColor="#333333"
+                android:textColor="@color/tab_text_color"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1" />
             <Switch
                 android:id="@+id/dark_light_switch"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
         </LinearLayout>
 
         <View
@@ -195,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Font Size"
-                android:textColor="#333333"
+                android:textColor="@color/tab_text_color"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -210,7 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Small"
-                android:textColor="#555555"
+                android:textColor="@color/option_text_color"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -218,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medium"
-                android:textColor="#555555"
+                android:textColor="@color/option_text_color"
                 android:textSize="14sp"
                 android:checked="true" />
 
@@ -227,7 +226,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Large"
-                android:textColor="#555555"
+                android:textColor="@color/option_text_color"
                 android:textSize="14sp" />
         </RadioGroup>
 
@@ -250,12 +249,12 @@
                 android:src="@drawable/ic_info" />
             <TextView
                 android:id="@+id/developer_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:text="Information"
-                android:textColor="#333333"
+                android:textColor="@color/tab_text_color"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -275,16 +274,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="News"
-                    android:textColor="#555555"
+                    android:textColor="@color/option_text_color"
                     android:textSize="14sp"
                     android:layout_marginEnd="20dp" />
             </RadioGroup>
             <RadioButton
                 android:id="@+id/video_button"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Video"
-                android:textColor="#555555"
+                android:textColor="@color/option_text_color"
                 android:textSize="14sp"
                 android:layout_weight="1" />
         </LinearLayout>
@@ -307,11 +306,11 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_developer" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Developer"
                 android:textSize="16sp"
-                android:textColor="#333333"
+                android:textColor="@color/tab_text_color"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1" />
         </LinearLayout>
@@ -321,24 +320,28 @@
             android:layout_height="wrap_content"
             android:text="Theo dõi nguồn"
             android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textColor="@color/tab_text_color"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Youtube: Đỗ Mixi"/>
+            android:text="Youtube: Đỗ Mixi"
+            android:textColor="@color/tab_text_color"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Facebook: TRẦN CƯỜNG "/>
+            android:text="Facebook: TRẦN CƯỜNG "
+            android:textColor="@color/tab_text_color"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Liên hệ góp ý cho chúng mình qua số hotline:1900 một tông vô mõm, một dép vô mồm"/>
+            android:text="Liên hệ góp ý cho chúng mình qua số hotline:1900 1234"
+            android:textColor="@color/tab_text_color"/>
     </LinearLayout>
 </ScrollView>
