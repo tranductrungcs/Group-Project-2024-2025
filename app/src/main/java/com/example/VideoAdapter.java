@@ -1,5 +1,6 @@
 package com.example;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Collections;
 import java.util.List;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
@@ -28,8 +30,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         this.onVideoClickListener = onVideoClickListener;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setData(List<Video> list) {
         this.videoList = list;
+        notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void shuffleVideos() {
+        Collections.shuffle(videoList);
         notifyDataSetChanged();
     }
 
