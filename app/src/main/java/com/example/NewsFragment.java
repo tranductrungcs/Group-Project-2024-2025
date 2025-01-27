@@ -38,6 +38,7 @@ public class NewsFragment extends Fragment implements SelectListener {
     Connection con;
 
 
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -75,7 +76,6 @@ public class NewsFragment extends Fragment implements SelectListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        sqlconnection = new SQLconnection();
 
     }
 
@@ -94,6 +94,9 @@ public class NewsFragment extends Fragment implements SelectListener {
                 movetoNewsDetail();
             }
         });
+
+        sqlconnection = new SQLconnection();
+
         showItem();
         newsAdapter = new NewsAdapter(getContext(), NewsList, this);
         recyclerNews.setAdapter(newsAdapter);
@@ -122,7 +125,7 @@ public class NewsFragment extends Fragment implements SelectListener {
         executorService.execute(() -> {
             try {
                 con = sqlconnection.CONN();
-                String query = "SELECT * FROM androidapi.api_article ORDER BY id LIMIT 10";
+                String query = "SELECT * FROM newschema.api_article ORDER BY id LIMIT 10";
                 PreparedStatement stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
                 List<SmallNews> newsList = new ArrayList<>();
