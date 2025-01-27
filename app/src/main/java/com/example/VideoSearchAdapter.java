@@ -1,5 +1,7 @@
 package com.example;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,32 +13,54 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Collections;
 import java.util.List;
 
 public class VideoSearchAdapter extends RecyclerView.Adapter<VideoSearchAdapter.VideoViewHolder> {
+    private Context context;
     private List<Video> videoSearchList;
+    private final String baseUrl;
+    private final OnVideoClickListener onVideoClickListener;
 
-    public VideoSearchAdapter(List<Video> videoSearchList) {
+    public VideoSearchAdapter(Context context, List<Video> videoSearchList, String baseUrl, OnVideoClickListener onVideoClickListener) {
+        this.context = context;
         this.videoSearchList = videoSearchList;
+        this.baseUrl = baseUrl;
+        this.onVideoClickListener = onVideoClickListener;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setData(List<Video> searchList) {
+        this.videoSearchList.clear();
+        this.videoSearchList.addAll(searchList);
+        notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void shuffleVideos() {
+        Collections.shuffle(videoSearchList);
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.video_item, parent, false);
         return new VideoViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
         Video video = videoSearchList.get(position);
-        holder.titleTextView.setText(video.getTitle());
-        holder.authorTextView.setText(video.getAuthor());
 
-        // Sử dụng Glide để tải hình ảnh thumbnail
-        Glide.with(holder.itemView.getContext())
-                .load(video.getThumbnailImageFetchableUrl())
-                .into(holder.thumbnailImageView);
+        // Load thumbnail
+        Glide.with(context).load(baseUrl + video.getThumbnailImageFetchableUrl()).into(holder.videoThumbnail);
+
+        // Set title
+        holder.videoTitle.setText(video.getTitle());
+
+        // Handle click
+        holder.itemView.setOnClickListener(v -> onVideoClickListener.onVideoClick(video));
     }
 
     @Override
@@ -45,14 +69,17 @@ public class VideoSearchAdapter extends RecyclerView.Adapter<VideoSearchAdapter.
     }
 
     static class VideoViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView;
-        TextView authorTextView;
-        ImageView thumbnailImageView;
+        ImageView videoThumbnail;
+        TextView videoTitle;
 
         public VideoViewHolder(@NonNull View itemView) {
             super(itemView);
-            titleTextView = itemView.findViewById(R.id.videoTitle);
-            thumbnailImageView = itemView.findViewById(R.id.videoThumbnail);
+            videoThumbnail = itemView.findViewById(R.id.videoThumbnail);
+            videoTitle = itemView.findViewById(R.id.videoTitle);
         }
+    }
+
+    public interface OnVideoClickListener {
+        void onVideoClick(Video video);
     }
 }
