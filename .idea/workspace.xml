@@ -45,6 +45,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_set_nickname.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_video.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -95,6 +100,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/splash_screen.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/video_comment_button.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -121,11 +131,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Apply Refresh and RecyclerView for Video Apple Part">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/splash_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/splash_image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Small change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAdapter.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAllFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAllFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_play_video.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_play_video.xml" afterDir="false" />
     </list>
+    <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Apply Refresh and RecyclerView for Video Apple Part" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,7 +154,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=E:\Android Studio\AvDs\.android\avd\Pixel_8_Pro_API_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\PC\.android\avd\Medium_Phone_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -182,8 +202,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -353,6 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736001740181</updated>
     </task>
+    <task id="LOCAL-00004" summary="Apply Refresh and RecyclerView for Video Apple Part">
+      <option name="closed" value="true" />
+      <created>1737300196626</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1737300196626</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <task id="LOCAL-00004" summary="Update Dark Mode color for language option in SettingActivity">
       <option name="closed" value="true" />
       <created>1737559948257</created>
