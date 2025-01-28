@@ -87,7 +87,7 @@ public class VideoFragment extends Fragment {
         // Set click listener on the search bar
         searchBar.setOnClickListener(v -> {
             // Start SearchActivity
-            Intent intent = new Intent(getActivity(), SearchActivity.class);
+            Intent intent = new Intent(getActivity(), VideoSearchActivity.class);
             startActivity(intent);
         });
 

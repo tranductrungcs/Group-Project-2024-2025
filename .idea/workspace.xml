@@ -20,12 +20,12 @@
           <theme>@style/AppTheme.NoActionBar</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_setting.xml">
         <config>
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_setting.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_video_search.xml">
         <config>
           <theme>@style/AppTheme</theme>
         </config>
@@ -123,14 +123,8 @@
   <component name="ChangeListManager">
     <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Small change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAllFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAllFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAppleFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAppleFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAsusFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoAsusFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoHuaweiFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoHuaweiFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoMicrosoftFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoMicrosoftFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoSamsungFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoSamsungFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoXiaomiFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoXiaomiFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_play_video.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_play_video.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,6 +234,9 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Group\Group-Project-2024-2025\app\src\main\res\drawable" />
+    </key>
+    <key name="android.template.-1844963762">
+      <recent name="com.example" />
     </key>
   </component>
   <component name="RunManager">
