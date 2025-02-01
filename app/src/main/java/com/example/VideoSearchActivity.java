@@ -2,6 +2,7 @@ package com.example;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,8 +19,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -32,13 +38,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class VideoSearchActivity extends AppCompatActivity {
     private RecyclerView videoSearchResult;
+    private RecyclerView histories;
     private RelativeLayout trendsAndHistory;
     private VideoSearchAdapter videoSearchAdapter;
+    private VideoHistoryAdapter videoHistoryAdapter;
     private List<Video> videoSearchList = new ArrayList<>();
     private List<Video> originalList = new ArrayList<>();
+    private List<String> historyList = new ArrayList<>();
     private EditText searchText;
     private Button searchButton;
     private Button deleteHistoryButton;
+    private SharedPreferences sharedPreferences;
 
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
 
@@ -90,11 +100,33 @@ public class VideoSearchActivity extends AppCompatActivity {
         // Set an OnClickListener for the search button
         searchButton.setOnClickListener(v -> {
             String query = searchText.getText().toString().trim();
-            filterVideos(query);
+            if (!query.isEmpty()) {
+                saveToHistory(query); // Save the keyword to history
+                filterVideos(query);
+            }
         });
 
         // Load videos
         fetchVideos();
+
+        // History part
+        histories = findViewById(R.id.histories);
+        histories.setLayoutManager(new LinearLayoutManager(this));
+        videoHistoryAdapter = new VideoHistoryAdapter(this, historyList);
+//        videoHistoryAdapter = new VideoHistoryAdapter(this, historyList, updatedHistoryList -> {
+//            historyList.clear();
+//            historyList.addAll(updatedHistoryList);
+//            saveHistoryToPreferences(); // Update SharedPreferences
+//        });
+        histories.setAdapter(videoHistoryAdapter);
+
+        // Remove all histories
+        deleteHistoryButton.setOnClickListener(v -> {
+            clearAllHistory();
+        });
+
+//        sharedPreferences = getSharedPreferences("search_history", MODE_PRIVATE);
+//        loadHistory(); // Load the search history when rerun the app
     }
 
     private void fetchVideos() {
@@ -192,4 +224,43 @@ public class VideoSearchActivity extends AppCompatActivity {
         searchButton.setVisibility(View.VISIBLE);
         deleteHistoryButton.setVisibility(View.VISIBLE);
     }
+
+    private void saveToHistory(String query) {
+        if (!historyList.contains(query)) {
+            historyList.add(query);
+            videoHistoryAdapter.notifyItemInserted(historyList.size() - 1);
+//            saveHistoryToPreferences(); // Save history to SharedPreferences
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void clearAllHistory() {
+        historyList.clear(); // Clear all histories
+        videoHistoryAdapter.notifyDataSetChanged(); // Update the adapter
+//        saveHistoryToPreferences(); // Update SharedPreferences
+        Toast.makeText(this, "All search histories are deleted", Toast.LENGTH_SHORT).show();
+    }
+
+//    private void saveHistoryToPreferences() {
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        Gson gson = new Gson();
+//        String json = gson.toJson(historyList);
+//        editor.putString("history_list", json);
+//        editor.apply();
+//    }
+//
+//    @SuppressLint("NotifyDataSetChanged")
+//    private void loadHistory() {
+//        Gson gson = new Gson();
+//        String json = sharedPreferences.getString("history_list", null);
+//        Type type = new TypeToken<List<String>>() {}.getType();
+//        historyList = gson.fromJson(json, type);
+//
+//        if (historyList == null) {
+//            historyList = new ArrayList<>();
+//        }
+//
+//        // Update adapter after load history
+//        videoHistoryAdapter.notifyDataSetChanged();
+//    }
 }
