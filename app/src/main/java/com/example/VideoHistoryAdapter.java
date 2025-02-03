@@ -1,6 +1,6 @@
 package com.example;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,24 +14,23 @@ import java.util.List;
 
 public class VideoHistoryAdapter extends RecyclerView.Adapter<VideoHistoryAdapter.ViewHolder> {
     private List<String> historyList;
-    private Context context;
-//    private OnHistoryItemRemovedListener listener;
+    private final VideoSearchActivity videoSearchActivity;
 
-    public VideoHistoryAdapter(Context context, List<String> historyList) {
-        this.context = context;
+    public VideoHistoryAdapter(List<String> historyList, VideoSearchActivity videoSearchActivity) {
         this.historyList = historyList;
+        this.videoSearchActivity = videoSearchActivity;
     }
 
-//    public VideoHistoryAdapter(Context context, List<String> historyList, OnHistoryItemRemovedListener listener) {
-//        this.context = context;
-//        this.historyList = historyList;
-//        this.listener = listener;
-//    }
+    @SuppressLint("NotifyDataSetChanged")
+    public void updateHistory(List<String> newHistory) {
+        this.historyList = newHistory;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.video_history_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_history_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -42,10 +41,7 @@ public class VideoHistoryAdapter extends RecyclerView.Adapter<VideoHistoryAdapte
 
         // Process the delete history event
         holder.removeHistory.setOnClickListener(v -> {
-            historyList.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, historyList.size());
-//            listener.onHistoryItemRemoved(historyList); // Callback for notification
+            videoSearchActivity.removeSearchQuery(historyItem);
         });
     }
 
@@ -64,9 +60,5 @@ public class VideoHistoryAdapter extends RecyclerView.Adapter<VideoHistoryAdapte
             removeHistory = itemView.findViewById(R.id.remove_history);
         }
     }
-
-//    public interface OnHistoryItemRemovedListener {
-//        void onHistoryItemRemoved(List<String> updatedHistoryList);
-//    }
 }
 

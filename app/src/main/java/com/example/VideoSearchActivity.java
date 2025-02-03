@@ -22,13 +22,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,13 +41,11 @@ public class VideoSearchActivity extends AppCompatActivity {
     private RelativeLayout trendsAndHistory;
     private VideoSearchAdapter videoSearchAdapter;
     private VideoHistoryAdapter videoHistoryAdapter;
-    private List<Video> videoSearchList = new ArrayList<>();
+    private final List<Video> videoSearchList = new ArrayList<>();
     private List<Video> originalList = new ArrayList<>();
-    private List<String> historyList = new ArrayList<>();
     private EditText searchText;
     private Button searchButton;
     private Button deleteHistoryButton;
-    private SharedPreferences sharedPreferences;
 
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
 
@@ -63,7 +60,6 @@ public class VideoSearchActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Find the close_icon ImageView
         ImageView backButton = findViewById(R.id.back_button);
 
         // Set a click listener to finish the activity
@@ -102,6 +98,8 @@ public class VideoSearchActivity extends AppCompatActivity {
             String query = searchText.getText().toString().trim();
             if (!query.isEmpty()) {
                 saveToHistory(query); // Save the keyword to history
+                loadHistory();
+                Toast.makeText(this, "Search: " + query, Toast.LENGTH_SHORT).show();
                 filterVideos(query);
             }
         });
@@ -112,12 +110,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         // History part
         histories = findViewById(R.id.histories);
         histories.setLayoutManager(new LinearLayoutManager(this));
-        videoHistoryAdapter = new VideoHistoryAdapter(this, historyList);
-//        videoHistoryAdapter = new VideoHistoryAdapter(this, historyList, updatedHistoryList -> {
-//            historyList.clear();
-//            historyList.addAll(updatedHistoryList);
-//            saveHistoryToPreferences(); // Update SharedPreferences
-//        });
+        videoHistoryAdapter = new VideoHistoryAdapter(new ArrayList<>(), this);
         histories.setAdapter(videoHistoryAdapter);
 
         // Remove all histories
@@ -125,8 +118,7 @@ public class VideoSearchActivity extends AppCompatActivity {
             clearAllHistory();
         });
 
-//        sharedPreferences = getSharedPreferences("search_history", MODE_PRIVATE);
-//        loadHistory(); // Load the search history when rerun the app
+        loadHistory(); // Load the search history when rerun the app
     }
 
     private void fetchVideos() {
@@ -225,42 +217,60 @@ public class VideoSearchActivity extends AppCompatActivity {
         deleteHistoryButton.setVisibility(View.VISIBLE);
     }
 
+    @SuppressLint("MutatingSharedPrefs")
     private void saveToHistory(String query) {
-        if (!historyList.contains(query)) {
-            historyList.add(query);
-            videoHistoryAdapter.notifyItemInserted(historyList.size() - 1);
-//            saveHistoryToPreferences(); // Save history to SharedPreferences
-        }
+        SharedPreferences sharedPreferences = getSharedPreferences("SearchHistory", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Set<String> historySet = sharedPreferences.getStringSet("history", new HashSet<>());
+        historySet.add(query);
+
+        editor.putStringSet("history", historySet);
+        editor.apply();
+    }
+
+    private void clearAllHistory() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SearchHistory", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.remove("history"); // Clear all histories
+        editor.apply();
+
+        Toast.makeText(this, "All search histories are deleted", Toast.LENGTH_SHORT).show();
+
+        loadHistory();
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private void clearAllHistory() {
-        historyList.clear(); // Clear all histories
-        videoHistoryAdapter.notifyDataSetChanged(); // Update the adapter
-//        saveHistoryToPreferences(); // Update SharedPreferences
-        Toast.makeText(this, "All search histories are deleted", Toast.LENGTH_SHORT).show();
+    private void loadHistory() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SearchHistory", MODE_PRIVATE);
+        Set<String> historySet = sharedPreferences.getStringSet("history", new HashSet<>());
+
+        List<String> historyList = new ArrayList<>(historySet);
+        Collections.reverse(historyList); // Show the newest keyword on the top
+
+        videoHistoryAdapter.updateHistory(historyList);
+
+        if (!historyList.isEmpty()) {
+            histories.setVisibility(View.VISIBLE);
+            deleteHistoryButton.setVisibility(View.VISIBLE); // Show if there are keywords in history
+        } else {
+            histories.setVisibility(View.GONE);
+            deleteHistoryButton.setVisibility(View.GONE); // Hide if there are no keywords in history
+        }
     }
 
-//    private void saveHistoryToPreferences() {
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        Gson gson = new Gson();
-//        String json = gson.toJson(historyList);
-//        editor.putString("history_list", json);
-//        editor.apply();
-//    }
-//
-//    @SuppressLint("NotifyDataSetChanged")
-//    private void loadHistory() {
-//        Gson gson = new Gson();
-//        String json = sharedPreferences.getString("history_list", null);
-//        Type type = new TypeToken<List<String>>() {}.getType();
-//        historyList = gson.fromJson(json, type);
-//
-//        if (historyList == null) {
-//            historyList = new ArrayList<>();
-//        }
-//
-//        // Update adapter after load history
-//        videoHistoryAdapter.notifyDataSetChanged();
-//    }
+    @SuppressLint("MutatingSharedPrefs")
+    public void removeSearchQuery(String query) {
+        SharedPreferences sharedPreferences = getSharedPreferences("SearchHistory", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Set<String> historySet = sharedPreferences.getStringSet("history", new HashSet<>());
+        historySet.remove(query);
+
+        editor.putStringSet("history", historySet);
+        editor.apply();
+
+        loadHistory();
+    }
 }

@@ -52,6 +52,8 @@
     <string name="newest">Newest</string>
     <string name="hot">Hot</string>
     <string name="old_posts">Old Posts</string>
+    <string name="trends">Trends</string>
+    <string name="history">History</string>
     <string name="title_activity_scrolling_news">ScrollingNewsActivity</string>
     <string name="large_text">
 
