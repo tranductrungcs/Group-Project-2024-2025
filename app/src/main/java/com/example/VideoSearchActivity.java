@@ -43,7 +43,7 @@ public class VideoSearchActivity extends AppCompatActivity {
     private VideoHistoryAdapter videoHistoryAdapter;
     private final List<Video> videoSearchList = new ArrayList<>();
     private List<Video> originalList = new ArrayList<>();
-    private EditText searchText;
+    EditText searchText;
     private Button searchButton;
     private Button deleteHistoryButton;
 
@@ -61,63 +61,63 @@ public class VideoSearchActivity extends AppCompatActivity {
         });
 
         ImageView backButton = findViewById(R.id.back_button);
+        ImageView clearSearchButton = findViewById(R.id.clear_search);
+        videoSearchResult = findViewById(R.id.video_search_result);
+        trendsAndHistory = findViewById(R.id.trends_and_history);
+        searchText = findViewById(R.id.search_text);
+        searchButton = findViewById(R.id.search_button);
+        deleteHistoryButton = findViewById(R.id.delete_history);
+        histories = findViewById(R.id.histories);
 
+        // Back button part
         // Set a click listener to finish the activity
         backButton.setOnClickListener(v -> {
             // Close the SearchActivity and return to the previous fragment
             finish();
         });
 
-        ImageView clearSearchButton = findViewById(R.id.clear_search);
-
+        // Clear search button part
         // Set a click listener to clear the search text
         clearSearchButton.setOnClickListener(v -> {
             // Clear the typed text to search
             clearSearch();
         });
 
-        videoSearchResult = findViewById(R.id.video_search_result);
+        // Video search result part
         videoSearchResult.setLayoutManager(new GridLayoutManager(getBaseContext(), 2));
         videoSearchAdapter = new VideoSearchAdapter(getBaseContext(), videoSearchList, baseUrl, this::playVideo);
         videoSearchResult.setAdapter(videoSearchAdapter);
         videoSearchResult.setVisibility(View.GONE); // Ensure it's hidden initially
 
-        trendsAndHistory = findViewById(R.id.trends_and_history);
+        // Set visibility for trendsAndHistory, searchButton and deleteHistoryButton
         trendsAndHistory.setVisibility(View.VISIBLE);
-
-        searchText = findViewById(R.id.search_text);
-
-        searchButton = findViewById(R.id.search_button);
         searchButton.setVisibility(View.VISIBLE);
-
-        deleteHistoryButton = findViewById(R.id.delete_history);
         deleteHistoryButton.setVisibility(View.VISIBLE);
 
+        // Search button part
         // Set an OnClickListener for the search button
         searchButton.setOnClickListener(v -> {
             String query = searchText.getText().toString().trim();
             if (!query.isEmpty()) {
                 saveToHistory(query); // Save the keyword to history
                 loadHistory();
-                Toast.makeText(this, "Search: " + query, Toast.LENGTH_SHORT).show();
                 filterVideos(query);
+                Toast.makeText(this, "Search: " + query, Toast.LENGTH_SHORT).show();
             }
         });
-
-        // Load videos
-        fetchVideos();
-
-        // History part
-        histories = findViewById(R.id.histories);
-        histories.setLayoutManager(new LinearLayoutManager(this));
-        videoHistoryAdapter = new VideoHistoryAdapter(new ArrayList<>(), this);
-        histories.setAdapter(videoHistoryAdapter);
 
         // Remove all histories
         deleteHistoryButton.setOnClickListener(v -> {
             clearAllHistory();
         });
 
+        // History part
+        histories.setLayoutManager(new LinearLayoutManager(this));
+        videoHistoryAdapter = new VideoHistoryAdapter(new ArrayList<>(), this);
+        histories.setAdapter(videoHistoryAdapter);
+        Log.d("VideoSearchActivity", "Histories: " + histories.toString());
+
+        fetchVideos(); // Load videos
         loadHistory(); // Load the search history when rerun the app
     }
 
@@ -142,6 +142,43 @@ public class VideoSearchActivity extends AppCompatActivity {
                     videoSearchAdapter.shuffleVideos();
                     // Update the adapter after adding video
                     videoSearchAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getBaseContext(), "No videos available", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Video>> call, @NonNull Throwable t) {
+                Toast.makeText(getBaseContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+                Log.e("API Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
+
+    private void fetchSearchVideos(@NonNull Runnable onVideosLoaded) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        VideoAllAPI videoAllAPI = retrofit.create(VideoAllAPI.class);
+        Call<List<Video>> call = videoAllAPI.getVideos();
+        call.enqueue(new Callback<List<Video>>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
+                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                    // Save the original list
+                    originalList = response.body();
+                    // Update adapter with video list
+                    videoSearchAdapter.setData(originalList);
+                    // Shuffle the video list
+                    videoSearchAdapter.shuffleVideos();
+                    // Update the adapter after adding video
+                    videoSearchAdapter.notifyDataSetChanged();
+                    Log.d("VideoSearchActivity", "Videos loaded successfully: " + originalList.size());
+                    // Function callback after loading data
+                    onVideosLoaded.run();
                 } else {
                     Toast.makeText(getBaseContext(), "No videos available", Toast.LENGTH_SHORT).show();
                 }
@@ -186,26 +223,41 @@ public class VideoSearchActivity extends AppCompatActivity {
 
     // Add the filterVideos method
     @SuppressLint("NotifyDataSetChanged")
-    private void filterVideos(String query) {
-        if (query.isEmpty()) {
-            // Hide videoSearchResult if there are no keywords
-            videoSearchResult.setVisibility(View.GONE);
-        } else {
-            List<Video> filteredList = new ArrayList<>();
-            for (Video video : originalList) {
-                if (video.getTitle().toLowerCase().contains(query.toLowerCase())) {
-                    filteredList.add(video);
-                }
-            }
-            videoSearchAdapter.setData(filteredList);
-            // Show or hide based on results
-            videoSearchResult.setVisibility(filteredList.isEmpty() ? View.GONE : View.VISIBLE);
-            trendsAndHistory.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
-            searchButton.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
-            deleteHistoryButton.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
+    void filterVideos(String query) {
+        Log.d("VideoSearchActivity", "Filtering videos with: " + query);
+
+        // Check if query is valid
+        if (query == null || query.trim().isEmpty()) {
+            Log.d("VideoSearchActivity", "Query is empty, skipping filter.");
+            return;
         }
+
+        if (originalList.isEmpty()) {
+            Log.d("VideoSearchActivity", "Original list is empty, waiting for data...");
+            // Call fetchSearchVideos() and do filterVideos when complete
+            fetchSearchVideos(() -> filterVideos(query));
+            return;
+        }
+
+        List<Video> filteredList = new ArrayList<>();
+        for (Video video : originalList) {
+            if (video.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(video);
+            }
+        }
+
+        videoSearchAdapter.setData(filteredList);
         videoSearchAdapter.notifyDataSetChanged();
+
+        // Show search result
+        videoSearchResult.setVisibility(filteredList.isEmpty() ? View.GONE : View.VISIBLE);
+        trendsAndHistory.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
+        searchButton.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
+        deleteHistoryButton.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
+
+        Log.d("VideoSearchActivity", "Filtered video list size: " + filteredList.size());
     }
+
 
     // Method to clear the search input and reset the video list
     private void clearSearch() {
@@ -214,15 +266,15 @@ public class VideoSearchActivity extends AppCompatActivity {
         videoSearchResult.setVisibility(View.GONE); // Hide the search results
         trendsAndHistory.setVisibility(View.VISIBLE);
         searchButton.setVisibility(View.VISIBLE);
-        deleteHistoryButton.setVisibility(View.VISIBLE);
+        loadHistory();
     }
 
-    @SuppressLint("MutatingSharedPrefs")
-    private void saveToHistory(String query) {
+    // Save the keywords to history list
+    void saveToHistory(String query) {
         SharedPreferences sharedPreferences = getSharedPreferences("SearchHistory", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        Set<String> historySet = sharedPreferences.getStringSet("history", new HashSet<>());
+        Set<String> historySet = new HashSet<>(sharedPreferences.getStringSet("history", new HashSet<>()));
         historySet.add(query);
 
         editor.putStringSet("history", historySet);
@@ -241,8 +293,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         loadHistory();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    private void loadHistory() {
+    void loadHistory() {
         SharedPreferences sharedPreferences = getSharedPreferences("SearchHistory", MODE_PRIVATE);
         Set<String> historySet = sharedPreferences.getStringSet("history", new HashSet<>());
 
@@ -260,12 +311,12 @@ public class VideoSearchActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("MutatingSharedPrefs")
+    // Remove a keyword from the history list
     public void removeSearchQuery(String query) {
         SharedPreferences sharedPreferences = getSharedPreferences("SearchHistory", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        Set<String> historySet = sharedPreferences.getStringSet("history", new HashSet<>());
+        Set<String> historySet = new HashSet<>(sharedPreferences.getStringSet("history", new HashSet<>()));
         historySet.remove(query);
 
         editor.putStringSet("history", historySet);
