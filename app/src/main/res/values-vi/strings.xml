@@ -58,6 +58,8 @@
     <string name="newest">Mới nhất</string>
     <string name="hot">Nổi bật</string>
     <string name="old_posts">Bài cũ</string>
+    <string name="trends">Xu hướng</string>
+    <string name="history">Lịch sử</string>
     <string name="title_activity_scrolling_news">Hoạt động Cuộn Tin tức</string>
     <string name="large_text">
 
