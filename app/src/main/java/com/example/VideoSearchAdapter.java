@@ -16,29 +16,29 @@ import com.bumptech.glide.Glide;
 import java.util.Collections;
 import java.util.List;
 
-public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
-
-    private final Context context;
-    private List<Video> videoList;
+public class VideoSearchAdapter extends RecyclerView.Adapter<VideoSearchAdapter.VideoViewHolder> {
+    private Context context;
+    private List<Video> videoSearchList;
     private final String baseUrl;
     private final OnVideoClickListener onVideoClickListener;
 
-    public VideoAdapter(Context context, List<Video> videoList, String baseUrl, OnVideoClickListener onVideoClickListener) {
+    public VideoSearchAdapter(Context context, List<Video> videoSearchList, String baseUrl, OnVideoClickListener onVideoClickListener) {
         this.context = context;
-        this.videoList = videoList;
+        this.videoSearchList = videoSearchList;
         this.baseUrl = baseUrl;
         this.onVideoClickListener = onVideoClickListener;
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setData(List<Video> list) {
-        this.videoList = list;
+    public void setData(List<Video> searchList) {
+        this.videoSearchList.clear();
+        this.videoSearchList.addAll(searchList);
         notifyDataSetChanged();
     }
 
     @SuppressLint("NotifyDataSetChanged")
     public void shuffleVideos() {
-        Collections.shuffle(videoList);
+        Collections.shuffle(videoSearchList);
         notifyDataSetChanged();
     }
 
@@ -51,7 +51,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     @Override
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
-        Video video = videoList.get(position);
+        Video video = videoSearchList.get(position);
 
         // Load thumbnail
         Glide.with(context).load(baseUrl + video.getThumbnailImageFetchableUrl()).into(holder.videoThumbnail);
@@ -65,10 +65,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     @Override
     public int getItemCount() {
-        return videoList.size();
+        return videoSearchList.size();
     }
 
-    public static class VideoViewHolder extends RecyclerView.ViewHolder {
+    static class VideoViewHolder extends RecyclerView.ViewHolder {
         ImageView videoThumbnail;
         TextView videoTitle;
 
@@ -83,4 +83,3 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         void onVideoClick(Video video);
     }
 }
-

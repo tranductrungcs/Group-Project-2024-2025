@@ -29,17 +29,6 @@ import com.google.android.material.tabs.TabLayout;
  * create an instance of this fragment.
  */
 public class VideoFragment extends Fragment {
-//    private int currentVideoIndex = 0;
-//    private final String[] videoUris = new String[16];
-//    private final ImageButton[] thumbnails = new ImageButton[16];
-
-//    private final String[] videoUris = new String[4];
-//    private final ImageButton[] thumbnails = new ImageButton[4];
-
-//    private SearchView searchView;
-    private int currentVideoIndex = 0;
-    private final String[] videoUris = new String[16];
-    private final ImageButton[] thumbnails = new ImageButton[16];
     //    private SearchView searchView;
     private ImageButton ic_setting;
 
@@ -98,7 +87,7 @@ public class VideoFragment extends Fragment {
         // Set click listener on the search bar
         searchBar.setOnClickListener(v -> {
             // Start SearchActivity
-            Intent intent = new Intent(getActivity(), SearchActivity.class);
+            Intent intent = new Intent(getActivity(), VideoSearchActivity.class);
             startActivity(intent);
         });
 
@@ -109,6 +98,13 @@ public class VideoFragment extends Fragment {
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setText(R.string.all);
+        tabLayout.getTabAt(1).setText(R.string.apple);
+        tabLayout.getTabAt(2).setText(R.string.samsung);
+        tabLayout.getTabAt(3).setText(R.string.huawei);
+        tabLayout.getTabAt(4).setText(R.string.xiaomi);
+        tabLayout.getTabAt(5).setText(R.string.microsoft);
+        tabLayout.getTabAt(6).setText(R.string.asus);
 
         return view;
     }

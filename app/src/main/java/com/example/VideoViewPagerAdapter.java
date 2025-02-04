@@ -30,17 +30,17 @@ public class VideoViewPagerAdapter extends FragmentStatePagerAdapter {
         return 7;
     }
 
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            default: return "All";
-            case 1: return "Apple";
-            case 2: return "Samsung";
-            case 3: return "Huawei";
-            case 4: return "Xiaomi";
-            case 5: return "Microsoft";
-            case 6: return "Asus";
-        }
-    }
+//    @Nullable
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        switch (position) {
+//            default: return "All";
+//            case 1: return "Apple";
+//            case 2: return "Samsung";
+//            case 3: return "Huawei";
+//            case 4: return "Xiaomi";
+//            case 5: return "Microsoft";
+//            case 6: return "Asus";
+//        }
+//    }
 }

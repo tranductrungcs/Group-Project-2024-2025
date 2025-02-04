@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VideoHuaweiFragment"
+    android:paddingTop="10dp"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,6 +13,8 @@
         android:id="@+id/videos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="17dp"
+        android:paddingEnd="0dp"
         style="@style/SCREEN" />
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
