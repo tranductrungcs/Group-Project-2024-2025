@@ -14,8 +14,7 @@
         android:id="@+id/toolbar"
         style="@style/SCREEN"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp">
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/ic_user"
@@ -33,21 +32,22 @@
             android:layout_width="200dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/video_part_title"
             android:textAlignment="center"
             android:textColor="@color/app_title_color"
             android:textSize="32sp" />
 
         <ImageView
-            android:id="@+id/aa"
+            android:id="@+id/bookmark"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
-            android:background="@color/white"
+            style="@style/SCREEN"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/aa_icon" />
+            android:src="@drawable/baseline_folder" />
 
     </androidx.appcompat.widget.Toolbar>
 
