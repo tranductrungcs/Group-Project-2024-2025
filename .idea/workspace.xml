@@ -30,6 +30,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_news.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_save.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -95,6 +100,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/news_item.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/play_video_item.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -131,11 +141,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Apply Refresh and RecyclerView for Video Apple Part">
+    <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Update UI for video_item">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoHistoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoHistoryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/VideoSearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/VideoSearchActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_history_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_history_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -389,7 +397,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737736079401</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update UI for video_item">
+      <option name="closed" value="true" />
+      <created>1738738121452</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738738121452</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -409,6 +425,7 @@
     <MESSAGE value="Update Dark Mode color for language option in SettingActivity" />
     <MESSAGE value="Fix the auto crash problem when run the app" />
     <MESSAGE value="Small change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small change" />
+    <MESSAGE value="Update UI for video_item" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update UI for video_item" />
   </component>
 </project>
