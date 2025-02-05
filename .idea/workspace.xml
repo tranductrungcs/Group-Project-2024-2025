@@ -30,6 +30,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_news.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_save.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -132,7 +137,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Apply Refresh and RecyclerView for Video Apple Part">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_save.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_save.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -32,13 +32,13 @@
 
     <string name="setting">Cài đặt</string>
     <string name="save">Lưu</string>
-    <string name="change_username">Thay đổi tên người dùng</string>
+    <string name="change_username">Thay đổi tên/ảnh đại diện người dùng</string>
     <string name="language">Ngôn ngữ</string>
     <string name="Vietnamese">Tiếng Việt</string>
     <string name="English">Tiếng Anh</string>
-    <string name="Dark_Light_Mode">Chế độ tối/sáng</string>
+    <string name="Dark_Mode">Chế độ tối</string>
     <string name="Font_Size">Kích thước phông chữ</string>
-    <string name="Small">Bé</string>
+    <string name="Small">Nhỏ</string>
     <string name="Medium">Trung bình</string>
     <string name="Large">Lớn</string>
     <string name="Developer">Nhà phát triển</string>
