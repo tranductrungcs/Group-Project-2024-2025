@@ -47,7 +47,7 @@
             style="@style/SCREEN"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/baseline_folder" />
+            android:src="@drawable/bookmark_icon" />
 
     </androidx.appcompat.widget.Toolbar>
 
