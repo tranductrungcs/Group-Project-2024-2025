@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -125,7 +127,14 @@ public class NewsFragment extends Fragment implements SelectListener {
         executorService.execute(() -> {
             try {
                 con = sqlconnection.CONN();
-                String query = "SELECT * FROM newschema.api_article ORDER BY id LIMIT 10";
+
+                if (con == null) {
+                    Log.e("Database Connection", "Connection is null");
+                    return; // Return if there is no connection
+                }
+
+                String query = "SELECT * FROM androidapi.api_article ORDER BY id LIMIT 10";
+
                 PreparedStatement stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
                 List<SmallNews> newsList = new ArrayList<>();
@@ -145,7 +154,16 @@ public class NewsFragment extends Fragment implements SelectListener {
                 });
 
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                Log.e("SQL Error", e.getMessage());
+            } finally {
+                // Close the connection if necessary
+                try {
+                    if (con != null && !con.isClosed()) {
+                        con.close();
+                    }
+                } catch (SQLException e) {
+                    Log.e("SQL Error", e.getMessage());
+                }
             }
         });
     }

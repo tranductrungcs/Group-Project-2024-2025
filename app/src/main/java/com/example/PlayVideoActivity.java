@@ -1,35 +1,33 @@
 package com.example;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.MediaController;
-import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.media3.common.MediaItem;
+import androidx.media3.common.Player;
 import androidx.media3.common.util.UnstableApi;
-import androidx.media3.exoplayer.DefaultLoadControl;
-import androidx.media3.exoplayer.DefaultRenderersFactory;
 import androidx.media3.exoplayer.ExoPlayer;
-import androidx.media3.ui.PlayerView;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import java.util.List;
 
 public class PlayVideoActivity extends AppCompatActivity {
-    private PlayerView playerView;
+    private ViewPager2 viewPager;
+    private PlayVideoPagerAdapter adapter;
+    private List<String> videoUris;
+    private List<String> videoTitles;
+    private List<Integer> comments;
+    private List<Integer> likes;
+    private List<Integer> bookmarks;
     private ExoPlayer exoPlayer;
 
     @OptIn(markerClass = UnstableApi.class)
@@ -57,60 +55,45 @@ public class PlayVideoActivity extends AppCompatActivity {
             onBackPressed();
         });
 
-//        DefaultLoadControl loadControl = new DefaultLoadControl.Builder()
-//                .setBufferDurationsMs(
-//                        DefaultLoadControl.DEFAULT_MIN_BUFFER_MS,
-//                        DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
-//                        DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
-//                        DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
-//                ).build();
+        exoPlayer = new ExoPlayer.Builder(this).build();
 
-//        DefaultRenderersFactory renderersFactory = new DefaultRenderersFactory(this)
-//                .setEnableDecoderFallback(true)
-//                .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER);
-
-        exoPlayer = new ExoPlayer.Builder(this)
-//                .setLoadControl(loadControl)
-//                .setRenderersFactory(renderersFactory)
-                .build();
-
-        playerView = findViewById(R.id.tempPlayerView);
-        String videoUriString = getIntent().getStringExtra("videoUri");
-        Log.i("videoUri", videoUriString);
-        Uri videoUri = Uri.parse(videoUriString);
-        MediaItem mediaItem = MediaItem.fromUri(videoUri);
-        playerView.setPlayer(exoPlayer);
-
-        playerView.setOnTouchListener(new View.OnTouchListener() {
+        exoPlayer.setRepeatMode(ExoPlayer.REPEAT_MODE_OFF);
+        exoPlayer.setShuffleModeEnabled(false);
+        exoPlayer.addListener(new Player.Listener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    if (exoPlayer.isPlaying()) {
-                        exoPlayer.pause();
-                    } else {
-                        exoPlayer.play();
-                    }
+            public void onMediaItemTransition(@Nullable MediaItem mediaItem, int reason) {
+                // Prevent auto-play of the next item until user swipes
+                if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_AUTO) {
+                    exoPlayer.pause();
                 }
-                return false;
             }
         });
 
-        exoPlayer.setMediaItem(mediaItem);
-        exoPlayer.prepare();
-        exoPlayer.play();
-    }
+        // Retrieve video list from intent
+        videoUris = getIntent().getStringArrayListExtra("videoUris");
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            View decorView = getWindow().getDecorView();
-            decorView.setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                            View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN |
-                            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            );
-        }
+        // Retrieve video list from intent
+        videoTitles = getIntent().getStringArrayListExtra("videoTitles");
+
+        // Retrieve video comments list from intent
+        comments = getIntent().getIntegerArrayListExtra("comments");
+
+        // Retrieve video likes list from intent
+        likes = getIntent().getIntegerArrayListExtra("likes");
+
+        // Retrieve video saves list from intent
+        bookmarks = getIntent().getIntegerArrayListExtra("bookmarks");
+
+        int initialPosition = getIntent().getIntExtra("initialPosition", 0);
+
+        viewPager = findViewById(R.id.viewPager);
+
+        // Set up adapter
+        adapter = new PlayVideoPagerAdapter(this, videoUris, videoTitles, comments, likes, bookmarks);
+        viewPager.setAdapter(adapter);
+
+        // Set initial video position
+        viewPager.setCurrentItem(initialPosition, false);
     }
 
     @Override
@@ -136,5 +119,4 @@ public class PlayVideoActivity extends AppCompatActivity {
             exoPlayer.release();
         }
     }
-
 }

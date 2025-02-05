@@ -38,7 +38,10 @@ public class SettingActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private ImageView dialogAvatarImageView;
 
+
+    private LanguageManager languageManager;
     private SharedPreferences preferences;
+
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch darkLightSwitch;
@@ -72,7 +75,26 @@ public class SettingActivity extends AppCompatActivity {
 
         changeUsernameLayout.setOnClickListener(v -> showChangeUsernameDialog());
 
-        languageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {});
+
+        languageManager = new LanguageManager(this);
+
+
+        if (languageManager.getLanguage().equals("vi")) {
+            languageRadioGroup.check(R.id.vietnamese_button);
+        } else {
+            languageRadioGroup.check(R.id.english_button);
+        }
+
+        languageRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.vietnamese_button) {
+                changeLanguage("vi");
+            } else if (checkedId == R.id.english_button) {
+                changeLanguage("en");
+            }
+        });
+
+
+        
 
         // Load the saved theme mode before creating the activity
         // Use sharedPreferences to save mode if exit the app and go back again
@@ -116,6 +138,17 @@ public class SettingActivity extends AppCompatActivity {
         developeTextView.setOnClickListener(v -> openDeveloperFragment());
 
         infoRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {});
+    }
+
+
+    private void changeLanguage(String languageCode) {
+        languageManager.updateResource(languageCode);
+        recreate();
+
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void showChangeUsernameDialog() {

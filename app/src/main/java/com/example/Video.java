@@ -2,9 +2,6 @@ package com.example;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class Video {
     private int id;
     private String videoUniqueId;
@@ -18,6 +15,9 @@ public class Video {
     private String thumbnailImageUrl;
     private String thumbnailImageFetchableUrl;
     private String createdTime;
+    private int commentNum;
+    private int likeNum;
+    private int bookmarkNum;
 
     public void setId(int id) {
         this.id = id;
@@ -106,5 +106,29 @@ public class Video {
 
     public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
+    }
+
+    public int getCommentNum() {
+        return commentNum;
+    }
+
+    public void setCommentNum(int commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public int getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(int likeNum) {
+        this.likeNum = likeNum;
+    }
+
+    public int getBookmarkNum() {
+        return bookmarkNum;
+    }
+
+    public void setBookmarkNum(int bookmarkNum) {
+        this.bookmarkNum = bookmarkNum;
     }
 }
