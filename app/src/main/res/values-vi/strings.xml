@@ -18,6 +18,8 @@
     <string name="videos">Video</string>
     <string name="news">Tin tức</string>
     <string name="video_part_title">VIDEO CÔNG NGHỆ</string>
+    <string name="news_part_title">BÀI BÁO CÔNG NGHỆ</string>
+    <string name="save_part_title">LƯU</string>
 
     <string name="search_hint_light">Tìm kiếm (Chế độ sáng)</string>
     <string name="search_hint_dark">Tìm kiếm (Chế độ tối)</string>

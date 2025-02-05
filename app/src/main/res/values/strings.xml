@@ -16,6 +16,8 @@
     <string name="videos">Videos</string>
     <string name="news">News</string>
     <string name="video_part_title">TECH VIDEOS</string>
+    <string name="news_part_title">TECH NEWS</string>
+    <string name="save_part_title">SAVE</string>
 
     <string name="search_hint_light">Search (Light Mode)</string>
     <string name="search_hint_dark">Search (Dark Mode)</string>
