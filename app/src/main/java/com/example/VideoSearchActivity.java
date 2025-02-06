@@ -43,7 +43,17 @@ public class VideoSearchActivity extends AppCompatActivity {
     private VideoHistoryAdapter videoHistoryAdapter;
     private final List<Video> videoSearchList = new ArrayList<>();
     private List<Video> originalList = new ArrayList<>();
+    private ImageView searchIcon;
     EditText searchText;
+    private Button newest;
+    private Button hot;
+    private Button oldPosts;
+    private Button searchApple;
+    private Button searchSamsung;
+    private Button searchHuawei;
+    private Button searchXiaomi;
+    private Button searchMicrosoft;
+    private Button searchAsus;
     private Button searchButton;
     private Button deleteHistoryButton;
 
@@ -64,7 +74,17 @@ public class VideoSearchActivity extends AppCompatActivity {
         ImageView clearSearchButton = findViewById(R.id.clear_search);
         videoSearchResult = findViewById(R.id.video_search_result);
         trendsAndHistory = findViewById(R.id.trends_and_history);
+        searchIcon = findViewById(R.id.search_icon);
         searchText = findViewById(R.id.search_text);
+        newest = findViewById(R.id.newest);
+        hot = findViewById(R.id.hot);
+        oldPosts = findViewById(R.id.old_post);
+        searchApple = findViewById(R.id.apple_part);
+        searchSamsung = findViewById(R.id.samsung_part);
+        searchHuawei = findViewById(R.id.huawei_part);
+        searchXiaomi = findViewById(R.id.xiaomi_part);
+        searchMicrosoft = findViewById(R.id.microsoft_part);
+        searchAsus = findViewById(R.id.asus_part);
         searchButton = findViewById(R.id.search_button);
         deleteHistoryButton = findViewById(R.id.delete_history);
         histories = findViewById(R.id.histories);
@@ -93,6 +113,29 @@ public class VideoSearchActivity extends AppCompatActivity {
         trendsAndHistory.setVisibility(View.VISIBLE);
         searchButton.setVisibility(View.VISIBLE);
         deleteHistoryButton.setVisibility(View.VISIBLE);
+
+        // Search icon part
+        // Set an OnClickListener for the search icon
+        searchIcon.setOnClickListener(v -> {
+            String query = searchText.getText().toString().trim();
+            if (!query.isEmpty()) {
+                saveToHistory(query); // Save the keyword to history
+                loadHistory();
+                filterVideos(query);
+                Toast.makeText(this, "Search: " + query, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Tap in buttons containing keywords for search progress
+        newest.setOnClickListener(v -> performSearch("Samsung Galaxy Note9"));
+        hot.setOnClickListener(v -> performSearch("Ipad Pro"));
+        oldPosts.setOnClickListener(v -> performSearch("Drone"));
+        searchApple.setOnClickListener(v -> performSearch("Iphone"));
+        searchSamsung.setOnClickListener(v -> performSearch("Xiaomi 12T"));
+        searchHuawei.setOnClickListener(v -> performSearch("Huawei MatePad Pro"));
+        searchXiaomi.setOnClickListener(v -> performSearch("Tab S10 Series"));
+        searchMicrosoft.setOnClickListener(v -> performSearch("Watch"));
+        searchAsus.setOnClickListener(v -> performSearch("Laptop"));
 
         // Search button part
         // Set an OnClickListener for the search button
@@ -309,6 +352,19 @@ public class VideoSearchActivity extends AppCompatActivity {
             histories.setVisibility(View.GONE);
             deleteHistoryButton.setVisibility(View.GONE); // Hide if there are no keywords in history
         }
+    }
+
+    private void performSearch(String keyword) {
+        searchText.setText(keyword); // Update the searchbar
+        Log.d("VideoSearchActivity", "Clicked trend item: " + keyword);
+
+        searchText.postDelayed(() -> {
+            saveToHistory(keyword); // Save the keyword to history
+            loadHistory();
+            filterVideos(keyword);
+        }, 300); // Wait 300ms to make sure that data is updated
+
+        Toast.makeText(this, "Search: " + keyword, Toast.LENGTH_SHORT).show();
     }
 
     // Remove a keyword from the history list
