@@ -43,6 +43,7 @@ public class VideoSearchActivity extends AppCompatActivity {
     private VideoHistoryAdapter videoHistoryAdapter;
     private final List<Video> videoSearchList = new ArrayList<>();
     private List<Video> originalList = new ArrayList<>();
+    private ImageView searchIcon;
     EditText searchText;
     private Button searchButton;
     private Button deleteHistoryButton;
@@ -64,6 +65,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         ImageView clearSearchButton = findViewById(R.id.clear_search);
         videoSearchResult = findViewById(R.id.video_search_result);
         trendsAndHistory = findViewById(R.id.trends_and_history);
+        searchIcon = findViewById(R.id.search_icon);
         searchText = findViewById(R.id.search_text);
         searchButton = findViewById(R.id.search_button);
         deleteHistoryButton = findViewById(R.id.delete_history);
@@ -93,6 +95,18 @@ public class VideoSearchActivity extends AppCompatActivity {
         trendsAndHistory.setVisibility(View.VISIBLE);
         searchButton.setVisibility(View.VISIBLE);
         deleteHistoryButton.setVisibility(View.VISIBLE);
+
+        // Search icon part
+        // Set an OnClickListener for the search icon
+        searchIcon.setOnClickListener(v -> {
+            String query = searchText.getText().toString().trim();
+            if (!query.isEmpty()) {
+                saveToHistory(query); // Save the keyword to history
+                loadHistory();
+                filterVideos(query);
+                Toast.makeText(this, "Search: " + query, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         // Search button part
         // Set an OnClickListener for the search button
