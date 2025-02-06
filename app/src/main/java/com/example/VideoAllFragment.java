@@ -136,8 +136,11 @@ public class VideoAllFragment extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
-                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
-                    List<Video> videoList = response.body();
+                if (response.isSuccessful() && response.body() != null) {
+                    for (Video video : response.body()) {
+                        videoList.add(video);
+                        Log.i("Add videos success", video.getVideoUniqueId());
+                    }
                     // Update adapter with video list
                     videoAdapter.setData(videoList);
                     // Shuffle the video list
@@ -151,7 +154,9 @@ public class VideoAllFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<List<Video>> call, @NonNull Throwable t) {
-                Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+                if (getContext() != null) {
+                    Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+                }
                 Log.e("API Error", Objects.requireNonNull(t.getMessage()));
             }
         });

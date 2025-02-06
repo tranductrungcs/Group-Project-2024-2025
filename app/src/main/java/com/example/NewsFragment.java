@@ -7,14 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,6 +36,7 @@ public class NewsFragment extends Fragment implements SelectListener {
     private List<SmallNews> NewsList = new ArrayList<>();
     SQLconnection sqlconnection;
     Connection con;
+
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -77,7 +76,6 @@ public class NewsFragment extends Fragment implements SelectListener {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        sqlconnection = new SQLconnection();
 
     }
 
@@ -87,7 +85,7 @@ public class NewsFragment extends Fragment implements SelectListener {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         recyclerNews = view.findViewById(R.id.NewsList);
         recyclerNews.setHasFixedSize(true);
-        recyclerNews.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        recyclerNews.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
         ImageButton container_test = view.findViewById(R.id.test_to_show_news1);
         container_test.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +94,9 @@ public class NewsFragment extends Fragment implements SelectListener {
                 movetoNewsDetail();
             }
         });
+
+        sqlconnection = new SQLconnection();
+
         showItem();
         newsAdapter = new NewsAdapter(getContext(), NewsList, this);
         recyclerNews.setAdapter(newsAdapter);
@@ -124,12 +125,7 @@ public class NewsFragment extends Fragment implements SelectListener {
         executorService.execute(() -> {
             try {
                 con = sqlconnection.CONN();
-                if (con == null) {
-                    Log.e("Database Connection", "Connection is null");
-                    return; // Return if there is no connection
-                }
-
-                String query = "SELECT * FROM androidapi.api_article ORDER BY id LIMIT 10";
+                String query = "SELECT * FROM newschema.api_article ORDER BY id LIMIT 10";
                 PreparedStatement stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
                 List<SmallNews> newsList = new ArrayList<>();
@@ -149,16 +145,7 @@ public class NewsFragment extends Fragment implements SelectListener {
                 });
 
             } catch (SQLException e) {
-                Log.e("SQL Error", e.getMessage());
-            } finally {
-                // Close the connection if necessary
-                try {
-                    if (con != null && !con.isClosed()) {
-                        con.close();
-                    }
-                } catch (SQLException e) {
-                    Log.e("SQL Error", e.getMessage());
-                }
+                throw new RuntimeException(e);
             }
         });
     }

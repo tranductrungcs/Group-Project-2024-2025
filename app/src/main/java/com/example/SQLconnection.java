@@ -16,9 +16,9 @@ import com.example.News_list;
 public class SQLconnection {
     protected static String ip = "10.0.2.2";
     protected static String port = "3306";
-    protected static String db = "androidapi";
+    protected static String db = "newschema";
     protected static String un = "root";
-    protected static String password = ".Soidopro1";
+    protected static String password = "Soidopro1";
     public Connection CONN(){
         Connection con = null;
         try {
