@@ -53,6 +53,11 @@
     <string name="asus">Asus</string>
     <string name="huawei">Huawei</string>
     <string name="microsoft">Microsoft</string>
+    <string name="delete_history">Xóa lịch sử tìm kiếm</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="newest">Mới nhất</string>
+    <string name="hot">Nổi bật</string>
+    <string name="old_posts">Bài cũ</string>
     <string name="title_activity_scrolling_news">Hoạt động Cuộn Tin tức</string>
     <string name="large_text">
 
@@ -160,5 +165,6 @@ quasi aliquam eligendi, placeat qui corporis!</string>
     <string name="default_title">Tiêu đề Mặc định</string>
     <string name="default_date">Thứ Hai, ngày 1 tháng 1 năm 2018</string>
     <string name="action_settings">Cài đặt</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
