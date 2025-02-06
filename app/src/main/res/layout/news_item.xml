@@ -4,25 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/NewsCardView"
-    android:orientation="vertical"
-    android:layout_margin="8dp">
+    android:orientation="horizontal"
+    android:layout_margin="1dp">
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:padding="8dp">
+        android:layout_height="120dp"
+        android:columnCount="1"
+        android:padding="2dp">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:layout_columnWeight="1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:id="@+id/NewsItem"
             tools:ignore="UseCompoundDrawables">
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:layout_gravity="center"
                 android:id="@+id/ImageNews"
@@ -44,15 +44,15 @@
 
         <!-- Duplicate the LinearLayout for the second column -->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:layout_columnWeight="1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:id="@+id/NewsItem2"
             tools:ignore="UseCompoundDrawables">
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:id="@+id/ImageNews2"
                 android:contentDescription="Image of news here" />
