@@ -48,7 +48,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.jtds)
-    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    implementation("mysql:mysql-connector-java:5.1.49")
     implementation (libs.preference)
     implementation(libs.webkit)
     implementation(libs.retrofit)

@@ -25,6 +25,9 @@ public class PlayVideoActivity extends AppCompatActivity {
     private PlayVideoPagerAdapter adapter;
     private List<String> videoUris;
     private List<String> videoTitles;
+    private List<Integer> comments;
+    private List<Integer> likes;
+    private List<Integer> bookmarks;
     private ExoPlayer exoPlayer;
 
     @OptIn(markerClass = UnstableApi.class)
@@ -71,12 +74,22 @@ public class PlayVideoActivity extends AppCompatActivity {
 
         // Retrieve video list from intent
         videoTitles = getIntent().getStringArrayListExtra("videoTitles");
+
+        // Retrieve video comments list from intent
+        comments = getIntent().getIntegerArrayListExtra("comments");
+
+        // Retrieve video likes list from intent
+        likes = getIntent().getIntegerArrayListExtra("likes");
+
+        // Retrieve video saves list from intent
+        bookmarks = getIntent().getIntegerArrayListExtra("bookmarks");
+
         int initialPosition = getIntent().getIntExtra("initialPosition", 0);
 
         viewPager = findViewById(R.id.viewPager);
 
         // Set up adapter
-        adapter = new PlayVideoPagerAdapter(this, videoUris, videoTitles);
+        adapter = new PlayVideoPagerAdapter(this, videoUris, videoTitles, comments, likes, bookmarks);
         viewPager.setAdapter(adapter);
 
         // Set initial video position

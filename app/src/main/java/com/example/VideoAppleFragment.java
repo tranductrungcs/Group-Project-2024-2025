@@ -98,13 +98,7 @@ public class VideoAppleFragment extends Fragment {
         recyclerView.setAdapter(videoAdapter);
 
         // Setup SwipeRefreshLayout
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshData();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this::refreshData);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -129,19 +123,10 @@ public class VideoAppleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private void refreshData() {
-        List<Video> newData = getListPost();
-        videoAdapter.setData(newData);
-        videoAdapter.notifyDataSetChanged();
-    }
-
-    private List<Video> getListPost() {
-        Log.i("List Post", videoList.toString());
-        if (!videoList.isEmpty()) {
-
-        }
-        return videoList;
+        videoList.clear(); // Remove the current video list
+        fetchVideos(); // Call the API to fetch new data
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void fetchVideos() {
@@ -153,6 +138,7 @@ public class VideoAppleFragment extends Fragment {
         VideoAPI videoAPI = retrofit.create(VideoAPI.class);
         Call<List<Video>> call = videoAPI.getVideos("Apple");
         call.enqueue(new Callback<List<Video>>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -162,6 +148,11 @@ public class VideoAppleFragment extends Fragment {
                             Log.i("Add videos success", video.getVideoUniqueId());
                         }
                     }
+                    videoAdapter.setData(videoList); // Update adapter with video list
+                    videoAdapter.shuffleVideos(); // Shuffle the video list
+                    videoAdapter.notifyDataSetChanged(); // Update the adapter after adding video
+                } else {
+                    Toast.makeText(getContext(), "No videos available", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -188,6 +179,24 @@ public class VideoAppleFragment extends Fragment {
             videoTitles.add(v.getTitle());
         }
 
+        // Create a list of video comments
+        ArrayList<Integer> comments = new ArrayList<>();
+        for (Video v : videoList) {
+            comments.add(v.getCommentNum());
+        }
+
+        // Create a list of video likes
+        ArrayList<Integer> likes = new ArrayList<>();
+        for (Video v : videoList) {
+            likes.add(v.getLikeNum());
+        }
+
+        // Create a list of video saves
+        ArrayList<Integer> bookmarks = new ArrayList<>();
+        for (Video v : videoList) {
+            bookmarks.add(v.getBookmarkNum());
+        }
+
         // Get the selected video's position
         int selectedPosition = videoList.indexOf(video);
 
@@ -196,6 +205,9 @@ public class VideoAppleFragment extends Fragment {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
             intent.putStringArrayListExtra("videoUris", videoUris);
             intent.putStringArrayListExtra("videoTitles", videoTitles);
+            intent.putIntegerArrayListExtra("comments", comments);
+            intent.putIntegerArrayListExtra("likes", likes);
+            intent.putIntegerArrayListExtra("bookmarks", bookmarks);
             intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }

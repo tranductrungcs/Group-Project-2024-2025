@@ -3,12 +3,12 @@ package com.example;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -23,20 +23,14 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link VideoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class VideoFragment extends Fragment {
-    //    private SearchView searchView;
-    private ImageButton ic_setting;
-
-    private static final float SMALL_FONT_SIZE = 14f;
-    private static final float MEDIUM_FONT_SIZE = 18f; // Default
-    private static final float LARGE_FONT_SIZE = 22f;
-
-    private float currentFontSize = MEDIUM_FONT_SIZE;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,8 +80,8 @@ public class VideoFragment extends Fragment {
 
         // Set click listener on the search bar
         searchBar.setOnClickListener(v -> {
-            // Start SearchActivity
-            Intent intent = new Intent(getActivity(), SearchActivity.class);
+            // Start VideoSearchActivity
+            Intent intent = new Intent(getActivity(), VideoSearchActivity.class);
             startActivity(intent);
         });
 
@@ -98,6 +92,13 @@ public class VideoFragment extends Fragment {
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
+        Objects.requireNonNull(tabLayout.getTabAt(0)).setText(R.string.all);
+        Objects.requireNonNull(tabLayout.getTabAt(1)).setText(R.string.apple);
+        Objects.requireNonNull(tabLayout.getTabAt(2)).setText(R.string.samsung);
+        Objects.requireNonNull(tabLayout.getTabAt(3)).setText(R.string.huawei);
+        Objects.requireNonNull(tabLayout.getTabAt(4)).setText(R.string.xiaomi);
+        Objects.requireNonNull(tabLayout.getTabAt(5)).setText(R.string.microsoft);
+        Objects.requireNonNull(tabLayout.getTabAt(6)).setText(R.string.asus);
 
         return view;
     }
@@ -111,13 +112,10 @@ public class VideoFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.ic_user) {
-
             return true;
         }
-
-        else if (id == R.id.aa) {
+        else if (id == R.id.bookmark) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -133,28 +131,13 @@ public class VideoFragment extends Fragment {
             startActivity(intent);
         });
 
-        ImageView fontSizeButton = requireView().findViewById(R.id.aa);
-        fontSizeButton.setOnClickListener(v -> changeFontSize());
-    }
-
-    private void changeFontSize() {
-        // Cycle through font sizes
-        if (currentFontSize == SMALL_FONT_SIZE) {
-            currentFontSize = MEDIUM_FONT_SIZE;
-        } else if (currentFontSize == MEDIUM_FONT_SIZE) {
-            currentFontSize = LARGE_FONT_SIZE;
-        } else {
-            currentFontSize = SMALL_FONT_SIZE;
-        }
-
-        // Update the font size of the text views
-        updateFontSize();
-    }
-
-    private void updateFontSize() {
-        TextView appName = requireView().findViewById(R.id.app_name);
-        appName.setTextSize(currentFontSize);
-
-        // Update other TextViews as needed
+        ImageView saveButton = requireView().findViewById(R.id.bookmark);
+        saveButton.setOnClickListener(v -> {
+            SaveFragment saveFragment = new SaveFragment();
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.video_fragment, saveFragment);
+            transaction.addToBackStack(null); // To be able to return
+            transaction.commit();
+        });
     }
 }

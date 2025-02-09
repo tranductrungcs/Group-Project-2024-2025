@@ -35,11 +35,8 @@
         <include
             layout="@layout/video_comment_button" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/save_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_bookmark" />
+        <include
+            layout="@layout/video_save_button" />
     </LinearLayout>
 
 </RelativeLayout>

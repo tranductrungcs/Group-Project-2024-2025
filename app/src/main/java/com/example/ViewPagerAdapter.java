@@ -20,15 +20,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
             case 1:
                 return new NewsFragment();
-
-            case 2:
-                return new SaveFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
-
 }

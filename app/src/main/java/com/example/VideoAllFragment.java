@@ -98,13 +98,7 @@ public class VideoAllFragment extends Fragment {
         recyclerView.setAdapter(videoAdapter);
 
         // Setup SwipeRefreshLayout
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshData();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this::refreshData);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -124,19 +118,10 @@ public class VideoAllFragment extends Fragment {
         return view;
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private void refreshData() {
-        List<Video> newData = getListPost();
-        videoAdapter.setData(newData);
-        videoAdapter.notifyDataSetChanged();
-    }
-
-    private List<Video> getListPost() {
-        Log.i("List Post", videoList.toString());
-        if (!videoList.isEmpty()) {
-
-        }
-        return videoList;
+        videoList.clear(); // Remove the current video list
+        fetchVideos(); // Call the API to fetch new data
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void fetchVideos() {
@@ -151,9 +136,16 @@ public class VideoAllFragment extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
-                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
-                    videoList.clear();
-                    videoList.addAll(response.body());
+                if (response.isSuccessful() && response.body() != null) {
+                    for (Video video : response.body()) {
+                        videoList.add(video);
+                        Log.i("Add videos success", video.getVideoUniqueId());
+                    }
+                    // Update adapter with video list
+                    videoAdapter.setData(videoList);
+                    // Shuffle the video list
+                    videoAdapter.shuffleVideos();
+                    // Update the adapter after adding video
                     videoAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(getContext(), "No videos available", Toast.LENGTH_SHORT).show();
@@ -162,7 +154,9 @@ public class VideoAllFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<List<Video>> call, @NonNull Throwable t) {
-                Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+                if (getContext() != null) {
+                    Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+                }
                 Log.e("API Error", Objects.requireNonNull(t.getMessage()));
             }
         });
@@ -181,6 +175,24 @@ public class VideoAllFragment extends Fragment {
             videoTitles.add(v.getTitle());
         }
 
+        // Create a list of video comments
+        ArrayList<Integer> comments = new ArrayList<>();
+        for (Video v : videoList) {
+            comments.add(v.getCommentNum());
+        }
+
+        // Create a list of video likes
+        ArrayList<Integer> likes = new ArrayList<>();
+        for (Video v : videoList) {
+            likes.add(v.getLikeNum());
+        }
+
+        // Create a list of video saves
+        ArrayList<Integer> bookmarks = new ArrayList<>();
+        for (Video v : videoList) {
+            bookmarks.add(v.getBookmarkNum());
+        }
+
         // Get the selected video's position
         int selectedPosition = videoList.indexOf(video);
 
@@ -189,6 +201,9 @@ public class VideoAllFragment extends Fragment {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
             intent.putStringArrayListExtra("videoUris", videoUris);
             intent.putStringArrayListExtra("videoTitles", videoTitles);
+            intent.putIntegerArrayListExtra("comments", comments);
+            intent.putIntegerArrayListExtra("likes", likes);
+            intent.putIntegerArrayListExtra("bookmarks", bookmarks);
             intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }
