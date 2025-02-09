@@ -94,7 +94,7 @@ public class NewsFragment extends Fragment implements SelectListener {
                 movetoNewsDetail();
             }
         });
-        showItem();
+
         newsAdapter = new NewsAdapter(getContext(), NewsList, this);
         recyclerNews.setAdapter(newsAdapter);
 
@@ -117,34 +117,6 @@ public class NewsFragment extends Fragment implements SelectListener {
         //no usage here, just declare to not abstract
     }
 
-    public void showItem() {
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            try {
-                con = sqlconnection.CONN();
-                String query = "SELECT * FROM androidapi.api_article ORDER BY id LIMIT 10";
-                PreparedStatement stmt = con.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery();
-                List<SmallNews> newsList = new ArrayList<>();
 
-                while (rs.next()) {
-                    SmallNews newsItem = new SmallNews();
-                    newsItem.setId(rs.getInt("id"));
-                    newsItem.setTitle(rs.getString("title"));
-                    newsItem.setImageUrl(rs.getString("urlToImage"));
-                    newsList.add(newsItem);
-                }
-
-                requireActivity().runOnUiThread(() -> {
-                    NewsList.clear();
-                    NewsList.addAll(newsList);
-                    newsAdapter.setNewsList(NewsList);
-                });
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
 
 }

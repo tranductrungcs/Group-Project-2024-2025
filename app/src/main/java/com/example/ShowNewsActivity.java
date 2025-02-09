@@ -46,7 +46,7 @@ public class ShowNewsActivity extends AppCompatActivity {
         });
 
         sqlconnection = new SQLconnection();
-        showContent();
+
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -87,28 +87,7 @@ public class ShowNewsActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    public void showContent() {
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            try {
-                con = sqlconnection.CONN();
-                String query = "SELECT * FROM androidapi.api_article WHERE id = 2";
-                PreparedStatement stmt = con.prepareStatement(query);
-                ResultSet rs = stmt.executeQuery();
-                StringBuilder bStr = new StringBuilder();
-                while (rs.next()) {
-                    bStr.append(rs.getString("content")).append("\n");
-                }
-                content = bStr.toString();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            runOnUiThread(() -> {
-                TextView Content = findViewById(R.id.NewsContent);
-                Content.setText(content);
-            });
-        });
-    }
+
 
 
 
