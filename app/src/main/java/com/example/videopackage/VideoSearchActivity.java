@@ -1,4 +1,4 @@
-package com.example;
+package com.example.videopackage;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -21,6 +21,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

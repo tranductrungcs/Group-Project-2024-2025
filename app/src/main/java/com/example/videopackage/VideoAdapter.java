@@ -1,4 +1,4 @@
-package com.example;
+package com.example.videopackage;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,33 +12,34 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.R;
 
 import java.util.Collections;
 import java.util.List;
 
-public class VideoSearchAdapter extends RecyclerView.Adapter<VideoSearchAdapter.VideoViewHolder> {
-    private Context context;
-    private List<Video> videoSearchList;
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
+
+    private final Context context;
+    private List<Video> videoList;
     private final String baseUrl;
     private final OnVideoClickListener onVideoClickListener;
 
-    public VideoSearchAdapter(Context context, List<Video> videoSearchList, String baseUrl, OnVideoClickListener onVideoClickListener) {
+    public VideoAdapter(Context context, List<Video> videoList, String baseUrl, OnVideoClickListener onVideoClickListener) {
         this.context = context;
-        this.videoSearchList = videoSearchList;
+        this.videoList = videoList;
         this.baseUrl = baseUrl;
         this.onVideoClickListener = onVideoClickListener;
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setData(List<Video> searchList) {
-        this.videoSearchList.clear();
-        this.videoSearchList.addAll(searchList);
+    public void setData(List<Video> list) {
+        this.videoList = list;
         notifyDataSetChanged();
     }
 
     @SuppressLint("NotifyDataSetChanged")
     public void shuffleVideos() {
-        Collections.shuffle(videoSearchList);
+        Collections.shuffle(videoList);
         notifyDataSetChanged();
     }
 
@@ -51,7 +52,7 @@ public class VideoSearchAdapter extends RecyclerView.Adapter<VideoSearchAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
-        Video video = videoSearchList.get(position);
+        Video video = videoList.get(position);
 
         // Load thumbnail
         Glide.with(context).load(baseUrl + video.getThumbnailImageFetchableUrl()).into(holder.videoThumbnail);
@@ -65,10 +66,10 @@ public class VideoSearchAdapter extends RecyclerView.Adapter<VideoSearchAdapter.
 
     @Override
     public int getItemCount() {
-        return videoSearchList.size();
+        return videoList.size();
     }
 
-    static class VideoViewHolder extends RecyclerView.ViewHolder {
+    public static class VideoViewHolder extends RecyclerView.ViewHolder {
         ImageView videoThumbnail;
         TextView videoTitle;
 
@@ -83,3 +84,4 @@ public class VideoSearchAdapter extends RecyclerView.Adapter<VideoSearchAdapter.
         void onVideoClick(Video video);
     }
 }
+

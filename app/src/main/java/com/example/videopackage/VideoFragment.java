@@ -1,4 +1,4 @@
-package com.example;
+package com.example.videopackage;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -21,6 +21,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.R;
+import com.example.savepackage.SaveFragment;
+import com.example.SettingActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;

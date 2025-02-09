@@ -1,17 +1,10 @@
 package com.example;
 
-import android.os.StrictMode;
 import android.util.Log;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.sql.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.List;
 import java.util.Objects;
-import com.example.News_list;
 
 public class SQLconnection {
     protected static String ip = "10.0.2.2";

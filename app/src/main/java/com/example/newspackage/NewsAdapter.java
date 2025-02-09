@@ -1,4 +1,4 @@
-package com.example;
+package com.example.newspackage;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,13 +20,16 @@ import java.util.List;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
     private Context context;
     private List<SmallNews> NewsList;
-    private final SelectListener selectListener;
+    private final String baseUrl;
+    private final OnNewsClickListener onNewsClickListener;
 
-    public NewsAdapter(Context context, List<SmallNews> newsList, SelectListener selectListener) {
+    public NewsAdapter(Context context, List<SmallNews> newsList, String baseUrl, OnNewsClickListener onNewsClickListener) {
         this.context = context;
         this.NewsList = newsList;
-        this.selectListener = selectListener;
+        this.baseUrl = baseUrl;
+        this.onNewsClickListener = onNewsClickListener;
     }
+
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
         public ImageView newsImageView;
@@ -50,15 +55,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
         SmallNews smallNews = NewsList.get(position);
 
+        Glide.with(context).load(smallNews.getUrlToImage()).into(holder.newsImageView);
+
         holder.newsTitle.setText(smallNews.getTitle());
 
-        Picasso.get()
-                .load(smallNews.getImageUrl())
-                .placeholder(R.drawable.avoid_red)
-                .error(R.drawable.tomato_logo)
-                .fit()
-                .into(holder.newsImageView);
+
+        holder.itemView.setOnClickListener(v -> onNewsClickListener.onNewsClick(smallNews));
     }
+
 
     @Override
     public int getItemCount() {
@@ -70,4 +74,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         notifyDataSetChanged();
     }
 
+    public interface OnNewsClickListener {
+        void onNewsClick(SmallNews smallNews);
+    }
 }

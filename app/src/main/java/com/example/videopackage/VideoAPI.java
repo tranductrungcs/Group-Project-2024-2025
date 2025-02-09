@@ -1,4 +1,4 @@
-package com.example;
+package com.example.videopackage;
 
 import java.util.List;
 

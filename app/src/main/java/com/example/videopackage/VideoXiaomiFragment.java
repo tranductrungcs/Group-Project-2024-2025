@@ -1,7 +1,7 @@
-package com.example;
+package com.example.videopackage;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.R;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -29,10 +30,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SaveVideoFragment#newInstance} factory method to
+ * Use the {@link VideoXiaomiFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SaveVideoFragment  extends Fragment {
+public class VideoXiaomiFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private VideoAdapter videoAdapter;
@@ -50,7 +51,7 @@ public class SaveVideoFragment  extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SaveVideoFragment() {
+    public VideoXiaomiFragment() {
         // Required empty public constructor
     }
 
@@ -60,11 +61,11 @@ public class SaveVideoFragment  extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment VideoAllFragment.
+     * @return A new instance of fragment VideoXiaomiFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SaveVideoFragment newInstance(String param1, String param2) {
-        SaveVideoFragment fragment = new SaveVideoFragment();
+    public static VideoXiaomiFragment newInstance(String param1, String param2) {
+        VideoXiaomiFragment fragment = new VideoXiaomiFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,7 +86,7 @@ public class SaveVideoFragment  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_save_video, container, false);
+        View view = inflater.inflate(R.layout.fragment_video_xiaomi, container, false);
 
         tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
@@ -97,13 +98,7 @@ public class SaveVideoFragment  extends Fragment {
         recyclerView.setAdapter(videoAdapter);
 
         // Setup SwipeRefreshLayout
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshData();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this::refreshData);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -124,17 +119,9 @@ public class SaveVideoFragment  extends Fragment {
     }
 
     private void refreshData() {
-        List<Video> newData = getListPost();
-        videoAdapter.setData(newData);
-        videoAdapter.notifyDataSetChanged();
-    }
-
-    private List<Video> getListPost() {
-        Log.i("List Post", videoList.toString());
-        if (!videoList.isEmpty()) {
-
-        }
-        return videoList;
+        videoList.clear(); // Remove the current video list
+        fetchVideos(); // Call the API to fetch new data
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void fetchVideos() {
@@ -143,35 +130,80 @@ public class SaveVideoFragment  extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        SaveAPI saveAPI = retrofit.create(SaveAPI.class);
-        Call<List<Video>> call = saveAPI.getVideos("5");
+        VideoAPI videoAPI = retrofit.create(VideoAPI.class);
+        Call<List<Video>> call = videoAPI.getVideos("Xiaomi");
         call.enqueue(new Callback<List<Video>>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
-                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
-                    videoList.clear();
-                    videoList.addAll(response.body());
-                    videoAdapter.notifyDataSetChanged();
+                if (response.isSuccessful() && response.body() != null) {
+                    for (Video video : response.body()) {
+                        if ("Xiaomi".equals(video.getVideoBrandType())) {
+                            videoList.add(video);
+                            Log.i("Add videos success", video.getVideoUniqueId());
+                        }
+                    }
+                    videoAdapter.setData(videoList); // Update adapter with video list
+                    videoAdapter.shuffleVideos(); // Shuffle the video list
+                    videoAdapter.notifyDataSetChanged(); // Update the adapter after adding video
                 } else {
                     Toast.makeText(getContext(), "No videos available", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Video>> call, Throwable t) {
-                Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
-                Log.e("API Error", t.getMessage());
+            public void onFailure(@NonNull Call<List<Video>> call, @NonNull Throwable t) {
+                if (getContext() != null) {
+                    Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
+                }
+                Log.i("Queue error", t.toString());
             }
         });
     }
 
     private void playVideo(Video video) {
-        Uri videoUri = Uri.parse(baseUrl + video.getFetchableUrl());
+        // Create a list of video URIs
+        ArrayList<String> videoUris = new ArrayList<>();
+        for (Video v : videoList) {
+            videoUris.add(baseUrl + v.getFetchableUrl());
+        }
 
-        // Start PlayVideoActivity with the selected URI
+        // Create a list of video titles
+        ArrayList<String> videoTitles = new ArrayList<>();
+        for (Video v : videoList) {
+            videoTitles.add(v.getTitle());
+        }
+
+        // Create a list of video comments
+        ArrayList<Integer> comments = new ArrayList<>();
+        for (Video v : videoList) {
+            comments.add(v.getCommentNum());
+        }
+
+        // Create a list of video likes
+        ArrayList<Integer> likes = new ArrayList<>();
+        for (Video v : videoList) {
+            likes.add(v.getLikeNum());
+        }
+
+        // Create a list of video saves
+        ArrayList<Integer> bookmarks = new ArrayList<>();
+        for (Video v : videoList) {
+            bookmarks.add(v.getBookmarkNum());
+        }
+
+        // Get the selected video's position
+        int selectedPosition = videoList.indexOf(video);
+
+        // Start PlayVideoActivity with the video list and selected position
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
-            intent.putExtra("videoUri", videoUri.toString());
+            intent.putStringArrayListExtra("videoUris", videoUris);
+            intent.putStringArrayListExtra("videoTitles", videoTitles);
+            intent.putIntegerArrayListExtra("comments", comments);
+            intent.putIntegerArrayListExtra("likes", likes);
+            intent.putIntegerArrayListExtra("bookmarks", bookmarks);
+            intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }
     }

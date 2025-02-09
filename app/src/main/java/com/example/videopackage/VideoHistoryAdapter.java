@@ -1,4 +1,4 @@
-package com.example;
+package com.example.videopackage;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.R;
 
 import java.util.List;
 

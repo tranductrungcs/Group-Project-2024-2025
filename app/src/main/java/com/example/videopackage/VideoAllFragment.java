@@ -1,4 +1,4 @@
-package com.example;
+package com.example.videopackage;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.R;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -143,8 +144,7 @@ public class VideoAllFragment extends Fragment {
                     }
                     // Update adapter with video list
                     videoAdapter.setData(videoList);
-                    // Shuffle the video list
-                    videoAdapter.shuffleVideos();
+
                     // Update the adapter after adding video
                     videoAdapter.notifyDataSetChanged();
                 } else {

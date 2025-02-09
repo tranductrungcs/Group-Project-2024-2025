@@ -1,10 +1,11 @@
-package com.example;
+package com.example.videopackage;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,9 +15,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.example.R;
 import com.google.android.material.tabs.TabLayout;
+
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +32,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link VideoXiaomiFragment#newInstance} factory method to
+ * Use the {@link VideoAppleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VideoXiaomiFragment extends Fragment {
+public class VideoAppleFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private VideoAdapter videoAdapter;
@@ -50,7 +53,7 @@ public class VideoXiaomiFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public VideoXiaomiFragment() {
+    public VideoAppleFragment() {
         // Required empty public constructor
     }
 
@@ -60,11 +63,11 @@ public class VideoXiaomiFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment VideoXiaomiFragment.
+     * @return A new instance of fragment VideoAppleFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static VideoXiaomiFragment newInstance(String param1, String param2) {
-        VideoXiaomiFragment fragment = new VideoXiaomiFragment();
+    public static VideoAppleFragment newInstance(String param1, String param2) {
+        VideoAppleFragment fragment = new VideoAppleFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -85,7 +88,7 @@ public class VideoXiaomiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_video_xiaomi, container, false);
+        View view = inflater.inflate(R.layout.fragment_video_apple, container, false);
 
         tabLayout = requireActivity().findViewById(R.id.tab_layout_main);
         swipeRefreshLayout = view.findViewById(R.id.swipe_layout);
@@ -117,6 +120,11 @@ public class VideoXiaomiFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
     private void refreshData() {
         videoList.clear(); // Remove the current video list
         fetchVideos(); // Call the API to fetch new data
@@ -130,14 +138,14 @@ public class VideoXiaomiFragment extends Fragment {
                 .build();
 
         VideoAPI videoAPI = retrofit.create(VideoAPI.class);
-        Call<List<Video>> call = videoAPI.getVideos("Xiaomi");
+        Call<List<Video>> call = videoAPI.getVideos("Apple");
         call.enqueue(new Callback<List<Video>>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     for (Video video : response.body()) {
-                        if ("Xiaomi".equals(video.getVideoBrandType())) {
+                        if ("Apple".equals(video.getVideoBrandType())) {
                             videoList.add(video);
                             Log.i("Add videos success", video.getVideoUniqueId());
                         }

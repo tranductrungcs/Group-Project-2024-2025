@@ -1,4 +1,4 @@
-package com.example;
+package com.example.videopackage;
 
 import android.os.Bundle;
 import android.view.Window;
@@ -17,6 +17,8 @@ import androidx.media3.common.Player;
 import androidx.media3.common.util.UnstableApi;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.example.R;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package com.example;
+package com.example.savepackage;
+
+import com.example.videopackage.Video;
 
 import java.util.List;
 

@@ -29,13 +29,13 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ShowNewsActivity"
+            android:name=".newspackage.ShowNewsActivity"
             android:exported="false" />
         <activity
-            android:name=".VideoSearchActivity"
+            android:name=".videopackage.VideoSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".PlayVideoActivity"
+            android:name=".videopackage.PlayVideoActivity"
             android:exported="false" />
         <activity
             android:name=".SettingActivity"

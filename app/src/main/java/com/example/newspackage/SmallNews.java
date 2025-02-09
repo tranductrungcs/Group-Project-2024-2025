@@ -1,8 +1,4 @@
-package com.example;
-
-import androidx.annotation.NonNull;
-
-import java.util.Locale;
+package com.example.newspackage;
 
 public class SmallNews {
     private int id;
@@ -10,12 +6,16 @@ public class SmallNews {
     private String date;
     private String description;
     private String[] contents;
-    private String imageUrl;
+    private String urlToImage;
+    private int commentNum;
+    private int likeNum;
+    private int bookmarkNum;
 
-    public SmallNews(Integer id, String title, String imageUrl){
+
+    public SmallNews(Integer id, String title, String urlToImage){
         this.id = id;
         this.title = title;
-        this.imageUrl = imageUrl;
+        this.urlToImage = urlToImage;
     }
 
     public SmallNews() {}
@@ -60,12 +60,35 @@ public class SmallNews {
         return contents;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setUrlToImage(String urlToImage) {
+        this.urlToImage = urlToImage;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getUrlToImage() {
+        return urlToImage;
     }
 
+    public int getCommentNum() {
+        return commentNum;
+    }
+
+    public void setCommentNum(int commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public int getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(int likeNum) {
+        this.likeNum = likeNum;
+    }
+
+    public int getBookmarkNum() {
+        return bookmarkNum;
+    }
+
+    public void setBookmarkNum(int bookmarkNum) {
+        this.bookmarkNum = bookmarkNum;
+    }
 }
