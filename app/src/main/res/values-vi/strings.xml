@@ -171,4 +171,18 @@ quasi aliquam eligendi, placeat qui corporis!</string>
     <string name="action_settings">Cài đặt</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="email">Email</string>
+    <string name="password">Mat khau</string>
+    <string name="retype_password">Nhap lai mat khau</string>
+
+    <string name="login">Dang Nhap</string>
+    <string name="register">Dang Ky</string>
+
+    <string name="forgot_password">Quen Mat Khau?</string>
+    <string name="registerBtn">Dang Ky Tai Khoan</string>
+    <string name="loginBtn">Da Co Tai Khoan? Dang Nhap</string>
+
+    <string name="enter_your_email">Nhap Email Cua Ban</string>
+
+    <string name="sendEmail">Gui Email</string>
 </resources>

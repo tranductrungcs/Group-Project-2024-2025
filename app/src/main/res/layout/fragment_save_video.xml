@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/swipe_layout"
     android:layout_height="match_parent"
-    tools:context=".SaveVideoFragment">
+    tools:context=".savepackage.SaveVideoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/videos"
