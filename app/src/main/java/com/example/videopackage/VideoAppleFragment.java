@@ -169,6 +169,11 @@ public class VideoAppleFragment extends Fragment {
     }
 
     private void playVideo(Video video) {
+        ArrayList<Integer> videoIds = new ArrayList<>();
+        for (Video v: videoList) {
+            videoIds.add(v.getId());
+        }
+
         // Create a list of video URIs
         ArrayList<String> videoUris = new ArrayList<>();
         for (Video v : videoList) {
@@ -205,6 +210,7 @@ public class VideoAppleFragment extends Fragment {
         // Start PlayVideoActivity with the video list and selected position
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
+            intent.putExtra("videoIds", videoIds);
             intent.putStringArrayListExtra("videoUris", videoUris);
             intent.putStringArrayListExtra("videoTitles", videoTitles);
             intent.putIntegerArrayListExtra("comments", comments);

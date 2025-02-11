@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.webkit.internal.ApiFeature;
+
+import com.example.requestpackage.RegisterRequest;
+import com.example.responsepackage.RegisterResponse;
 
 import java.util.Objects;
 
@@ -63,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registerUser(String email, String password) {
         RegisterRequest registerRequest = new RegisterRequest(email, password); // Changed from username to email
-        Call<RegisterResponse> call = RetrofitClient.getApiService().registerUser(registerRequest);
+        Call<RegisterResponse> call = RetrofitClient.getAuthApiService().registerUser(registerRequest);
 
         call.enqueue(new Callback<RegisterResponse>() {
             @Override

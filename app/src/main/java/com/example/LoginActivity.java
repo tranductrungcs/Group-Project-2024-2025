@@ -14,6 +14,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.requestpackage.LoginRequest;
+import com.example.responsepackage.LoginResponse;
+
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -70,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         if (!email.isEmpty() && !password.isEmpty()) {
             LoginRequest loginRequest = new LoginRequest(email, password);
 
-            Call<LoginResponse> call = RetrofitClient.getApiService().loginUser(loginRequest);
+            Call<LoginResponse> call = RetrofitClient.getAuthApiService().loginUser(loginRequest);
 
             call.enqueue(new Callback<LoginResponse>() {
                 @Override

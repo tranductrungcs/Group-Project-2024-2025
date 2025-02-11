@@ -1,5 +1,12 @@
 package com.example;
 
+import com.example.requestpackage.ForgotPasswordRequest;
+import com.example.requestpackage.LoginRequest;
+import com.example.requestpackage.RegisterRequest;
+import com.example.responsepackage.ForgotPasswordResponse;
+import com.example.responsepackage.LoginResponse;
+import com.example.responsepackage.RegisterResponse;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

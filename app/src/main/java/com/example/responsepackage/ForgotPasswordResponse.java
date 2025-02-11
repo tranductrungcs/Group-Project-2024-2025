@@ -1,4 +1,4 @@
-package com.example;
+package com.example.responsepackage;
 
 public class ForgotPasswordResponse {
     private String message;
