@@ -1,4 +1,4 @@
-package com.example;
+package com.example.responsepackage;
 
 public class LoginResponse {
     private String token;

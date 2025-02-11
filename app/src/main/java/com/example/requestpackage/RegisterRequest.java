@@ -1,4 +1,4 @@
-package com.example;
+package com.example.requestpackage;
 
 public class RegisterRequest {
     private String email;

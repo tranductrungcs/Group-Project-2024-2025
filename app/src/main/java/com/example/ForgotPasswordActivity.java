@@ -14,6 +14,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.requestpackage.ForgotPasswordRequest;
+import com.example.responsepackage.ForgotPasswordResponse;
+
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -61,7 +64,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         sendEmailBtn.setEnabled(false);
 
         ForgotPasswordRequest forgotPasswordRequest = new ForgotPasswordRequest(email);
-        Call<ForgotPasswordResponse> call = RetrofitClient.getApiService().forgotPassword(forgotPasswordRequest);
+        Call<ForgotPasswordResponse> call = RetrofitClient.getAuthApiService().forgotPassword(forgotPasswordRequest);
 
         call.enqueue(new Callback<ForgotPasswordResponse>() {
             @Override

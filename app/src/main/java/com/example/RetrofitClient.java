@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.videopackage.VideoAPI;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -8,7 +10,7 @@ public class RetrofitClient {
 
     private static Retrofit retrofit = null;
 
-    public static AuthAPIService getApiService() {
+    public static AuthAPIService getAuthApiService() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(url)
@@ -16,5 +18,15 @@ public class RetrofitClient {
                     .build();
         }
         return retrofit.create(AuthAPIService.class);
+    }
+
+    public static VideoAPI getVideoApiService() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(url)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit.create(VideoAPI.class);
     }
 }
