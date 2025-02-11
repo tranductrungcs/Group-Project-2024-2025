@@ -6,6 +6,7 @@ import com.example.requestpackage.VideoLikeRequest;
 import com.example.responsepackage.VideoBookmarkResponse;
 import com.example.responsepackage.VideoCommentResponse;
 import com.example.responsepackage.VideoLikeResponse;
+import com.example.videopackage.videoComment.VideoComment;
 
 import java.util.List;
 
@@ -31,6 +32,9 @@ public interface VideoAPI {
 
     @GET("videos/reactions")
     Call<VideoLikeResponse> getLike(@Query("user") int user, @Query("videoId") int videoId);
+
+    @GET("videos/comments")
+    Call<List<VideoComment>> getComments(@Query("videoId") int videoId);
 
     @GET("videos/bookmarks")
     Call<VideoBookmarkResponse> getBookmark(@Query("user") int user, @Query("videoId") int videoId);
