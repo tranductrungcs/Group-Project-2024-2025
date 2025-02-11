@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -58,6 +59,7 @@ public class VideoSearchActivity extends AppCompatActivity {
     private Button searchAsus;
     private Button searchButton;
     private Button deleteHistoryButton;
+    private TextView searchNoResult;
 
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
 
@@ -238,6 +240,7 @@ public class VideoSearchActivity extends AppCompatActivity {
     }
 
     private void playVideo(Video video) {
+        ArrayList<Integer> videoIds = new ArrayList<>(); // Create a list of video IDs
         ArrayList<String> videoUris = new ArrayList<>(); // List of video URIs
         ArrayList<String> videoTitles = new ArrayList<>(); // List of video titles
         ArrayList<Integer> comments = new ArrayList<>(); // List of video comments
@@ -245,6 +248,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         ArrayList<Integer> bookmarks = new ArrayList<>(); // List of video saves
 
         for (Video v : videoSearchList) {
+            videoIds.add(v.getId());
             videoUris.add(baseUrl + v.getFetchableUrl());
             videoTitles.add(v.getTitle());
             comments.add(v.getCommentNum());
@@ -257,6 +261,7 @@ public class VideoSearchActivity extends AppCompatActivity {
 
         // Start PlayVideoActivity with the video list and selected position
         Intent intent = new Intent(this, PlayVideoActivity.class);
+        intent.putExtra("videoIds", videoIds);
         intent.putStringArrayListExtra("videoUris", videoUris);
         intent.putStringArrayListExtra("videoTitles", videoTitles);
         intent.putIntegerArrayListExtra("comments", comments);
