@@ -92,6 +92,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.search_button);
         deleteHistoryButton = findViewById(R.id.delete_history);
         histories = findViewById(R.id.histories);
+        searchNoResult = findViewById(R.id.video_search_no_result);
 
         // Back button part
         // Set a click listener to finish the activity
@@ -163,6 +164,9 @@ public class VideoSearchActivity extends AppCompatActivity {
         videoHistoryAdapter = new VideoHistoryAdapter(new ArrayList<>(), this);
         histories.setAdapter(videoHistoryAdapter);
         Log.d("VideoSearchActivity", "Histories: " + histories.toString());
+
+        // Search no result part
+        searchNoResult.setVisibility(View.GONE);
 
         fetchVideos(); // Load videos
         loadHistory(); // Load the search history when rerun the app
@@ -301,9 +305,10 @@ public class VideoSearchActivity extends AppCompatActivity {
 
         // Show search result
         videoSearchResult.setVisibility(filteredList.isEmpty() ? View.GONE : View.VISIBLE);
-        trendsAndHistory.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
-        searchButton.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
-        deleteHistoryButton.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
+        searchNoResult.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
+        trendsAndHistory.setVisibility(View.GONE);
+        searchButton.setVisibility(View.GONE);
+        deleteHistoryButton.setVisibility(View.GONE);
 
         Log.d("VideoSearchActivity", "Filtered video list size: " + filteredList.size());
     }
@@ -314,6 +319,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         searchText.setText(""); // Clear the search text
         videoSearchAdapter.setData(originalList); // Reset to the original list
         videoSearchResult.setVisibility(View.GONE); // Hide the search results
+        searchNoResult.setVisibility(View.GONE);
         trendsAndHistory.setVisibility(View.VISIBLE);
         searchButton.setVisibility(View.VISIBLE);
         loadHistory();
