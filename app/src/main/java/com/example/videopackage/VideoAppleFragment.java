@@ -170,37 +170,17 @@ public class VideoAppleFragment extends Fragment {
 
     private void playVideo(Video video) {
         ArrayList<Integer> videoIds = new ArrayList<>();
+        ArrayList<String> videoUris = new ArrayList<>();
+        ArrayList<String> videoTitles = new ArrayList<>();
+        ArrayList<Integer> comments = new ArrayList<>();
+        ArrayList<Integer> likes = new ArrayList<>();
+        ArrayList<Integer> bookmarks = new ArrayList<>();
         for (Video v: videoList) {
             videoIds.add(v.getId());
-        }
-
-        // Create a list of video URIs
-        ArrayList<String> videoUris = new ArrayList<>();
-        for (Video v : videoList) {
             videoUris.add(baseUrl + v.getFetchableUrl());
-        }
-
-        // Create a list of video titles
-        ArrayList<String> videoTitles = new ArrayList<>();
-        for (Video v : videoList) {
             videoTitles.add(v.getTitle());
-        }
-
-        // Create a list of video comments
-        ArrayList<Integer> comments = new ArrayList<>();
-        for (Video v : videoList) {
             comments.add(v.getCommentNum());
-        }
-
-        // Create a list of video likes
-        ArrayList<Integer> likes = new ArrayList<>();
-        for (Video v : videoList) {
             likes.add(v.getLikeNum());
-        }
-
-        // Create a list of video saves
-        ArrayList<Integer> bookmarks = new ArrayList<>();
-        for (Video v : videoList) {
             bookmarks.add(v.getBookmarkNum());
         }
 
@@ -210,7 +190,7 @@ public class VideoAppleFragment extends Fragment {
         // Start PlayVideoActivity with the video list and selected position
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
-            intent.putExtra("videoIds", videoIds);
+            intent.putIntegerArrayListExtra("videoIds", videoIds);
             intent.putStringArrayListExtra("videoUris", videoUris);
             intent.putStringArrayListExtra("videoTitles", videoTitles);
             intent.putIntegerArrayListExtra("comments", comments);

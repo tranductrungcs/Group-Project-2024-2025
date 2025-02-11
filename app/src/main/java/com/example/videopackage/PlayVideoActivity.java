@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.Player;
 import androidx.media3.common.util.UnstableApi;
@@ -26,11 +28,14 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.LoginActivity;
 import com.example.R;
 import com.example.RetrofitClient;
+import com.example.requestpackage.VideoBookmarkRequest;
 import com.example.requestpackage.VideoLikeRequest;
 import com.example.responsepackage.VideoBookmarkResponse;
 import com.example.responsepackage.VideoLikeResponse;
+import com.example.videopackage.videoComment.VideoCommentFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -46,17 +51,17 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
     private List<Integer> comments;
     private List<Integer> likes;
     private List<Integer> bookmarks;
+    private List<Boolean> isVideosLiked;
+    private List<Boolean> isVideosBookmarked;
     private FloatingActionButton likeButton, commentButton, bookmarkButton;
     private ExoPlayer exoPlayer;
 
-    private SharedPreferences sharedPreferences = getSharedPreferences("Authentication", Context.MODE_PRIVATE);
-    private final String token = sharedPreferences.getString("auth_token", null);
-    private final int userId = sharedPreferences.getInt("userId", -1);
+    private SharedPreferences sharedPreferences;
+    private String token;
+    private int userId;
 
     private final String url = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
     private VideoAPI videoApiService = RetrofitClient.getVideoApiService();
-
-    private boolean isVideoLiked, isVideoBookmarked;
 
     @OptIn(markerClass = UnstableApi.class)
     @Override
@@ -73,6 +78,10 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        sharedPreferences = getSharedPreferences("Authentication", Context.MODE_PRIVATE);
+        token = sharedPreferences.getString("auth_token", null);
+        userId = sharedPreferences.getInt("userId", -1);
 
         // Find the close_icon ImageView
         ImageView backButton = findViewById(R.id.back_button);
@@ -114,12 +123,27 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
         // Retrieve video saves list from intent
         bookmarks = getIntent().getIntegerArrayListExtra("bookmarks");
 
+        isVideosBookmarked = new ArrayList<>();
+        isVideosLiked = new ArrayList<>();
+        getCurrentVideoLikeState(userId, videoIds);
+        getCurrentVideoBookmarkState(userId, videoIds);
+
         int initialPosition = getIntent().getIntExtra("initialPosition", 0);
 
         viewPager = findViewById(R.id.viewPager);
 
         // Set up adapter
-        adapter = new PlayVideoPagerAdapter(this, videoIds, videoUris, videoTitles, comments, likes, bookmarks);
+        adapter = new PlayVideoPagerAdapter(
+                this,
+                videoIds,
+                videoUris,
+                videoTitles,
+                comments,
+                likes,
+                bookmarks,
+                isVideosLiked,
+                isVideosBookmarked
+        );
         viewPager.setAdapter(adapter);
 
         // Set initial video position
@@ -133,7 +157,7 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
             startActivity(intent);
             finish();
         } else {
-            if (isVideoLiked) {
+            if (isVideosLiked.get(position)) {
                 Call<Void> call = videoApiService.deleteLike(userId, videoId);
                 call.enqueue(new Callback<Void>() {
                     @Override
@@ -184,7 +208,7 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
             startActivity(intent);
             finish();
         } else {
-            if (isVideoBookmarked) {
+            if (isVideosBookmarked.get(position)) {
                 Call<Void> call = videoApiService.deleteBookmark(userId, videoId);
                 call.enqueue(new Callback<Void>() {
                     @Override
@@ -204,24 +228,24 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                     }
                 });
             } else {
-                VideoLikeRequest videoLikeRequest = new VideoLikeRequest(userId, videoId);
+                VideoBookmarkRequest videoBookmarkRequest = new VideoBookmarkRequest(userId, videoId);
 
-                Call<VideoLikeResponse> call = videoApiService.addLike(videoLikeRequest);
-                call.enqueue(new Callback<VideoLikeResponse>() {
+                Call<VideoBookmarkResponse> call = videoApiService.addBookmark(videoBookmarkRequest);
+                call.enqueue(new Callback<VideoBookmarkResponse>() {
                     @Override
-                    public void onResponse(Call<VideoLikeResponse> call, Response<VideoLikeResponse> response) {
+                    public void onResponse(Call<VideoBookmarkResponse> call, Response<VideoBookmarkResponse> response) {
                         if (response.isSuccessful() && response.body() != null) {
                             Log.i("VideoBookmarked", "Success");
                         } else {
-                            Toast.makeText(PlayVideoActivity.this, "Video Liking Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PlayVideoActivity.this, "Video Saving Failed", Toast.LENGTH_SHORT).show();
                             Log.e("VideoBookmarkingFailed", response.toString());
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<VideoLikeResponse> call, Throwable t) {
-                        Toast.makeText(PlayVideoActivity.this, "Video Liking Failed", Toast.LENGTH_SHORT).show();
-                        Log.e("Video Liking Failed", t.toString());
+                    public void onFailure(Call<VideoBookmarkResponse> call, Throwable t) {
+                        Toast.makeText(PlayVideoActivity.this, "Video Saving Failed", Toast.LENGTH_SHORT).show();
+                        Log.e("VideoBookmarkingFailed", t.toString());
                     }
                 });
             }
@@ -235,49 +259,57 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
             startActivity(intent);
             finish();
         } else {
-
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.add(R.id.commentVideoContainer, VideoCommentFragment.newInstance(userId, videoId));
+            transaction.commit();
         }
     }
 
-    private void getCurrentVideoLikeState(int user, int videoId) {
-        Call<VideoLikeResponse> call = videoApiService.getLike(user, videoId);
-        call.enqueue(new Callback<VideoLikeResponse>() {
-            @Override
-            public void onResponse(Call<VideoLikeResponse> call, Response<VideoLikeResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Log.i("isVideoLiked", response.body().toString());
-                    isVideoLiked = true;
-                } else {
-                    isVideoLiked = false;
+    private void getCurrentVideoLikeState(int user, List<Integer> videoIds) {
+        for (Integer videoId: videoIds) {
+            Call<VideoLikeResponse> call = videoApiService.getLike(user, videoId);
+            call.enqueue(new Callback<VideoLikeResponse>() {
+                @Override
+                public void onResponse(Call<VideoLikeResponse> call, Response<VideoLikeResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        Log.i("isVideoLiked", response.body().toString());
+                        isVideosLiked.add(true);
+                    } else {
+                        isVideosLiked.add(false);
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<VideoLikeResponse> call, Throwable t) {
-                Log.i("GetVideoLikeState Failed", t.toString());
-                isVideoLiked = false;
-            }
-        });
+                @Override
+                public void onFailure(Call<VideoLikeResponse> call, Throwable t) {
+                    Log.i("GetVideoLikeState Failed", t.toString());
+                    isVideosLiked.add(false);
+                }
+            });
+        }
     }
 
-    private void getCurrentVideoBookmarkState(int user, int videoId) {
-        Call<VideoBookmarkResponse> call = videoApiService.getBookmark(user, videoId);
-        call.enqueue(new Callback<VideoBookmarkResponse>() {
-            @Override
-            public void onResponse(Call<VideoBookmarkResponse> call, Response<VideoBookmarkResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Log.i("isVideoBookmarked", response.body().toString());
-                    isVideoBookmarked = true;
-                } else {
-                    isVideoBookmarked = false;
+    private void getCurrentVideoBookmarkState(int user, List<Integer> videoIds) {
+        for (Integer videoId: videoIds) {
+            Call<VideoBookmarkResponse> call = videoApiService.getBookmark(user, videoId);
+            call.enqueue(new Callback<VideoBookmarkResponse>() {
+                @Override
+                public void onResponse(Call<VideoBookmarkResponse> call, Response<VideoBookmarkResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        Log.i("isVideoBookmarked", response.body().toString());
+                        isVideosBookmarked.add(true);
+                    } else {
+                        isVideosBookmarked.add(false);
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<VideoBookmarkResponse> call, Throwable t) {
-                isVideoBookmarked = false;
-            }
-        });
+                @Override
+                public void onFailure(Call<VideoBookmarkResponse> call, Throwable t) {
+                    Log.i("GetBookmarkStateFailed", t.toString());
+                    isVideosBookmarked.add(false);
+                }
+            });
+        }
     }
 
     @Override

@@ -162,33 +162,18 @@ public class VideoXiaomiFragment extends Fragment {
     }
 
     private void playVideo(Video video) {
-        // Create a list of video URIs
+        ArrayList<Integer> videoIds = new ArrayList<>();
         ArrayList<String> videoUris = new ArrayList<>();
-        for (Video v : videoList) {
-            videoUris.add(baseUrl + v.getFetchableUrl());
-        }
-
-        // Create a list of video titles
         ArrayList<String> videoTitles = new ArrayList<>();
-        for (Video v : videoList) {
-            videoTitles.add(v.getTitle());
-        }
-
-        // Create a list of video comments
         ArrayList<Integer> comments = new ArrayList<>();
-        for (Video v : videoList) {
-            comments.add(v.getCommentNum());
-        }
-
-        // Create a list of video likes
         ArrayList<Integer> likes = new ArrayList<>();
-        for (Video v : videoList) {
-            likes.add(v.getLikeNum());
-        }
-
-        // Create a list of video saves
         ArrayList<Integer> bookmarks = new ArrayList<>();
-        for (Video v : videoList) {
+        for (Video v: videoList) {
+            videoIds.add(v.getId());
+            videoUris.add(baseUrl + v.getFetchableUrl());
+            videoTitles.add(v.getTitle());
+            comments.add(v.getCommentNum());
+            likes.add(v.getLikeNum());
             bookmarks.add(v.getBookmarkNum());
         }
 
@@ -198,6 +183,7 @@ public class VideoXiaomiFragment extends Fragment {
         // Start PlayVideoActivity with the video list and selected position
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
+            intent.putIntegerArrayListExtra("videoIds", videoIds);
             intent.putStringArrayListExtra("videoUris", videoUris);
             intent.putStringArrayListExtra("videoTitles", videoTitles);
             intent.putIntegerArrayListExtra("comments", comments);

@@ -27,6 +27,8 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
     private final List<Integer> comments;
     private final List<Integer> likes;
     private final List<Integer> bookmarks;
+    private final List<Boolean> isVideosLiked;
+    private final List<Boolean> isBookmarksLiked;
 
     private OnButtonClickListener listener;
 
@@ -37,7 +39,9 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
             List<String> videoTitles,
             List<Integer> comments,
             List<Integer> likes,
-            List<Integer> bookmarks
+            List<Integer> bookmarks,
+            List<Boolean> isVideosLiked,
+            List<Boolean> isBookmarksLiked
     ) {
         this.context = context;
         this.videoIds = videoIds;
@@ -46,6 +50,8 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
         this.comments = comments;
         this.likes = likes;
         this.bookmarks = bookmarks;
+        this.isVideosLiked = isVideosLiked;
+        this.isBookmarksLiked = isBookmarksLiked;
     }
 
     @NonNull
