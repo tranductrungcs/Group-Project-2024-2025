@@ -92,7 +92,7 @@ public class ShowNewsActivity extends AppCompatActivity {
         executorService.execute(() -> {
             try {
                 con = sqlconnection.CONN();
-                String query = "SELECT * FROM androidapi.api_article WHERE id = 2";
+                String query = "SELECT * FROM newschema.api_article WHERE id = 2";
                 PreparedStatement stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
                 StringBuilder bStr = new StringBuilder();
