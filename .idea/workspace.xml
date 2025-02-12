@@ -12,7 +12,7 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
-<<<<<<< HEAD
+
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_video_search.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -72,12 +72,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Apply Refresh and RecyclerView for Video Apple Part">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 =======
     <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Update UI for video_item">
+    <list default="true" id="238907ea-b74e-413a-ae91-1a95b3581b5b" name="Changes" comment="Fix the play video issues">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/AuthAPIService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/authpackage/AuthAPIService.java" afterDir="false" />
@@ -109,6 +109,10 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/savepackage/SaveFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/savepackage/SaveFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_save.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_save.xml" afterDir="false" />
 >>>>>>> 449f72fa6bf9c638ac77cdaeb8b09a157cd2811f
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/videopackage/VideoSearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/videopackage/VideoSearchActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_video_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_video_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-vi/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-vi/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,8 +122,8 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-<<<<<<< HEAD
-<<<<<<< HEAD
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=E:\Android Studio\AvDs\.android\avd\Pixel_8_Pro_API_35.avd)]" />
+
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Administrator\.android\avd\Pixel_6a_API_35_1.avd)]" />
 =======
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\admin\.android\avd\Pixel_8_Pro_API_35.avd)]" />
@@ -171,7 +175,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
-<<<<<<< HEAD
+
         <option value="Class" />
         <option value="Interface" />
 =======
@@ -179,7 +183,6 @@
         <option value="Interface" />
         <option value="layoutResourceFile_vertical" />
         <option value="Class" />
->>>>>>> a48c996cced8d1518d8d8c80e92d2f6913bf7c25
       </list>
     </option>
   </component>
@@ -192,7 +195,7 @@
     &quot;assignee&quot;: &quot;Hoang-Doan123&quot;
   }
 }</component>
-<<<<<<< HEAD
+
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/LamDD21/Group-Project-2024-2025.git",
@@ -206,10 +209,15 @@
     &quot;accountId&quot;: &quot;a4929510-e854-4cd3-98d5-0e375b468bbf&quot;
   }
 }</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/tranductrungcs/Group-Project-2024-2025.git&quot;,
+    &quot;accountId&quot;: &quot;a4929510-e854-4cd3-98d5-0e375b468bbf&quot;
+  }
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
->>>>>>> a48c996cced8d1518d8d8c80e92d2f6913bf7c25
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -221,7 +229,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
@@ -263,6 +271,40 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\PC\.android\avd\Medium_Phone_API_35.avd)]" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;Android Instrumented Tests.All Tests.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/a/Group-Project-2024-2025/app/src/main/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Android/Group-Project-2024-2025&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Group\Group-Project-2024-2025\app\src\main\res\drawable" />
+    </key>
+    <key name="android.template.-1153263254">
+      <recent name="com.example" />
+    </key>
+    <key name="android.template.-1028942949">
+      <recent name="com.example" />
+    </key>
+    <key name="android.template.-1844963762">
+      <recent name="com.example" />
+    </key>
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
@@ -287,7 +329,7 @@
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Auto" />
@@ -348,7 +390,7 @@
       <option name="project" value="LOCAL" />
       <updated>1739295668888</updated>
     </task>
-<<<<<<< HEAD
+
     <task id="LOCAL-00002" summary="Apply Refresh and RecyclerView for Video Apple Part">
       <option name="closed" value="true" />
       <created>1736829334485</created>
@@ -357,7 +399,7 @@
       <option name="project" value="LOCAL" />
       <updated>1736829334485</updated>
     </task>
-<<<<<<< HEAD
+
     <option name="localTasksCounter" value="3" />
 =======
     <task id="LOCAL-00003" summary="Apply Refresh and RecyclerView for Video Apple Part">
@@ -401,23 +443,31 @@
       <updated>1738738121452</updated>
     </task>
     <option name="localTasksCounter" value="8" />
->>>>>>> a48c996cced8d1518d8d8c80e92d2f6913bf7c25
-=======
+
     <option name="localTasksCounter" value="2" />
->>>>>>> 449f72fa6bf9c638ac77cdaeb8b09a157cd2811f
+
+    <task id="LOCAL-00008" summary="Fix the play video issues">
+      <option name="closed" value="true" />
+      <created>1739294204476</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1739294204476</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-<<<<<<< HEAD
+
     <MESSAGE value="Apply Refresh and RecyclerView for Video Apple Part" />
     <MESSAGE value="Update Dark Mode color for language option in SettingActivity" />
     <MESSAGE value="Fix the auto crash problem when run the app" />
     <MESSAGE value="Small change" />
     <MESSAGE value="Update UI for video_item" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update UI for video_item" />
+    <MESSAGE value="Fix the play video issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix the play video issues" />
   </component>
-<<<<<<< HEAD
-=======
+
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -429,10 +479,6 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
->>>>>>> a48c996cced8d1518d8d8c80e92d2f6913bf7c25
-=======
     <MESSAGE value="Update UI for video_item" />
     <option name="LAST_COMMIT_MESSAGE" value="Update UI for video_item" />
   </component>
->>>>>>> 449f72fa6bf9c638ac77cdaeb8b09a157cd2811f
-</project>

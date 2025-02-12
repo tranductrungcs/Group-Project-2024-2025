@@ -16,7 +16,7 @@
         style="@style/SCREEN"
         android:elevation="4dp">
         <ImageButton
-            android:id="@+id/ic_user"
+            android:id="@+id/BackButton"
             android:layout_width="60dp"
             android:layout_height="32dp"
             android:focusable="true"
@@ -87,7 +87,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/brief"
+                android:id="@+id/Describe"
                 android:layout_below="@id/voice"
                 android:layout_marginTop="10dp"
                 android:text="This is our favorite deal at Samsung."
@@ -98,25 +98,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/brief"
+                android:layout_below="@id/Describe"
                 android:orientation="vertical"
                 android:id="@+id/containImage">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:id="@+id/contentImage"
-                    android:src="@drawable/phonk_bard"
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true">
                 </ImageView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/TEXT"
-                    android:text="Model of Galaxy Tab S10 Ultra"
-                    android:textSize="15sp"
-                    android:layout_gravity="center">
-                </TextView>
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -125,17 +116,6 @@
                 android:layout_below="@id/containImage"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="This Black Friday, Samsung is offering an incredible (and unprecedented) deal on its flagship tablet, the Galaxy Tab S10 Ultra. As part of its extensive holiday sale which includes discounts on smartphones, earbuds, TVs and home appliances, the Galaxy Tab S10 Ultra stands out as the best deals available. With an immediate discount of $200 off the original price, the 256GB model is now priced at $999 instead of $1,199. However, the real excitement comes from Samsung’s trade-in offer that can bring the price down to an astonishing $199—an impressive 85% off the original price.
-
- Samsung’s unique trade-in program adds a true layer of value to this offer: by trading in any old tablet—regardless of age or brand—you will receive a guaranteed credit of at least $300 towards your new purchase. This means that even if you have an older device lying around, you can still benefit from significant savings on this luxury Galaxy Tab S10 Ultra.
-
- For those who might find the Galaxy Tab S10 Ultra a bit too premium (and too expensive) for their needs, Samsung also offers the Galaxy Tab S10+ which is available for just $149 instead of $999 through similar trade-in discounts. While slightly less powerful than its Ultra counterpart, the Tab S10+ still boasts impressive features and performance that make it an excellent choice.
-
- The Galaxy Tab S10 Ultra is a powerhouse of technology designed to meet the demands of both productivity and entertainment, and it competes with the latest iPad Pro. It features a stunning 14.6-inch Dynamic AMOLED 2X display (probably better than the iPad’s one) with a resolution of 2960×1848 pixels which delivers vibrant colors and deep contrasts that make everything from streaming your favorite shows to working on graphic design projects a visual delight. The screen’s HDR support enhances brightness and color accuracy and ensures that every image pops with life.
-
- At the heart of this device is the powerful MediaTek Dimensity 9300+ chip which provides exceptional performance that rivals many… laptops! This means whether you’re multitasking or diving into high-performance gaming, the Tab S10 Ultra handles it all with ease. It also has a robust battery life that offers up to 16 hours of usage on a single charge so that you can rely on this tablet to keep up with your busy lifestyle.
-
- In addition to these fantastic savings, Samsung Rewards members will earn 1.5% cashback on their purchase which can be redeemed for future purchases or accessories. This means that not only are you getting a great deal on the tablet itself but you’re also rewarded for your loyalty with additional savings. And if you’re considering accessories, purchasing the Galaxy Tab S10 Ultra also grants you access to over 40% off select accessories like the Galaxy Watch 7 and Galaxy Buds3 Pro. This makes it easier than ever to create an interconnected ecosystem of devices that work seamlessly together."
                 android:textSize="15sp"
                 style="@style/TEXT">
             </TextView>

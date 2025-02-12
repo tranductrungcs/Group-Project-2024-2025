@@ -170,7 +170,9 @@ public class NewsFragment extends Fragment implements SelectListener {
             smallNews = NewsList.get(selectedPosition);
             intent.putExtra("newsId", smallNews.getId());
             intent.putExtra("NewsImgURL", smallNews.getUrlToImage());
-            intent.putExtra("newsTitle", smallNews.getTitle());
+            intent.putExtra("NewsDescription", smallNews.getDescription());
+            intent.putExtra("NewsTitle", smallNews.getTitle());
+            intent.putExtra("NewsContent", smallNews.getContent());
             intent.putExtra("comments", smallNews.getCommentNum());
             intent.putExtra("likes", smallNews.getLikeNum());
             intent.putExtra("bookmarks", smallNews.getBookmarkNum());

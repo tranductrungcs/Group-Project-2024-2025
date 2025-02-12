@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -58,6 +59,7 @@ public class VideoSearchActivity extends AppCompatActivity {
     private Button searchAsus;
     private Button searchButton;
     private Button deleteHistoryButton;
+    private TextView searchNoResult;
 
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
 
@@ -90,6 +92,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.search_button);
         deleteHistoryButton = findViewById(R.id.delete_history);
         histories = findViewById(R.id.histories);
+        searchNoResult = findViewById(R.id.video_search_no_result);
 
         // Back button part
         // Set a click listener to finish the activity
@@ -161,6 +164,9 @@ public class VideoSearchActivity extends AppCompatActivity {
         videoHistoryAdapter = new VideoHistoryAdapter(new ArrayList<>(), this);
         histories.setAdapter(videoHistoryAdapter);
         Log.d("VideoSearchActivity", "Histories: " + histories.toString());
+
+        // Search no result part
+        searchNoResult.setVisibility(View.GONE);
 
         fetchVideos(); // Load videos
         loadHistory(); // Load the search history when rerun the app
@@ -238,6 +244,7 @@ public class VideoSearchActivity extends AppCompatActivity {
     }
 
     private void playVideo(Video video) {
+        ArrayList<Integer> videoIds = new ArrayList<>(); // Create a list of video IDs
         ArrayList<String> videoUris = new ArrayList<>(); // List of video URIs
         ArrayList<String> videoTitles = new ArrayList<>(); // List of video titles
         ArrayList<Integer> comments = new ArrayList<>(); // List of video comments
@@ -245,6 +252,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         ArrayList<Integer> bookmarks = new ArrayList<>(); // List of video saves
 
         for (Video v : videoSearchList) {
+            videoIds.add(v.getId());
             videoUris.add(baseUrl + v.getFetchableUrl());
             videoTitles.add(v.getTitle());
             comments.add(v.getCommentNum());
@@ -257,6 +265,7 @@ public class VideoSearchActivity extends AppCompatActivity {
 
         // Start PlayVideoActivity with the video list and selected position
         Intent intent = new Intent(this, PlayVideoActivity.class);
+        intent.putExtra("videoIds", videoIds);
         intent.putStringArrayListExtra("videoUris", videoUris);
         intent.putStringArrayListExtra("videoTitles", videoTitles);
         intent.putIntegerArrayListExtra("comments", comments);
@@ -296,9 +305,10 @@ public class VideoSearchActivity extends AppCompatActivity {
 
         // Show search result
         videoSearchResult.setVisibility(filteredList.isEmpty() ? View.GONE : View.VISIBLE);
-        trendsAndHistory.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
-        searchButton.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
-        deleteHistoryButton.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
+        searchNoResult.setVisibility(filteredList.isEmpty() ? View.VISIBLE : View.GONE);
+        trendsAndHistory.setVisibility(View.GONE);
+        searchButton.setVisibility(View.GONE);
+        deleteHistoryButton.setVisibility(View.GONE);
 
         Log.d("VideoSearchActivity", "Filtered video list size: " + filteredList.size());
     }
@@ -309,6 +319,7 @@ public class VideoSearchActivity extends AppCompatActivity {
         searchText.setText(""); // Clear the search text
         videoSearchAdapter.setData(originalList); // Reset to the original list
         videoSearchResult.setVisibility(View.GONE); // Hide the search results
+        searchNoResult.setVisibility(View.GONE);
         trendsAndHistory.setVisibility(View.VISIBLE);
         searchButton.setVisibility(View.VISIBLE);
         loadHistory();
