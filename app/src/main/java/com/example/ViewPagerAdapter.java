@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.newspackage.NewsFragment;
+import com.example.videopackage.VideoFragment;
+
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
@@ -15,23 +18,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
+            default:
                 return new VideoFragment();
 
             case 1:
                 return new NewsFragment();
-
-            case 2:
-                return new SaveFragment();
-
-            default:
-                return new VideoFragment();
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
-
 }

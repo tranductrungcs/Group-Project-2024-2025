@@ -18,6 +18,8 @@
     <string name="videos">Video</string>
     <string name="news">Tin tức</string>
     <string name="video_part_title">VIDEO CÔNG NGHỆ</string>
+    <string name="news_part_title">BÀI BÁO CÔNG NGHỆ</string>
+    <string name="save_part_title">LƯU</string>
 
     <string name="search_hint_light">Tìm kiếm (Chế độ sáng)</string>
     <string name="search_hint_dark">Tìm kiếm (Chế độ tối)</string>
@@ -30,13 +32,13 @@
 
     <string name="setting">Cài đặt</string>
     <string name="save">Lưu</string>
-    <string name="change_username">Thay đổi tên người dùng</string>
+    <string name="change_username">Thay đổi tên/ảnh đại diện người dùng</string>
     <string name="language">Ngôn ngữ</string>
     <string name="Vietnamese">Tiếng Việt</string>
     <string name="English">Tiếng Anh</string>
-    <string name="Dark_Light_Mode">Chế độ tối/sáng</string>
+    <string name="Dark_Mode">Chế độ tối</string>
     <string name="Font_Size">Kích thước phông chữ</string>
-    <string name="Small">Bé</string>
+    <string name="Small">Nhỏ</string>
     <string name="Medium">Trung bình</string>
     <string name="Large">Lớn</string>
     <string name="Developer">Nhà phát triển</string>
@@ -46,12 +48,20 @@
     <string name="back">Quay lại</string>
     <string name="next">Tiếp theo</string>
     <string name="choice_question">Bạn quan tâm đến công ty công nghệ nào?</string>
+    <string name="all">Tất cả</string>
     <string name="apple">Apple</string>
     <string name="samsung">Samsung</string>
     <string name="xiaomi">Xiaomi</string>
     <string name="asus">Asus</string>
     <string name="huawei">Huawei</string>
     <string name="microsoft">Microsoft</string>
+    <string name="delete_history">Xóa lịch sử tìm kiếm</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="newest">Mới nhất</string>
+    <string name="hot">Nổi bật</string>
+    <string name="old_posts">Bài cũ</string>
+    <string name="trends">Xu hướng</string>
+    <string name="history">Lịch sử</string>
     <string name="title_activity_scrolling_news">Hoạt động Cuộn Tin tức</string>
     <string name="large_text">
 
@@ -159,5 +169,20 @@ quasi aliquam eligendi, placeat qui corporis!</string>
     <string name="default_title">Tiêu đề Mặc định</string>
     <string name="default_date">Thứ Hai, ngày 1 tháng 1 năm 2018</string>
     <string name="action_settings">Cài đặt</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="email">Email</string>
+    <string name="password">Mat khau</string>
+    <string name="retype_password">Nhap lai mat khau</string>
+
+    <string name="login">Dang Nhap</string>
+    <string name="register">Dang Ky</string>
+
+    <string name="forgot_password">Quen Mat Khau?</string>
+    <string name="registerBtn">Dang Ky Tai Khoan</string>
+    <string name="loginBtn">Da Co Tai Khoan? Dang Nhap</string>
+
+    <string name="enter_your_email">Nhap Email Cua Ban</string>
+
+    <string name="sendEmail">Gui Email</string>
 </resources>

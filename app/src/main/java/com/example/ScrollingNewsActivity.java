@@ -14,6 +14,8 @@ import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.example.newspackage.NewsAdapter;
+import com.example.newspackage.SmallNews;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -67,7 +69,7 @@ public class ScrollingNewsActivity extends AppCompatActivity {
             }
 
             handler.post(() -> {
-                adapter = new NewsAdapter(smallNewsList);
+//                adapter = new NewsAdapter(smallNewsList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 recyclerView.setAdapter(adapter);
             });
@@ -177,8 +179,7 @@ public class ScrollingNewsActivity extends AppCompatActivity {
             news.setDate(date != null ? date.text() : getString(R.string.default_date));
             news.setDescription(description != null ? description.text() : getString(R.string.content_description));
             news.setContents(paragraphsTexts.toArray(new String[0]));
-            news.setImageUrl(imageUrl);
-            news.setVideoUrl(videoUrl);
+            news.setUrlToImage(imageUrl);
         } catch (ClassCastException e) {
             Log.e("Convert Class Failed", e.toString());
         } catch (Exception e) {

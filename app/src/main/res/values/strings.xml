@@ -16,6 +16,8 @@
     <string name="videos">Videos</string>
     <string name="news">News</string>
     <string name="video_part_title">TECH VIDEOS</string>
+    <string name="news_part_title">TECH NEWS</string>
+    <string name="save_part_title">SAVE</string>
 
     <string name="search_hint_light">Search (Light Mode)</string>
     <string name="search_hint_dark">Search (Dark Mode)</string>
@@ -28,7 +30,7 @@
     <string name="language">Language</string>
     <string name="Vietnamese">Vietnamese</string>
     <string name="English">English</string>
-    <string name="Dark_Light_Mode">Dark/Light Mode</string>
+    <string name="Dark_Mode">Dark Mode</string>
     <string name="Font_Size">Font Size</string>
     <string name="Small">Small</string>
     <string name="Medium">Medium</string>
@@ -40,12 +42,20 @@
     <string name="save">Save</string>
     <string name="next">Next</string>
     <string name="choice_question">Which technology companies are you interested in?</string>
+    <string name="all">All</string>
     <string name="apple">Apple</string>
     <string name="samsung">Samsung</string>
     <string name="xiaomi">Xiaomi</string>
     <string name="asus">Asus</string>
     <string name="huawei">Huawei</string>
     <string name="microsoft">Microsoft</string>
+    <string name="delete_history">Delete History</string>
+    <string name="search">Search</string>
+    <string name="newest">Newest</string>
+    <string name="hot">Hot</string>
+    <string name="old_posts">Old Posts</string>
+    <string name="trends">Trends</string>
+    <string name="history">History</string>
     <string name="title_activity_scrolling_news">ScrollingNewsActivity</string>
     <string name="large_text">
 
@@ -222,4 +232,21 @@ quasi aliquam eligendi, placeat qui corporis!</string>
     <string name="action_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="retype_password">Retype Password</string>
+
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <string name="forgot_password">Forgot Password?</string>
+
+    <string name="registerBtn">Don\'t have an account? Register here.</string>
+    <string name="loginBtn">Already have an account? Login here.</string>
+
+    <string name="enter_your_email">Enter Your Email</string>
+
+    <string name="sendEmail">Send Email</string>
+
 </resources>

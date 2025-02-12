@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayVideoActivity">
+    tools:context=".videopackage.PlayVideoActivity">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
@@ -15,12 +15,18 @@
 
     <ImageView
         android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="10dp"
-        android:paddingTop="10dp"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/back_button"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:background="@color/white"
         tools:ignore="MissingConstraints,RtlSymmetry" />
+
+    <FrameLayout
+        android:id="@+id/commentVideoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

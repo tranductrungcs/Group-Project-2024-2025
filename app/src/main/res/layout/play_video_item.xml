@@ -9,26 +9,37 @@
         android:layout_height="match_parent"
         android:keepScreenOn="true" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="10dp"
-            android:paddingBottom="120dp"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/video_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingStart="20dp"
+        android:paddingEnd="70dp"
+        android:paddingBottom="90dp"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
-            <include
-                layout="@layout/video_like_button" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:paddingBottom="120dp"
+        android:orientation="vertical">
 
-            <include
-                layout="@layout/video_comment_button" />
+        <include
+            android:id="@+id/videoLikeButton"
+            layout="@layout/video_like_button" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/save_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_bookmark" />
-        </LinearLayout>
+        <include
+            android:id="@+id/videoCommentButton"
+            layout="@layout/video_comment_button" />
+
+        <include
+            android:id="@+id/videoSaveButton"
+            layout="@layout/video_save_button" />
+    </LinearLayout>
 
 </RelativeLayout>
