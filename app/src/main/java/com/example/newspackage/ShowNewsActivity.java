@@ -43,11 +43,7 @@ public class ShowNewsActivity extends AppCompatActivity {
 
         sqlconnection = new SQLconnection();
 
-
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-
-
 
         ImageButton Playbutton = findViewById(R.id.Playbutton);
         TextView Content = findViewById(R.id.NewsContent);
@@ -82,10 +78,6 @@ public class ShowNewsActivity extends AppCompatActivity {
         }
         super.onPause();
     }
-
-
-
-
 
     // Method to apply the font size to all text views
     private void setFontSize(String fontSize) {
