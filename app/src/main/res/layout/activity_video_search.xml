@@ -362,4 +362,19 @@
         android:visibility="gone"
         style="@style/SCREEN" />
 
+    <TextView
+        android:id="@+id/video_search_no_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragments"
+        android:layout_marginTop="10dp"
+        android:text="@string/no_result"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textColor="@color/tab_text_color"
+        android:paddingStart="17dp"
+        android:paddingEnd="0dp"
+        android:visibility="gone"
+        style="@style/SCREEN" />
+
 </RelativeLayout>

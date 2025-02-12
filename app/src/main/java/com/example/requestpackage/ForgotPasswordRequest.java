@@ -1,4 +1,4 @@
-package com.example;
+package com.example.requestpackage;
 
 public class ForgotPasswordRequest {
     private final String email;

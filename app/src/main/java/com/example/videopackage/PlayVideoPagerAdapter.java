@@ -15,24 +15,43 @@ import androidx.media3.ui.PlayerView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAdapter.VideoViewHolder>{
+    private final List<Integer> videoIds;
     private final List<String> videoUris;
     private final List<String> videoTitles;
     private final Context context;
     private final List<Integer> comments;
     private final List<Integer> likes;
     private final List<Integer> bookmarks;
+    private final List<Boolean> isVideosLiked;
+    private final List<Boolean> isBookmarksLiked;
 
-    public PlayVideoPagerAdapter(Context context, List<String> videoUris, List<String> videoTitles, List<Integer> comments, List<Integer> likes, List<Integer> bookmarks) {
+    private OnButtonClickListener listener;
+
+    public PlayVideoPagerAdapter(
+            Context context,
+            List<Integer> videoIds,
+            List<String> videoUris,
+            List<String> videoTitles,
+            List<Integer> comments,
+            List<Integer> likes,
+            List<Integer> bookmarks,
+            List<Boolean> isVideosLiked,
+            List<Boolean> isBookmarksLiked
+    ) {
         this.context = context;
+        this.videoIds = videoIds;
         this.videoUris = videoUris;
         this.videoTitles = videoTitles;
         this.comments = comments;
         this.likes = likes;
         this.bookmarks = bookmarks;
+        this.isVideosLiked = isVideosLiked;
+        this.isBookmarksLiked = isBookmarksLiked;
     }
 
     @NonNull
@@ -49,6 +68,20 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
         holder.bindNumComments(comments.get(position));
         holder.bindNumLikes(likes.get(position));
         holder.bindNumSaves(bookmarks.get(position));
+
+        int videoId = videoIds.get(position);
+
+        holder.videoCommentButton.setOnClickListener(e -> {
+            if (listener != null) listener.onCommentClick(position, videoId);
+        });
+
+        holder.videoLikeButton.setOnClickListener(e -> {
+            if (listener != null) listener.onLikeClick(position, videoId);
+        });
+
+        holder.videoBookmarkButton.setOnClickListener(e -> {
+            if (listener != null) listener.onBookmarkClick(position, videoId);
+        });
     }
 
     @Override
@@ -64,6 +97,10 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
         private final TextView likes;
         private final TextView bookmarks;
 
+        private final FloatingActionButton videoCommentButton;
+        private final FloatingActionButton videoLikeButton;
+        private final FloatingActionButton videoBookmarkButton;
+
         @SuppressLint("CutPasteId")
         public VideoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +109,10 @@ public class PlayVideoPagerAdapter extends RecyclerView.Adapter<PlayVideoPagerAd
             comments = itemView.findViewById(R.id.number_of_comments);
             likes = itemView.findViewById(R.id.number_of_likes);
             bookmarks = itemView.findViewById(R.id.number_of_saves);
+
+            videoCommentButton = itemView.findViewById(R.id.comment_button);
+            videoLikeButton = itemView.findViewById(R.id.like_button);
+            videoBookmarkButton = itemView.findViewById(R.id.save_button);
         }
 
         public void bindVideo(String videoUri) {
