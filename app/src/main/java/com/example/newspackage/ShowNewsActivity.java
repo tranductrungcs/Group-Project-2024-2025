@@ -50,7 +50,7 @@ public class ShowNewsActivity extends AppCompatActivity {
             return insets;
         });
 
-        sqlconnection = new SQLconnection();
+        SQLconnection sqlconnection = new SQLconnection();
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
