@@ -184,6 +184,7 @@ public class VideoAllFragment extends Fragment {
         // Start PlayVideoActivity with the video list and selected position
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
+            intent.putIntegerArrayListExtra("videoIds", videoIds);
             intent.putStringArrayListExtra("videoUris", videoUris);
             intent.putStringArrayListExtra("videoTitles", videoTitles);
             intent.putIntegerArrayListExtra("comments", comments);
