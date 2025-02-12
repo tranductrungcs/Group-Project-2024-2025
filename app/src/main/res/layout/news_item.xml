@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/NewsCardView"
     android:orientation="horizontal"
+    style="@style/SCREEN"
     android:layout_margin="1dp">
 
 
@@ -14,6 +15,7 @@
             android:layout_columnWeight="1"
             android:orientation="horizontal"
             android:id="@+id/NewsItem"
+            style="@style/SCREEN"
             tools:ignore="UseCompoundDrawables">
             <ImageView
                 android:layout_width="150dp"
@@ -28,12 +30,12 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textStyle="bold"
+                android:textColor="@color/tab_text_color"
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                style="@style/TEXT"
                 android:contentDescription="title here" />
         </LinearLayout>
 
