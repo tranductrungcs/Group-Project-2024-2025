@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.example.R;
 import com.example.SQLconnection;
 import com.example.SelectListener;
-import com.example.SettingActivity;
 import com.example.videopackage.PlayVideoActivity;
 import com.example.videopackage.Video;
 import com.example.videopackage.VideoAllAPI;
@@ -107,12 +106,6 @@ public class NewsFragment extends Fragment implements SelectListener {
         newsAdapter = new NewsAdapter(getContext(), NewsList, baseUrl, this::newsItem);
         recyclerNews.setAdapter(newsAdapter);
 
-        ImageButton imageButton = view.findViewById(R.id.ic_user);
-        imageButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), SettingActivity.class);
-            startActivity(intent);
-        });
-
         fetchNews();
 
         return view;
@@ -134,7 +127,7 @@ public class NewsFragment extends Fragment implements SelectListener {
                 if (response.isSuccessful() && response.body() != null) {
                     for (SmallNews news : response.body()) {
                         NewsList.add(news);
-                        if (news.getId() > 10) {
+                        if (news.getId() > 20) {
                             break;
                         }
                     }
@@ -157,26 +150,25 @@ public class NewsFragment extends Fragment implements SelectListener {
     }
 
     private void newsItem(SmallNews smallNews) {
-        ArrayList<Object> NewsItem = new ArrayList<>();
-        for (SmallNews news : NewsList) {
-            NewsItem.add(news.getId());
-            NewsItem.add(news.getUrlToImage());
-            NewsItem.add(news.getTitle());
-            NewsItem.add(news.getLikeNum());
-            NewsItem.add(news.getCommentNum());
-            NewsItem.add(news.getBookmarkNum());
-            if (news.getId() > 10) {
-                break;
-            }
-        }
-
+//        ArrayList<Object> NewsItem = new ArrayList<>();
+//        for (SmallNews news : NewsList) {
+//            NewsItem.add(news.getId());
+//            NewsItem.add(news.getUrlToImage());
+//            NewsItem.add(news.getTitle());
+//            NewsItem.add(news.getLikeNum());
+//            NewsItem.add(news.getCommentNum());
+//            NewsItem.add(news.getBookmarkNum());
+//            if (NewsItem.size() >= 20) {
+//                break;
+//            }
+//        }
 
         int selectedPosition = NewsList.indexOf(smallNews);
 
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), ShowNewsActivity.class);
             smallNews = NewsList.get(selectedPosition);
-            intent.putExtra("NewsId", smallNews.getId());
+            intent.putExtra("newsId", smallNews.getId());
             intent.putExtra("NewsImgURL", smallNews.getUrlToImage());
             intent.putExtra("NewsDescription", smallNews.getDescription());
             intent.putExtra("NewsTitle", smallNews.getTitle());

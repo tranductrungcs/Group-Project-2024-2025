@@ -1,5 +1,7 @@
 package com.example.savepackage;
 
+import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -7,17 +9,31 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class SaveAdapter extends FragmentStatePagerAdapter {
-    public SaveAdapter(@NonNull FragmentManager fm, int behavior) {
+    private Integer userId;
+
+    public SaveAdapter(
+            @NonNull FragmentManager fm,
+            int behavior,
+            Integer userId
+    ) {
         super(fm, behavior);
+        this.userId = userId;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            default: return new SaveVideoFragment();
-            case 1: return new SaveNewsFragment();
-
+        if (userId != null) {
+            switch (position) {
+                default: return SaveVideoFragment.newInstance(userId);
+                case 1: return SaveNewsFragment.newInstance(userId);
+            }
+        }
+        else {
+            switch (position) {
+                default: return new SaveVideoFragment();
+                case 1: return new SaveNewsFragment();
+            }
         }
     }
 
@@ -32,7 +48,6 @@ public class SaveAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             default: return "Video";
             case 1: return "News";
-
         }
     }
 }

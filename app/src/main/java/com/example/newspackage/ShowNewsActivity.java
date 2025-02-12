@@ -49,6 +49,9 @@ public class ShowNewsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        sqlconnection = new SQLconnection();
+
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         Intent intent = getIntent();
@@ -70,7 +73,7 @@ public class ShowNewsActivity extends AppCompatActivity {
         });
 
         ImageButton Playbutton = findViewById(R.id.Playbutton);
-        
+
         Content = findViewById(R.id.NewsContent);
         Title = findViewById(R.id.Title);
         Describe = findViewById(R.id.Describe);

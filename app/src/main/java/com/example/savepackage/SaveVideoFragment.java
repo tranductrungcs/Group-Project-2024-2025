@@ -1,6 +1,8 @@
 package com.example.savepackage;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -36,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Use the {@link SaveVideoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SaveVideoFragment  extends Fragment {
+public class SaveVideoFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private VideoAdapter videoAdapter;
@@ -47,12 +49,10 @@ public class SaveVideoFragment  extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String USER_ID = "user_id";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Integer userId;
 
     public SaveVideoFragment() {
         // Required empty public constructor
@@ -62,16 +62,14 @@ public class SaveVideoFragment  extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param userId user's id.
      * @return A new instance of fragment VideoAllFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SaveVideoFragment newInstance(String param1, String param2) {
+    public static SaveVideoFragment newInstance(int userId) {
         SaveVideoFragment fragment = new SaveVideoFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(USER_ID, userId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -80,8 +78,7 @@ public class SaveVideoFragment  extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            userId = getArguments().getInt(USER_ID);
         }
     }
 
@@ -128,54 +125,80 @@ public class SaveVideoFragment  extends Fragment {
     }
 
     private void refreshData() {
-        List<Video> newData = getListPost();
-        videoAdapter.setData(newData);
-        videoAdapter.notifyDataSetChanged();
-    }
-
-    private List<Video> getListPost() {
-        Log.i("List Post", videoList.toString());
-        if (!videoList.isEmpty()) {
-
-        }
-        return videoList;
+        videoList.clear();
+        fetchVideos();
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private void fetchVideos() {
+
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         SaveAPI saveAPI = retrofit.create(SaveAPI.class);
-        Call<List<Video>> call = saveAPI.getVideos("5");
+        Call<List<Video>> call = saveAPI.getVideos(userId);
         call.enqueue(new Callback<List<Video>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Video>> call, @NonNull Response<List<Video>> response) {
-                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+            public void onResponse(
+                    @NonNull Call<List<Video>> call,
+                    @NonNull Response<List<Video>> response) {
+                if (response.isSuccessful()
+                        && response.body() != null
+                        && !response.body().isEmpty()) {
+                    videoList.addAll(response.body());
+
                     videoList.clear();
                     videoList.addAll(response.body());
+                    videoAdapter.setData(videoList);
                     videoAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(getContext(), "No videos available", Toast.LENGTH_SHORT).show();
+                    Log.e("SaveVideoFragment", "Fetch Video Failed: " + response);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Video>> call, Throwable t) {
+            public void onFailure(
+                    @NonNull Call<List<Video>> call,
+                    @NonNull Throwable t) {
                 Toast.makeText(getContext(), "Failed to fetch videos", Toast.LENGTH_SHORT).show();
-                Log.e("API Error", t.getMessage());
+                Log.e("SaveVideoFragment", "Fetch Video Failed: " + t);
             }
         });
     }
 
     private void playVideo(Video video) {
-        Uri videoUri = Uri.parse(baseUrl + video.getFetchableUrl());
+        ArrayList<Integer> videoIds = new ArrayList<>();
+        ArrayList<String> videoUris = new ArrayList<>();
+        ArrayList<String> videoTitles = new ArrayList<>();
+        ArrayList<Integer> comments = new ArrayList<>();
+        ArrayList<Integer> likes = new ArrayList<>();
+        ArrayList<Integer> bookmarks = new ArrayList<>();
+        for (Video v: videoList) {
+            videoIds.add(v.getId());
+            videoUris.add(baseUrl + v.getFetchableUrl());
+            videoTitles.add(v.getTitle());
+            comments.add(v.getCommentNum());
+            likes.add(v.getLikeNum());
+            bookmarks.add(v.getBookmarkNum());
+        }
 
-        // Start PlayVideoActivity with the selected URI
+        // Get the selected video's position
+        int selectedPosition = videoList.indexOf(video);
+
+        // Start PlayVideoActivity with the video list and selected position
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
-            intent.putExtra("videoUri", videoUri.toString());
+            intent.putIntegerArrayListExtra("videoIds", videoIds);
+            intent.putStringArrayListExtra("videoUris", videoUris);
+            intent.putStringArrayListExtra("videoTitles", videoTitles);
+            intent.putIntegerArrayListExtra("comments", comments);
+            intent.putIntegerArrayListExtra("likes", likes);
+            intent.putIntegerArrayListExtra("bookmarks", bookmarks);
+            intent.putExtra("initialPosition", selectedPosition);
             startActivity(intent);
         }
     }
