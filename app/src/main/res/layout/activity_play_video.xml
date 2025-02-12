@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayVideoActivity">
+    tools:context=".videopackage.PlayVideoActivity">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
@@ -24,4 +24,9 @@
         android:layout_alignParentStart="true"
         android:background="@color/white"
         tools:ignore="MissingConstraints,RtlSymmetry" />
+
+    <FrameLayout
+        android:id="@+id/commentVideoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

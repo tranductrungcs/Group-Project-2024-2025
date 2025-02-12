@@ -30,12 +30,15 @@
         android:orientation="vertical">
 
         <include
+            android:id="@+id/videoLikeButton"
             layout="@layout/video_like_button" />
 
         <include
+            android:id="@+id/videoCommentButton"
             layout="@layout/video_comment_button" />
 
         <include
+            android:id="@+id/videoSaveButton"
             layout="@layout/video_save_button" />
     </LinearLayout>
 

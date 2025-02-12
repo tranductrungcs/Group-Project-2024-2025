@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/SCREEN"
-    tools:context=".VideoFragment">
+    tools:context=".videopackage.VideoFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

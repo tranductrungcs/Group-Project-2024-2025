@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/SCREEN"
-    tools:context=".VideoSearchActivity">
+    tools:context=".videopackage.VideoSearchActivity">
 
     <LinearLayout
         android:id="@+id/search_bar"
@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_arrow_back" />
 
         <LinearLayout
@@ -31,13 +32,12 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_marginStart="10dp"
+                android:id="@+id/search_icon"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:id="@+id/app_icon"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:src="@drawable/app_logo"
-                android:layout_marginEnd="8dp"/>
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_search"/>
 
             <EditText
                 android:id="@+id/search_text"
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/newest"
+                android:text="Samsung Galaxy Note9"
                 android:textSize="12sp"
                 tools:ignore="MissingConstraints" />
 
@@ -85,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/hot"
+                android:text="Ipad Pro"
                 android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/newest"
@@ -95,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/old_posts"
+                android:text="Drone"
                 android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/hot"
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/apple"
+                android:text="Iphone"
                 android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/old_post"
@@ -115,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/samsung"
+                android:text="Xiaomi 12T"
                 android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/apple_part"
@@ -125,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/huawei"
+                android:text="Huawei MatePad Pro"
                 android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/samsung_part"
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/xiaomi"
+                android:text="Tab S10 Series"
                 android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/huawei_part"
@@ -145,7 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/microsoft"
+                android:text="Watch"
                 android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/xiaomi_part"
@@ -155,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:background="@drawable/round_corner"
-                android:text="@string/asus"
+                android:text="Laptop"
                 android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 app:layout_constraintStart_toEndOf="@id/microsoft_part"
