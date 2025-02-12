@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.authpackage.AuthAPIService;
 import com.example.videopackage.VideoAPI;
 
 import retrofit2.Retrofit;
