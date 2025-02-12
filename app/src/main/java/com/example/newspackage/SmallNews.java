@@ -5,7 +5,7 @@ public class SmallNews {
     private String title;
     private String date;
     private String description;
-    private String[] contents;
+    private String content;
     private String urlToImage;
     private int commentNum;
     private int likeNum;
@@ -52,12 +52,12 @@ public class SmallNews {
         return description;
     }
 
-    public void setContents(String[] contents) {
-        this.contents = contents;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String[] getContents() {
-        return contents;
+    public String getContent() {
+        return content;
     }
 
     public void setUrlToImage(String urlToImage) {

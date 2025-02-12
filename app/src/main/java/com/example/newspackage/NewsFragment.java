@@ -130,7 +130,7 @@ public class NewsFragment extends Fragment implements SelectListener {
                 if (response.isSuccessful() && response.body() != null) {
                     for (SmallNews news : response.body()) {
                         NewsList.add(news);
-                        if (news.getId() > 20) {
+                        if (news.getId() > 10) {
                             break;
                         }
                     }
@@ -155,12 +155,13 @@ public class NewsFragment extends Fragment implements SelectListener {
     private void newsItem(SmallNews smallNews) {
         ArrayList<Object> NewsItem = new ArrayList<>();
         for (SmallNews news : NewsList) {
+            NewsItem.add(news.getId());
             NewsItem.add(news.getUrlToImage());
             NewsItem.add(news.getTitle());
             NewsItem.add(news.getLikeNum());
             NewsItem.add(news.getCommentNum());
             NewsItem.add(news.getBookmarkNum());
-            if (news.getId() > 20) {
+            if (news.getId() > 10) {
                 break;
             }
         }
@@ -171,8 +172,11 @@ public class NewsFragment extends Fragment implements SelectListener {
         if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), ShowNewsActivity.class);
             smallNews = NewsList.get(selectedPosition);
+            intent.putExtra("NewsId", smallNews.getId());
             intent.putExtra("NewsImgURL", smallNews.getUrlToImage());
-            intent.putExtra("newsTitle", smallNews.getTitle());
+            intent.putExtra("NewsDescription", smallNews.getDescription());
+            intent.putExtra("NewsTitle", smallNews.getTitle());
+            intent.putExtra("NewsContent", smallNews.getContent());
             intent.putExtra("comments", smallNews.getCommentNum());
             intent.putExtra("likes", smallNews.getLikeNum());
             intent.putExtra("bookmarks", smallNews.getBookmarkNum());

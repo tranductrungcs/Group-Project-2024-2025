@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
 
+import com.example.newspackage.NewsFragment;
+
 import java.util.ArrayList;
 
 /**
@@ -98,7 +100,7 @@ public class ChooseFavorFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (getActivity() != null) {
-                    Intent intent = new Intent(getContext(), ScrollingNewsActivity.class);
+                    Intent intent = new Intent(getContext(), NewsFragment.class);
                     startActivity(intent);
                     getActivity().finish();
                 } else {
