@@ -1,4 +1,4 @@
-package com.example;
+package com.example.authpackage;
 
 import com.example.requestpackage.ForgotPasswordRequest;
 import com.example.requestpackage.LoginRequest;

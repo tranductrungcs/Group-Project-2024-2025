@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.OptIn;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,7 @@ import androidx.media3.common.util.UnstableApi;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.LoginActivity;
+import com.example.authpackage.LoginActivity;
 import com.example.R;
 import com.example.RetrofitClient;
 import com.example.requestpackage.VideoBookmarkRequest;
@@ -161,7 +162,9 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                 Call<Void> call = videoApiService.deleteLike(userId, videoId);
                 call.enqueue(new Callback<Void>() {
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
+                    public void onResponse(
+                            @NonNull Call<Void> call,
+                            @NonNull Response<Void> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(PlayVideoActivity.this, "Video Unliked", Toast.LENGTH_SHORT).show();
                         } else {
@@ -171,7 +174,9 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                     }
 
                     @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
+                    public void onFailure(
+                            @NonNull Call<Void> call,
+                            @NonNull Throwable t) {
                         Toast.makeText(PlayVideoActivity.this, "Video Unliking Failed", Toast.LENGTH_SHORT).show();
                         Log.i("VideoUnlikingFailed", t.toString());
                     }
@@ -182,7 +187,9 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                 Call<VideoLikeResponse> call = videoApiService.addLike(videoLikeRequest);
                 call.enqueue(new Callback<VideoLikeResponse>() {
                     @Override
-                    public void onResponse(Call<VideoLikeResponse> call, Response<VideoLikeResponse> response) {
+                    public void onResponse(
+                            @NonNull Call<VideoLikeResponse> call,
+                            @NonNull Response<VideoLikeResponse> response) {
                         if (response.isSuccessful() && response.body() != null) {
                             Log.i("VideoLiked", "Success");
                         } else {
@@ -192,7 +199,9 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                     }
 
                     @Override
-                    public void onFailure(Call<VideoLikeResponse> call, Throwable t) {
+                    public void onFailure(
+                            @NonNull Call<VideoLikeResponse> call,
+                            @NonNull Throwable t) {
                         Toast.makeText(PlayVideoActivity.this, "Video Liking Failed", Toast.LENGTH_SHORT).show();
                         Log.e("VideoLikingFailed", t.toString());
                     }
@@ -212,7 +221,9 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                 Call<Void> call = videoApiService.deleteBookmark(userId, videoId);
                 call.enqueue(new Callback<Void>() {
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
+                    public void onResponse(
+                            @NonNull Call<Void> call,
+                            @NonNull Response<Void> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(PlayVideoActivity.this, "Video Un-bookmarked", Toast.LENGTH_SHORT).show();
                         } else {
@@ -222,7 +233,9 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                     }
 
                     @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
+                    public void onFailure(
+                            @NonNull Call<Void> call,
+                            @NonNull Throwable t) {
                         Toast.makeText(PlayVideoActivity.this, "Video Un-bookmarking Failed", Toast.LENGTH_SHORT).show();
                         Log.i("VideoUnsavingFailed", t.toString());
                     }
@@ -268,10 +281,12 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
 
     private void getCurrentVideoLikeState(int user, List<Integer> videoIds) {
         for (Integer videoId: videoIds) {
-            Call<VideoLikeResponse> call = videoApiService.getLike(user, videoId);
-            call.enqueue(new Callback<VideoLikeResponse>() {
+            Call<List<VideoLikeResponse>> call = videoApiService.getLike(user, videoId);
+            call.enqueue(new Callback<List<VideoLikeResponse>>() {
                 @Override
-                public void onResponse(Call<VideoLikeResponse> call, Response<VideoLikeResponse> response) {
+                public void onResponse(
+                        @NonNull Call<List<VideoLikeResponse>> call,
+                        @NonNull Response<List<VideoLikeResponse>> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         Log.i("isVideoLiked", response.body().toString());
                         isVideosLiked.add(true);
@@ -281,7 +296,9 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                 }
 
                 @Override
-                public void onFailure(Call<VideoLikeResponse> call, Throwable t) {
+                public void onFailure(
+                        @NonNull Call<List<VideoLikeResponse>> call,
+                        @NonNull Throwable t) {
                     Log.i("GetVideoLikeState Failed", t.toString());
                     isVideosLiked.add(false);
                 }
@@ -291,10 +308,12 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
 
     private void getCurrentVideoBookmarkState(int user, List<Integer> videoIds) {
         for (Integer videoId: videoIds) {
-            Call<VideoBookmarkResponse> call = videoApiService.getBookmark(user, videoId);
-            call.enqueue(new Callback<VideoBookmarkResponse>() {
+            Call<List<VideoBookmarkResponse>> call = videoApiService.getBookmark(user, videoId);
+            call.enqueue(new Callback<List<VideoBookmarkResponse>>() {
                 @Override
-                public void onResponse(Call<VideoBookmarkResponse> call, Response<VideoBookmarkResponse> response) {
+                public void onResponse(
+                        @NonNull Call<List<VideoBookmarkResponse>> call,
+                        @NonNull Response<List<VideoBookmarkResponse>> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         Log.i("isVideoBookmarked", response.body().toString());
                         isVideosBookmarked.add(true);
@@ -304,7 +323,9 @@ public class PlayVideoActivity extends AppCompatActivity implements OnButtonClic
                 }
 
                 @Override
-                public void onFailure(Call<VideoBookmarkResponse> call, Throwable t) {
+                public void onFailure(
+                        @NonNull Call<List<VideoBookmarkResponse>> call,
+                        @NonNull Throwable t) {
                     Log.i("GetBookmarkStateFailed", t.toString());
                     isVideosBookmarked.add(false);
                 }

@@ -1,7 +1,12 @@
 package com.example.savepackage;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -9,7 +14,9 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
+import com.example.authpackage.LoginActivity;
 import com.example.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -28,6 +35,8 @@ public class SaveFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Integer userId;
 
     public SaveFragment() {
         // Required empty public constructor
@@ -68,11 +77,38 @@ public class SaveFragment extends Fragment {
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
         ViewPager viewPager = view.findViewById(R.id.view_pager);
 
-        SaveAdapter adapter = new SaveAdapter(getChildFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        SaveAdapter adapter = new SaveAdapter(
+                getChildFragmentManager(),
+                FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,
+                userId);
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);
+        ImageButton btnBack = view.findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("Authentication", Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("auth_token", null);
+        userId = sharedPreferences.getInt("userId", 0);
+
+        if (token == null) {
+            Intent intent = new Intent(requireActivity(), LoginActivity.class);
+            startActivity(intent);
+            requireActivity().finish();
+        }
     }
 }

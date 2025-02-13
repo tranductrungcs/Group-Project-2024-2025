@@ -242,59 +242,6 @@
             android:layout_height="1dp"
             android:background="#D1D1D1" />
 
-        <!-- Information -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp"
-            android:gravity="center_vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_info" />
-            <TextView
-                android:id="@+id/developer_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
-                android:text="Information"
-                android:textColor="@color/tab_text_color"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <RadioGroup
-                android:id="@+id/info_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginEnd="16dp">
-                <RadioButton
-                    android:id="@+id/news_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/news"
-                    android:textColor="@color/option_text_color"
-                    android:textSize="14sp"
-                    android:layout_marginEnd="20dp" />
-            </RadioGroup>
-            <RadioButton
-                android:id="@+id/video_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/videos"
-                android:textColor="@color/option_text_color"
-                android:textSize="14sp"
-                android:layout_weight="1" />
-        </LinearLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

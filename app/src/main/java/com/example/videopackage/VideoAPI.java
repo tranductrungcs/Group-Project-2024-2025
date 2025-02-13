@@ -31,13 +31,13 @@ public interface VideoAPI {
     Call<VideoCommentResponse> addComment(@Body VideoCommentRequest request);
 
     @GET("videos/reactions")
-    Call<VideoLikeResponse> getLike(@Query("user") int user, @Query("videoId") int videoId);
+    Call<List<VideoLikeResponse>> getLike(@Query("user") int user, @Query("videoId") int videoId);
 
     @GET("videos/comments")
     Call<List<VideoComment>> getComments(@Query("videoId") int videoId);
 
     @GET("videos/bookmarks")
-    Call<VideoBookmarkResponse> getBookmark(@Query("user") int user, @Query("videoId") int videoId);
+    Call<List<VideoBookmarkResponse>> getBookmark(@Query("user") int user, @Query("videoId") int videoId);
 
     @DELETE("videos/reactions")
     Call<Void> deleteLike(@Query("user") int user, @Query("videoId") int videoId);

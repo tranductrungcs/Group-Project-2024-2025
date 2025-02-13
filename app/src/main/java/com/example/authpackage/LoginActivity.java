@@ -1,4 +1,4 @@
-package com.example;
+package com.example.authpackage;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.MainActivity;
+import com.example.R;
+import com.example.RetrofitClient;
 import com.example.requestpackage.LoginRequest;
 import com.example.responsepackage.LoginResponse;
 
