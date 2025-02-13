@@ -134,41 +134,11 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <ImageButton
-                            android:id="@+id/test_to_show_news1"
-                            android:layout_width="275dp"
-                            android:layout_height="200dp"
-                            style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
-                            tools:ignore="MissingConstraints" />
-
-                        <ImageButton
-                            android:id="@+id/test_to_show_news2"
-                            android:layout_width="275dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="10dp"
-                            style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
-                            tools:ignore="MissingConstraints" />
-
-                        <ImageButton
-                            android:id="@+id/test_to_show_news3"
-                            android:layout_width="275dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="10dp"
-                            style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
-                            tools:ignore="MissingConstraints" />
-
-                        <ImageButton
-                            android:id="@+id/test_to_show_news4"
-                            android:layout_width="275dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="10dp"
-                            style="@style/SCREEN"
-                            android:src="@drawable/avoid_red"
-                            tools:ignore="MissingConstraints" />
-
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="horizontal">
+                        </androidx.recyclerview.widget.RecyclerView>
                     </LinearLayout>
                 </HorizontalScrollView>
             </RelativeLayout>
