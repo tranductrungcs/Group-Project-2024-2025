@@ -104,6 +104,7 @@ public class NewsFragment extends Fragment implements SelectListener {
         imageButton.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), SettingActivity.class);
             startActivity(intent);
+        });
 
         fetchNews();
 
