@@ -203,12 +203,13 @@
                     android:layout_alignParentStart="true"
                     android:src="@drawable/ic_moving" />
                 <TextView
+                    android:id="@+id/trend1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/trends_attribute1"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:text="Trend 1"
+                    android:text="Iphone 16"
                     android:textColor="@color/tab_text_color"/>
                 <ImageView
                     android:layout_width="wrap_content"
@@ -228,12 +229,13 @@
                     android:layout_alignParentStart="true"
                     android:src="@drawable/ic_moving" />
                 <TextView
+                    android:id="@+id/trend2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/trends_attribute2"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:text="Trend 2"
+                    android:text="Huawei WATCH 3"
                     android:textColor="@color/tab_text_color" />
                 <ImageView
                     android:layout_width="wrap_content"
@@ -253,12 +255,13 @@
                     android:layout_alignParentStart="true"
                     android:src="@drawable/ic_moving" />
                 <TextView
+                    android:id="@+id/trend3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/trends_attribute3"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:text="Trend 3"
+                    android:text="S24"
                     android:textColor="@color/tab_text_color" />
                 <ImageView
                     android:layout_width="wrap_content"
@@ -278,12 +281,13 @@
                     android:layout_alignParentStart="true"
                     android:src="@drawable/ic_moving" />
                 <TextView
+                    android:id="@+id/trend4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/trends_attribute4"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:text="Trend 4"
+                    android:text="Ipad Pro"
                     android:textColor="@color/tab_text_color" />
                 <ImageView
                     android:layout_width="wrap_content"

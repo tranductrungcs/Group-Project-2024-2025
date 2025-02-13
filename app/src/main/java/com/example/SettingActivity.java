@@ -59,8 +59,6 @@ public class SettingActivity extends AppCompatActivity {
         languageRadioGroup = findViewById(R.id.language_group);
         darkLightSwitch = findViewById(R.id.dark_light_switch);
         fontSizeRadioGroup = findViewById(R.id.font_size_group);
-        developeTextView = findViewById(R.id.developer_layout);
-        infoRadioGroup = findViewById(R.id.info_group);
         backArrow = findViewById(R.id.back_arrow);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -93,8 +91,6 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-
-        
 
         // Load the saved theme mode before creating the activity
         // Use sharedPreferences to save mode if exit the app and go back again
@@ -135,9 +131,8 @@ public class SettingActivity extends AppCompatActivity {
             setFontSize(fontSize);
         });
 
-        developeTextView.setOnClickListener(v -> openDeveloperFragment());
 
-        infoRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {});
+
     }
 
 
@@ -198,14 +193,6 @@ public class SettingActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(this, "Failed to load image", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void openDeveloperFragment() {
-        fragment_developer developerFragment = new fragment_developer();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.developer_layout, developerFragment)
-                .addToBackStack(null)
-                .commit();
     }
 
     private void updateUsername(String newUsername) {

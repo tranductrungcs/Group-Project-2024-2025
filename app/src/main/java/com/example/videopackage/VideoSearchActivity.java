@@ -59,6 +59,10 @@ public class VideoSearchActivity extends AppCompatActivity {
     private Button searchAsus;
     private Button searchButton;
     private Button deleteHistoryButton;
+    private TextView trend1;
+    private TextView trend2;
+    private TextView trend3;
+    private TextView trend4;
     private TextView searchNoResult;
 
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
@@ -89,6 +93,10 @@ public class VideoSearchActivity extends AppCompatActivity {
         searchXiaomi = findViewById(R.id.xiaomi_part);
         searchMicrosoft = findViewById(R.id.microsoft_part);
         searchAsus = findViewById(R.id.asus_part);
+        trend1 = findViewById(R.id.trend1);
+        trend2 = findViewById(R.id.trend2);
+        trend3 = findViewById(R.id.trend3);
+        trend4 = findViewById(R.id.trend4);
         searchButton = findViewById(R.id.search_button);
         deleteHistoryButton = findViewById(R.id.delete_history);
         histories = findViewById(R.id.histories);
@@ -153,6 +161,12 @@ public class VideoSearchActivity extends AppCompatActivity {
                 Toast.makeText(this, "Search: " + query, Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Trends part
+        trend1.setOnClickListener(v -> performSearch("Iphone 16"));
+        trend2.setOnClickListener(v -> performSearch("Huawei WATCH 3"));
+        trend3.setOnClickListener(v -> performSearch("S24"));
+        trend4.setOnClickListener(v -> performSearch("Ipad Pro"));
 
         // Remove all histories
         deleteHistoryButton.setOnClickListener(v -> {

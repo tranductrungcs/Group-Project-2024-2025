@@ -1,4 +1,4 @@
-package com.example;
+package com.example.authpackage;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +14,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.R;
+import com.example.RetrofitClient;
 import com.example.requestpackage.ForgotPasswordRequest;
 import com.example.responsepackage.ForgotPasswordResponse;
 
