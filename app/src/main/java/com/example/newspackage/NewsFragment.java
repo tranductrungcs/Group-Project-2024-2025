@@ -44,6 +44,7 @@ public class NewsFragment extends Fragment implements SelectListener {
     private RecyclerView recyclerNews;
     private NewsAdapter newsAdapter;
     private List<SmallNews> NewsList = new ArrayList<>();
+    private List<SmallNews> NewsHotList = new ArrayList<>();
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
 
 
@@ -95,17 +96,8 @@ public class NewsFragment extends Fragment implements SelectListener {
         recyclerNews.setHasFixedSize(true);
         recyclerNews.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        ImageButton container_test = view.findViewById(R.id.test_to_show_news1);
-        container_test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                movetoNewsDetail();
-            }
-        });
-
         newsAdapter = new NewsAdapter(getContext(), NewsList, baseUrl, this::newsItem);
         recyclerNews.setAdapter(newsAdapter);
-
 
 
 
@@ -113,7 +105,41 @@ public class NewsFragment extends Fragment implements SelectListener {
 
         return view;
     }
+    private void fetchHotNews() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        NewsAPI NewsAPI = retrofit.create(NewsAPI.class);
+        Call<List<SmallNews>> call = NewsAPI.getNews();
+        call.enqueue(new Callback<List<SmallNews>>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onResponse(@NonNull Call<List<SmallNews>> call, @NonNull Response<List<SmallNews>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    for (SmallNews news : response.body()) {
+                        NewsHotList.add(news);
+                        if (news.getId() > 10) {
+                            break;
+                        }
+                    }
 
+                    newsAdapter.setNewsList(NewsHotList);
+                    newsAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getContext(), "No news available", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<SmallNews>> call, @NonNull Throwable t) {
+                if (getContext() != null) {
+                    Toast.makeText(getContext(), "Failed to fetch hot news", Toast.LENGTH_SHORT).show();
+                }
+                Log.e("API Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
+    }
 
     private void fetchNews() {
         Retrofit retrofit = new Retrofit.Builder()
