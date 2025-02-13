@@ -1,6 +1,5 @@
 package com.example.newspackage;
 
-import com.example.newspackage.newsComment.ArticleComment;
 import com.example.requestpackage.ArticleBookmarkRequest;
 import com.example.requestpackage.ArticleCommentRequest;
 import com.example.requestpackage.ArticleLikeRequest;
@@ -39,8 +38,6 @@ public interface NewsAPI {
     @GET("articles/reactions")
     Call<ArticleLikeResponse> getLike(@Query("user") int user, @Query("articleId") int articleId);
 
-    @GET("articles/comments")
-    Call<List<ArticleComment>> getComments(@Query("articleId") int articleId);
 
     @GET("articles/bookmarks")
     Call<ArticleBookmarkResponse> getBookmark(@Query("user") int user, @Query("articled") int articleId);
