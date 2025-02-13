@@ -13,19 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
+public class NewsHotAdapter extends RecyclerView.Adapter<NewsHotAdapter.NewsViewHolder> {
     private Context context;
-    private List<SmallNews> NewsList;
+    private List<SmallNews> NewsHotList;
     private final String baseUrl;
     private final OnNewsClickListener onNewsClickListener;
 
-    public NewsAdapter(Context context, List<SmallNews> newsList, String baseUrl, OnNewsClickListener onNewsClickListener) {
+    public NewsHotAdapter(Context context, List<SmallNews> newsList, String baseUrl, OnNewsClickListener onNewsClickListener) {
         this.context = context;
-        this.NewsList = newsList;
+        this.NewsHotList = newsList;
         this.baseUrl = baseUrl;
         this.onNewsClickListener = onNewsClickListener;
     }
@@ -36,11 +35,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         public TextView newsTitle;
         public CardView cardView;
 
-        public NewsViewHolder(@NonNull View itemView) {
-            super(itemView);
-            newsImageView = itemView.findViewById(R.id.ImageNews);
-            newsTitle = itemView.findViewById(R.id.TitleNews);
-            cardView = itemView.findViewById(R.id.NewsCardView);
+        public NewsViewHolder(@NonNull View itemHotView) {
+            super(itemHotView);
+            newsImageView = itemHotView.findViewById(R.id.ImageHotNews);
+            newsTitle = itemHotView.findViewById(R.id.TitleHotNews);
+            cardView = itemHotView.findViewById(R.id.NewsHotCardView);
         }
 
     }
@@ -48,13 +47,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @NonNull
     @Override
     public NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_hot_item, parent, false);
         return new NewsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
-        SmallNews smallNews = NewsList.get(position);
+        SmallNews smallNews = NewsHotList.get(position);
 
         Glide.with(context).load(smallNews.getUrlToImage()).into(holder.newsImageView);
 
@@ -67,11 +66,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public int getItemCount() {
-        return NewsList.size();
+        return NewsHotList.size();
     }
 
     public void setNewsList(List<SmallNews> list) {
-        this.NewsList = list;
+        this.NewsHotList = list;
         notifyDataSetChanged();
     }
 

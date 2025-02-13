@@ -99,7 +99,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:id="@+id/highlight"
                 android:background="#67D6FE">
 
@@ -128,17 +128,13 @@
                     android:layout_marginBottom="3dp"
                     android:layout_below="@id/firehere">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
                         <androidx.recyclerview.widget.RecyclerView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="horizontal">
+                            android:id="@+id/HotNews"
+                            android:layout_margin="5dp">
                         </androidx.recyclerview.widget.RecyclerView>
-                    </LinearLayout>
+
                 </HorizontalScrollView>
             </RelativeLayout>
 

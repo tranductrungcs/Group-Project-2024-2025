@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -41,8 +42,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class NewsFragment extends Fragment implements SelectListener {
 
-    private RecyclerView recyclerNews;
+    private RecyclerView recyclerNews, recyclerHotNews;
     private NewsAdapter newsAdapter;
+    private NewsHotAdapter newsHotAdapter;
     private List<SmallNews> NewsList = new ArrayList<>();
     private List<SmallNews> NewsHotList = new ArrayList<>();
     private static final String baseUrl = "https://android-backend-tech-c52e01da23ae.herokuapp.com/";
@@ -92,54 +94,24 @@ public class NewsFragment extends Fragment implements SelectListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
+        recyclerHotNews = view.findViewById(R.id.HotNews);
+        recyclerHotNews.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+        recyclerHotNews.setHasFixedSize(true);
         recyclerNews = view.findViewById(R.id.NewsList);
         recyclerNews.setHasFixedSize(true);
         recyclerNews.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
+        newsHotAdapter = new NewsHotAdapter(getContext(), NewsHotList, baseUrl, this::newsItem);
+        recyclerHotNews.setAdapter(newsHotAdapter);
+
         newsAdapter = new NewsAdapter(getContext(), NewsList, baseUrl, this::newsItem);
         recyclerNews.setAdapter(newsAdapter);
-
-
 
         fetchNews();
 
         return view;
     }
-    private void fetchHotNews() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        NewsAPI NewsAPI = retrofit.create(NewsAPI.class);
-        Call<List<SmallNews>> call = NewsAPI.getNews();
-        call.enqueue(new Callback<List<SmallNews>>() {
-            @SuppressLint("NotifyDataSetChanged")
-            @Override
-            public void onResponse(@NonNull Call<List<SmallNews>> call, @NonNull Response<List<SmallNews>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    for (SmallNews news : response.body()) {
-                        NewsHotList.add(news);
-                        if (news.getId() > 10) {
-                            break;
-                        }
-                    }
 
-                    newsAdapter.setNewsList(NewsHotList);
-                    newsAdapter.notifyDataSetChanged();
-                } else {
-                    Toast.makeText(getContext(), "No news available", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<List<SmallNews>> call, @NonNull Throwable t) {
-                if (getContext() != null) {
-                    Toast.makeText(getContext(), "Failed to fetch hot news", Toast.LENGTH_SHORT).show();
-                }
-                Log.e("API Error", Objects.requireNonNull(t.getMessage()));
-            }
-        });
-    }
 
     private void fetchNews() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -155,11 +127,19 @@ public class NewsFragment extends Fragment implements SelectListener {
             public void onResponse(@NonNull Call<List<SmallNews>> call, @NonNull Response<List<SmallNews>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     for (SmallNews news : response.body()) {
-                        NewsList.add(news);
-                        if (news.getId() > 10) {
+                        NewsHotList.add(news);
+                        if (news.getId() > 5) {
                             break;
                         }
                     }
+                    for (SmallNews news : response.body()){
+                        NewsList.add(news);
+                        if (news.getId() > 20) {
+                            break;
+                        }
+                    }
+                    newsHotAdapter.setNewsList(NewsHotList);
+                    newsHotAdapter.notifyDataSetChanged();
 
                     newsAdapter.setNewsList(NewsList);
                     newsAdapter.notifyDataSetChanged();
@@ -178,7 +158,7 @@ public class NewsFragment extends Fragment implements SelectListener {
         });
     }
 
-    private void newsItem(SmallNews smallNews) {
+    private void newsHotItem(SmallNews smallNews) {
         ArrayList<Object> NewsItem = new ArrayList<>();
         for (SmallNews news : NewsList) {
             NewsItem.add(news.getId());
@@ -187,9 +167,6 @@ public class NewsFragment extends Fragment implements SelectListener {
             NewsItem.add(news.getLikeNum());
             NewsItem.add(news.getCommentNum());
             NewsItem.add(news.getBookmarkNum());
-            if (news.getId() > 10) {
-                break;
-            }
         }
 
 
@@ -211,11 +188,39 @@ public class NewsFragment extends Fragment implements SelectListener {
         }
     }
 
+    private void newsItem(SmallNews smallNews) {
+        ArrayList<Object> NewsItem = new ArrayList<>();
+        for (SmallNews news : NewsHotList) {
+            NewsItem.add(news.getId());
+            NewsItem.add(news.getUrlToImage());
+            NewsItem.add(news.getTitle());
+            NewsItem.add(news.getLikeNum());
+            NewsItem.add(news.getCommentNum());
+            NewsItem.add(news.getBookmarkNum());
+        }
 
-    public void movetoNewsDetail(){
-        Intent intent = new Intent(getContext(), ShowNewsActivity.class);
-        startActivity(intent);
+
+        int selectedPosition = NewsHotList.indexOf(smallNews);
+
+        if (getActivity() != null) {
+            Intent intent = new Intent(getActivity(), ShowNewsActivity.class);
+            smallNews = NewsHotList.get(selectedPosition);
+            intent.putExtra("NewsId", smallNews.getId());
+            intent.putExtra("NewsImgURL", smallNews.getUrlToImage());
+            intent.putExtra("NewsDescription", smallNews.getDescription());
+            intent.putExtra("NewsTitle", smallNews.getTitle());
+            intent.putExtra("NewsContent", smallNews.getContent());
+            intent.putExtra("comments", smallNews.getCommentNum());
+            intent.putExtra("likes", smallNews.getLikeNum());
+            intent.putExtra("bookmarks", smallNews.getBookmarkNum());
+            intent.putExtra("initialPosition", selectedPosition);
+            startActivity(intent);
+        }
     }
+
+
+
+
 
     @Override
     public void onItemClicked(int position) {
