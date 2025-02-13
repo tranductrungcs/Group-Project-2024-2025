@@ -107,6 +107,12 @@ public class NewsFragment extends Fragment implements SelectListener {
         newsAdapter = new NewsAdapter(getContext(), NewsList, baseUrl, this::newsItem);
         recyclerNews.setAdapter(newsAdapter);
 
+        ImageButton imageButton = view.findViewById(R.id.ic_user);
+        imageButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), SettingActivity.class);
+            startActivity(intent);
+        });
+      
         fetchNews();
 
         return view;
